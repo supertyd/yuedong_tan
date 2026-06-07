@@ -98,7 +98,7 @@
                     <span class="w-1.5 h-1.5 rounded-full bg-secondary-500 animate-pulse"></span>
                 </a>
 
-                <!-- Desktop Navigation Links (Full List) -->
+                <!-- Desktop Navigation Links -->
                 <nav class="hidden md:flex items-center space-x-6">
                     <a href="#about" class="nav-link text-sm font-semibold hover:text-primary-600 dark:hover:text-primary-500 transition-colors">Home</a>
                     <a href="#news" class="nav-link text-sm font-semibold hover:text-primary-600 dark:hover:text-primary-500 transition-colors">News</a>
@@ -518,7 +518,8 @@
         // Helper function to turn a parsed bullet-point paper into a beautiful card
         function renderPaperCard(rawText) {
             // Strip out markdown bold/italic characters first to prevent them from leaking literally
-            let cleanText = rawText.replace(/\*\*/g, '').replace(/\*/g, '');
+            // Strip any backslash escape characters first as well
+            let cleanText = rawText.replace(/\\/g, '').replace(/\*\*/g, '').replace(/\*/g, '');
 
             // Highlight Yuedong Tan name using a highly elegant underline
             const underlineHighlight = '<span class="font-semibold border-b border-primary-500 pb-0.5">Yuedong Tan</span>';
