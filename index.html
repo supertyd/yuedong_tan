@@ -88,186 +88,132 @@
 
     <!-- Sticky Header / Navigation -->
     <header id="navbar" class="fixed top-0 left-0 w-full z-50 transition-all duration-300 border-b border-transparent">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-20">
                 <!-- Logo -->
                 <a href="#" class="flex items-center space-x-2 group">
-                    <span class="text-2xl font-extrabold bg-gradient-to-r from-primary-600 to-secondary-500 bg-clip-text text-transparent group-hover:from-secondary-500 group-hover:to-primary-600 transition-all duration-500">
+                    <span class="text-xl font-extrabold bg-gradient-to-r from-primary-600 to-secondary-500 bg-clip-text text-transparent group-hover:from-secondary-500 group-hover:to-primary-600 transition-all duration-500">
                         Yuedong Tan
                     </span>
-                    <span class="w-2 h-2 rounded-full bg-secondary-500 animate-pulse"></span>
+                    <span class="w-1.5 h-1.5 rounded-full bg-secondary-500 animate-pulse"></span>
                 </a>
 
-                <!-- Desktop Navigation -->
-                <nav class="hidden md:flex items-center space-x-8">
-                    <a href="#hero" class="nav-link text-sm font-semibold hover:text-primary-600 dark:hover:text-primary-500 transition-colors">Home</a>
-                    <a href="#academic-profile" class="nav-link text-sm font-semibold hover:text-primary-600 dark:hover:text-primary-500 transition-colors">Academic Profile</a>
-                    <a href="#contact" class="nav-link text-sm font-semibold hover:text-primary-600 dark:hover:text-primary-500 transition-colors">Contact</a>
-                </nav>
-
-                <!-- Header Actions (Dark mode toggle + Mobile menu button) -->
-                <div class="flex items-center space-x-4">
+                <!-- Navigation Links -->
+                <nav class="flex items-center space-x-6">
+                    <a href="#about" class="nav-link text-xs sm:text-sm font-semibold hover:text-primary-600 dark:hover:text-primary-500 transition-colors">Profile</a>
+                    <a href="#contact" class="nav-link text-xs sm:text-sm font-semibold hover:text-primary-600 dark:hover:text-primary-500 transition-colors">Contact</a>
+                    
                     <!-- Dark Mode Toggle Button -->
-                    <button id="theme-toggle" class="p-2.5 rounded-xl bg-white dark:bg-slate-900 shadow-sm border border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-300 hover:text-primary-600 dark:hover:text-primary-500 focus:outline-none transition-all duration-300" aria-label="Toggle Theme">
-                        <i id="theme-toggle-dark-icon" class="fa-solid fa-moon text-lg hidden"></i>
-                        <i id="theme-toggle-light-icon" class="fa-solid fa-sun text-lg hidden"></i>
+                    <button id="theme-toggle" class="p-2 rounded-xl bg-white dark:bg-slate-900 shadow-sm border border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-300 hover:text-primary-600 dark:hover:text-primary-500 focus:outline-none transition-all duration-300" aria-label="Toggle Theme">
+                        <i id="theme-toggle-dark-icon" class="fa-solid fa-moon text-sm hidden"></i>
+                        <i id="theme-toggle-light-icon" class="fa-solid fa-sun text-sm hidden"></i>
                     </button>
-
-                    <!-- Mobile Menu Button -->
-                    <button id="mobile-menu-button" class="md:hidden p-2.5 rounded-xl bg-white dark:bg-slate-900 shadow-sm border border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-300 focus:outline-none" aria-label="Toggle Menu">
-                        <i class="fa-solid fa-bars text-lg"></i>
-                    </button>
-                </div>
-            </div>
-        </div>
-
-        <!-- Mobile Navigation Menu -->
-        <div id="mobile-menu" class="hidden md:hidden absolute top-full left-0 w-full bg-white/95 dark:bg-slate-950/95 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 transition-all duration-300 shadow-lg">
-            <div class="px-4 pt-2 pb-6 space-y-3">
-                <a href="#hero" class="mobile-nav-link block px-4 py-2.5 rounded-xl font-medium text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-900 hover:text-primary-600 dark:hover:text-primary-500">Home</a>
-                <a href="#academic-profile" class="mobile-nav-link block px-4 py-2.5 rounded-xl font-medium text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-900 hover:text-primary-600 dark:hover:text-primary-500">Academic Profile</a>
-                <a href="#contact" class="mobile-nav-link block px-4 py-2.5 rounded-xl font-medium text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-900 hover:text-primary-600 dark:hover:text-primary-500">Contact</a>
+                </nav>
             </div>
         </div>
     </header>
 
-    <!-- Main Content -->
-    <main class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-20">
-
-        <!-- Hero Section -->
-        <section id="hero" class="min-h-[75vh] flex flex-col justify-center py-12 md:py-20">
-            <div class="grid md:grid-cols-12 gap-12 items-center">
-                <!-- Text Area -->
-                <div class="md:col-span-7 space-y-6 text-center md:text-left order-2 md:order-1">
-                    <div class="inline-flex items-center space-x-2 px-3 py-1.5 rounded-full bg-primary-100/60 dark:bg-primary-900/30 text-primary-600 dark:text-primary-400 font-semibold text-xs uppercase tracking-wider">
-                        <span class="w-1.5 h-1.5 rounded-full bg-primary-500 animate-pulse"></span>
-                        <span> Intern at Apple | Researcher</span>
+    <!-- Main Content Grid -->
+    <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-32 pb-20">
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-12 items-start">
+            
+            <!-- LEFT COLUMN (Sticky Profile Sidebar) -->
+            <aside class="md:col-span-4 md:sticky md:top-28 space-y-6 flex flex-col items-center md:items-start text-center md:text-left">
+                <!-- Profile Image with Soft-Square design -->
+                <div class="relative w-48 h-48 sm:w-56 sm:h-56 md:w-64 md:h-64">
+                    <div class="absolute inset-0 rounded-3xl bg-gradient-to-tr from-primary-500 to-secondary-500 opacity-20 blur-xl animate-pulse"></div>
+                    <div class="absolute -inset-1 rounded-3xl bg-gradient-to-tr from-primary-600 to-secondary-500 opacity-30 blur-sm"></div>
+                    <div class="absolute inset-0 rounded-3xl bg-white dark:bg-slate-900 border-4 border-white dark:border-slate-800 shadow-xl overflow-hidden">
+                        <img src="https://avatars.githubusercontent.com/u/49368772?v=4" alt="Yuedong Tan" class="w-full h-full object-cover">
                     </div>
-                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight">
-                        Hi, I'm <span class="bg-gradient-to-r from-primary-600 to-secondary-500 bg-clip-text text-transparent">Yuedong Tan</span>
-                    </h1>
-                    <h2 class="text-2xl sm:text-3xl font-bold text-slate-600 dark:text-slate-400">
-                        I specialize in <span id="typing-text" class="text-primary-600 dark:text-primary-400"></span><span class="animate-pulse">|</span>
+                </div>
+
+                <!-- Personal Info -->
+                <div class="space-y-4 w-full">
+                    <div class="space-y-1.5">
+                        <h1 class="text-3xl font-extrabold tracking-tight">Yuedong Tan</h1>
+                        <p class="text-lg font-bold bg-gradient-to-r from-primary-600 to-secondary-500 bg-clip-text text-transparent">谭跃东</p>
+                    </div>
+                    
+                    <div class="inline-flex items-center space-x-1.5 px-3 py-1 rounded-full bg-primary-100/60 dark:bg-primary-900/30 text-primary-600 dark:text-primary-400 font-semibold text-xs tracking-wider">
+                        <span class="w-1.5 h-1.5 rounded-full bg-primary-500 animate-pulse"></span>
+                        <span> Intern at Apple</span>
+                    </div>
+
+                    <div class="text-sm text-slate-600 dark:text-slate-400 space-y-2 font-medium leading-relaxed">
+                        <p><i class="fa-solid fa-graduation-cap mr-2 text-primary-500"></i>Student researcher @ INSAIT</p>
+                        <p><i class="fa-solid fa-university mr-2 text-primary-500"></i>University of Würzburg</p>
+                        <p><i class="fa-solid fa-location-dot mr-2 text-primary-500"></i>Germany / China</p>
+                    </div>
+
+                    <!-- Action Link List (Mimicking Minimal Light clean icon links) -->
+                    <div class="pt-2 flex flex-col space-y-2.5 text-sm font-semibold w-full max-w-[280px] mx-auto md:mx-0">
+                        <a href="mailto:tydsuper@gmail.com" class="flex items-center space-x-3 px-4 py-2.5 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:border-primary-500 dark:hover:border-primary-500 shadow-sm hover:shadow transition-all duration-300">
+                            <i class="fa-solid fa-envelope text-primary-500 w-4"></i>
+                            <span class="text-slate-700 dark:text-slate-300">tydsuper@gmail.com</span>
+                        </a>
+                        <a href="https://scholar.google.com/citations?user=p7fOQkUAAAAJ" target="_blank" rel="noopener noreferrer" class="flex items-center space-x-3 px-4 py-2.5 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:border-primary-500 dark:hover:border-primary-500 shadow-sm hover:shadow transition-all duration-300">
+                            <i class="fa-solid fa-graduation-cap text-primary-500 w-4"></i>
+                            <span class="text-slate-700 dark:text-slate-300">Google Scholar</span>
+                        </a>
+                        <a href="https://github.com/supertyd" target="_blank" rel="noopener noreferrer" class="flex items-center space-x-3 px-4 py-2.5 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:border-primary-500 dark:hover:border-primary-500 shadow-sm hover:shadow transition-all duration-300">
+                            <i class="fa-brands fa-github text-primary-500 w-4"></i>
+                            <span class="text-slate-700 dark:text-slate-300">supertyd GitHub</span>
+                        </a>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- RIGHT COLUMN (Scrollable Academic Content) -->
+            <div id="about" class="md:col-span-8 space-y-12">
+                <!-- Brief Bio card at the very top -->
+                <div class="p-6 sm:p-8 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm space-y-4">
+                    <h2 class="text-xl font-bold tracking-tight flex items-center">
+                        <span class="w-1.5 h-6 rounded-full bg-primary-600 mr-2.5"></span>
+                        <span>Introduction</span>
                     </h2>
-                    <p class="text-base sm:text-lg text-slate-600 dark:text-slate-300 max-w-xl sm:max-w-2xl mx-auto md:mx-0 font-normal leading-relaxed">
+                    <p class="text-base sm:text-lg text-slate-700 dark:text-slate-300 font-normal leading-relaxed">
                         Yuedong Tan(谭跃东) is a student researcher at INSAIT/University of Würzburg, under the supervision of Danda Pani Paudel, Radu Timofte, and Luc Van Gool. Previously, I obtained my master’s degree from Xidian University in June 2025. Before that, I received my B.E. degree from Chang’an University, China, in July 2022. I was an intern or visiting student at Tele AI, supervised by Jiawei Shao and Xuelong Li.
                     </p>
-                    <!-- CTA Buttons -->
-                    <div class="flex flex-col sm:flex-row items-center justify-center md:justify-start gap-4 pt-4">
-                        <a href="#academic-profile" class="w-full sm:w-auto px-8 py-3.5 rounded-xl bg-gradient-to-r from-primary-600 to-primary-700 hover:from-primary-700 hover:to-primary-800 text-white font-semibold shadow-lg shadow-primary-500/20 hover:shadow-primary-500/30 hover:-translate-y-0.5 transition-all duration-300 text-center">
-                            View Publications & Bio
-                        </a>
-                        <a href="#contact" class="w-full sm:w-auto px-8 py-3.5 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-800 font-semibold shadow-sm hover:-translate-y-0.5 transition-all duration-300 text-center">
-                            Contact Me
-                        </a>
-                    </div>
-                    <!-- Social Links -->
-                    <div class="flex items-center justify-center md:justify-start space-x-5 pt-6 text-slate-500 dark:text-slate-400">
-                        <a href="https://github.com/supertyd" target="_blank" rel="noopener noreferrer" class="hover:text-primary-600 dark:hover:text-primary-400 transition-colors text-xl" title="GitHub">
-                            <i class="fa-brands fa-github"></i>
-                        </a>
-                        <a href="https://scholar.google.com/citations?user=p7fOQkUAAAAJ" target="_blank" rel="noopener noreferrer" class="hover:text-primary-600 dark:hover:text-primary-400 transition-colors text-xl" title="Google Scholar">
-                            <i class="fa-solid fa-graduation-cap"></i>
-                        </a>
-                        <a href="mailto:tydsuper@gmail.com" class="hover:text-primary-600 dark:hover:text-primary-400 transition-colors text-xl" title="Email">
-                            <i class="fa-solid fa-envelope"></i>
-                        </a>
-                    </div>
                 </div>
 
-                <!-- Visual Avatar Block (GitHub profile picture) -->
-                <div class="md:col-span-5 flex justify-center order-1 md:order-2">
-                    <div class="relative w-64 h-64 sm:w-72 sm:h-72 md:w-80 md:h-80">
-                        <div class="absolute inset-0 rounded-full bg-gradient-to-tr from-primary-500 to-secondary-500 opacity-20 blur-2xl animate-pulse"></div>
-                        <div class="absolute -inset-1 rounded-full bg-gradient-to-tr from-primary-600 to-secondary-500 opacity-30 blur"></div>
-                        <!-- Profile Image -->
-                        <div class="absolute inset-0 rounded-full bg-white dark:bg-slate-900 border-4 border-white dark:border-slate-800 shadow-xl overflow-hidden flex items-center justify-center">
-                            <img src="https://avatars.githubusercontent.com/u/49368772?v=4" alt="Yuedong Tan" class="w-full h-full object-cover">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Academic Profile Section (Dynamically Loaded from supertyd/supertyd README.md) -->
-        <section id="academic-profile" class="py-20 border-t border-slate-200 dark:border-slate-800 scroll-mt-20">
-            <div class="space-y-10">
-                <!-- Section Title -->
-                <div class="text-center space-y-3">
-                    <div class="inline-flex items-center space-x-1 px-3 py-1 rounded-full bg-green-100 dark:bg-green-900/30 text-green-600 dark:text-green-400 font-semibold text-xs tracking-wider">
-                        <i class="fa-solid fa-arrows-rotate animate-spin text-[10px]"></i>
-                        <span>Auto-syncs with supertyd/supertyd README</span>
-                    </div>
-                    <h2 class="text-3xl font-extrabold sm:text-4xl">Academic Profile</h2>
-                    <div class="w-16 h-1 bg-gradient-to-r from-primary-600 to-secondary-500 mx-auto rounded-full"></div>
-                </div>
-
-                <!-- Markdown Content Container -->
-                <div class="p-6 sm:p-10 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm relative min-h-[300px]">
-                    <!-- Spinner / Loading State -->
-                    <div id="loading-spinner" class="absolute inset-0 flex flex-col items-center justify-center bg-white/90 dark:bg-slate-900/90 rounded-2xl transition-opacity duration-300">
-                        <div class="w-12 h-12 border-4 border-primary-100 border-t-primary-600 rounded-full animate-spin mb-4"></div>
-                        <p class="text-sm font-semibold text-slate-500 dark:text-slate-400">Fetching latest profile content...</p>
-                    </div>
-
-                    <!-- Dynamic Rendered Markdown Content (Tailwind Typography applied) -->
-                    <article id="markdown-container" class="prose prose-slate dark:prose-invert max-w-none prose-headings:font-bold prose-headings:tracking-tight prose-a:text-primary-600 dark:prose-a:text-primary-400 hover:prose-a:underline prose-strong:text-slate-900 dark:prose-strong:text-white">
-                        <!-- Content will be injected here by JavaScript -->
-                    </article>
-
-                    <!-- Error State (hidden by default) -->
-                    <div id="error-container" class="hidden text-center py-10 space-y-4">
-                        <i class="fa-solid fa-triangle-exclamation text-4xl text-red-500"></i>
-                        <p class="text-slate-600 dark:text-slate-400 font-medium">Failed to load live profile content.</p>
-                        <button onclick="loadProfile()" class="px-4 py-2 text-xs font-semibold text-white bg-primary-600 rounded-xl hover:bg-primary-700 transition-colors">
-                            Retry Connection
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Contact Section -->
-        <section id="contact" class="py-20 border-t border-slate-200 dark:border-slate-800 scroll-mt-20">
-            <div class="space-y-12">
-                <!-- Section Title -->
-                <div class="text-center space-y-3">
-                    <h2 class="text-3xl font-extrabold sm:text-4xl">Get In Touch</h2>
-                    <div class="w-16 h-1 bg-gradient-to-r from-primary-600 to-secondary-500 mx-auto rounded-full"></div>
-                    <p class="text-slate-600 dark:text-slate-400 max-w-lg mx-auto">Have any questions, research ideas, or collaboration opportunities? Send me a message!</p>
-                </div>
-
-                <!-- Contact Grid -->
-                <div class="grid md:grid-cols-12 gap-8 items-start">
-                    <!-- Info details -->
-                    <div class="md:col-span-5 space-y-6">
-                        <div class="p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 space-y-6 shadow-sm">
-                            <h3 class="text-xl font-bold">Contact Details</h3>
-                            <div class="space-y-4">
-                                <div class="flex items-start space-x-4">
-                                    <div class="p-3 rounded-xl bg-primary-100/60 dark:bg-primary-900/30 text-primary-600 dark:text-primary-400">
-                                        <i class="fa-solid fa-envelope"></i>
-                                    </div>
-                                    <div>
-                                        <div class="text-xs text-slate-500 dark:text-slate-400 font-medium">Email Me</div>
-                                        <a href="mailto:tydsuper@gmail.com" class="text-sm font-semibold hover:text-primary-600 dark:hover:text-primary-400 transition-colors">tydsuper@gmail.com</a>
-                                    </div>
-                                </div>
-                                <div class="flex items-start space-x-4">
-                                    <div class="p-3 rounded-xl bg-secondary-100/60 dark:bg-secondary-900/30 text-secondary-600 dark:text-secondary-400">
-                                        <i class="fa-solid fa-graduation-cap"></i>
-                                    </div>
-                                    <div>
-                                        <div class="text-xs text-slate-500 dark:text-slate-400 font-medium">Google Scholar</div>
-                                        <a href="https://scholar.google.com/citations?user=p7fOQkUAAAAJ" target="_blank" rel="noopener noreferrer" class="text-sm font-semibold hover:text-primary-600 dark:hover:text-primary-400 transition-colors">Yuedong Tan Profile</a>
-                                    </div>
-                                </div>
-                            </div>
+                <!-- Academic Profile Section (Dynamically Loaded from supertyd/supertyd README.md) -->
+                <section class="space-y-6">
+                    <div class="flex items-center justify-between">
+                        <div class="inline-flex items-center space-x-1.5 px-3 py-1 rounded-full bg-green-100 dark:bg-green-900/30 text-green-600 dark:text-green-400 font-semibold text-xs tracking-wider">
+                            <i class="fa-solid fa-arrows-rotate animate-spin text-[10px]"></i>
+                            <span>Live synced from supertyd/supertyd profile README</span>
                         </div>
                     </div>
 
-                    <!-- Message Form -->
-                    <div class="md:col-span-7">
+                    <!-- Markdown Content Container -->
+                    <div class="p-6 sm:p-10 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm relative min-h-[300px]">
+                        <!-- Spinner / Loading State -->
+                        <div id="loading-spinner" class="absolute inset-0 flex flex-col items-center justify-center bg-white/90 dark:bg-slate-900/90 rounded-2xl transition-opacity duration-300">
+                            <div class="w-10 h-10 border-4 border-primary-100 border-t-primary-600 rounded-full animate-spin mb-4"></div>
+                            <p class="text-sm font-semibold text-slate-500 dark:text-slate-400">Loading academic details...</p>
+                        </div>
+
+                        <!-- Dynamic Rendered Markdown Content (Tailwind Typography applied) -->
+                        <article id="markdown-container" class="prose prose-slate dark:prose-invert max-w-none prose-headings:font-bold prose-headings:tracking-tight prose-a:text-primary-600 dark:prose-a:text-primary-400 hover:prose-a:underline prose-strong:text-slate-900 dark:prose-strong:text-white">
+                            <!-- Content will be injected here by JavaScript -->
+                        </article>
+
+                        <!-- Error State -->
+                        <div id="error-container" class="hidden text-center py-10 space-y-4">
+                            <i class="fa-solid fa-triangle-exclamation text-4xl text-red-500"></i>
+                            <p class="text-slate-600 dark:text-slate-400 font-medium">Failed to load profile details.</p>
+                            <button onclick="loadProfile()" class="px-4 py-2 text-xs font-semibold text-white bg-primary-600 rounded-xl hover:bg-primary-700 transition-colors">
+                                Retry Connection
+                            </button>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Contact Section -->
+                <section id="contact" class="pt-6 border-t border-slate-200 dark:border-slate-800 scroll-mt-28">
+                    <div class="space-y-6">
+                        <h2 class="text-2xl font-extrabold tracking-tight">Contact</h2>
                         <form id="contact-form" class="p-6 sm:p-8 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 space-y-5 shadow-sm">
                             <div class="grid sm:grid-cols-2 gap-4">
                                 <div class="space-y-2">
@@ -288,20 +234,20 @@
                             </button>
                         </form>
                     </div>
-                </div>
+                </section>
             </div>
-        </section>
 
+        </div>
     </main>
 
     <!-- Footer -->
-    <footer class="border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950 py-8 mt-20 transition-all duration-300">
-        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
-            <span class="text-sm text-slate-500 dark:text-slate-400">
+    <footer class="border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950 py-8 transition-all duration-300">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <span class="text-xs sm:text-sm text-slate-500 dark:text-slate-400">
                 &copy; 2026 Yuedong Tan. All rights reserved.
             </span>
-            <span class="text-sm text-slate-500 dark:text-slate-400 flex items-center space-x-1">
-                <span>Auto-synced Portfolio</span>
+            <span class="text-xs sm:text-sm text-slate-500 dark:text-slate-400 flex items-center space-x-1">
+                <span>Designed & built for academia</span>
             </span>
         </div>
     </footer>
@@ -390,83 +336,7 @@
             }
         });
 
-        // Mobile Menu toggle
-        const mobileMenuBtn = document.getElementById('mobile-menu-button');
-        const mobileMenu = document.getElementById('mobile-menu');
-        const mobileMenuIcon = mobileMenuBtn.querySelector('i');
-
-        mobileMenuBtn.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-            if (mobileMenu.classList.contains('hidden')) {
-                mobileMenuIcon.className = 'fa-solid fa-bars text-lg';
-            } else {
-                mobileMenuIcon.className = 'fa-solid fa-xmark text-lg';
-            }
-        });
-
-        // Close mobile menu on click
-        document.querySelectorAll('.mobile-nav-link').forEach(link => {
-            link.addEventListener('click', () => {
-                mobileMenu.classList.add('hidden');
-                mobileMenuIcon.className = 'fa-solid fa-bars text-lg';
-            });
-        });
-
-        // Typing Effect
-        const words = ['Multimodal Large Language Models', 'Autonomous Tool-Use Agents', 'Computer Vision & Tracking'];
-        let wordIndex = 0;
-        let charIndex = 0;
-        let isDeleting = false;
-        const typingText = document.getElementById('typing-text');
-
-        function type() {
-            const currentWord = words[wordIndex];
-            if (isDeleting) {
-                typingText.textContent = currentWord.substring(0, charIndex - 1);
-                charIndex--;
-            } else {
-                typingText.textContent = currentWord.substring(0, charIndex + 1);
-                charIndex++;
-            }
-
-            let typeSpeed = isDeleting ? 30 : 60;
-
-            if (!isDeleting && charIndex === currentWord.length) {
-                typeSpeed = 2000; // Pause at end of word
-                isDeleting = true;
-            } else if (isDeleting && charIndex === 0) {
-                isDeleting = false;
-                wordIndex = (wordIndex + 1) % words.length;
-                typeSpeed = 500; // Pause before typing next word
-            }
-
-            setTimeout(type, typeSpeed);
-        }
-        document.addEventListener('DOMContentLoaded', type);
-
-        // Active Link Highlighting on Scroll
-        const sections = document.querySelectorAll('section');
-        const navLinks = document.querySelectorAll('.nav-link');
-
-        window.addEventListener('scroll', () => {
-            let current = '';
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop;
-                const sectionHeight = section.clientHeight;
-                if (window.scrollY >= (sectionTop - 150)) {
-                    current = section.getAttribute('id');
-                }
-            });
-
-            navLinks.forEach(link => {
-                link.classList.remove('text-primary-600', 'dark:text-primary-400');
-                if (link.getAttribute('href').slice(1) === current) {
-                    link.classList.add('text-primary-600', 'dark:text-primary-400');
-                }
-            });
-        });
-
-        // Simple Form Submission Alert (since there's no backend)
+        // Simple Form Submission Alert
         document.getElementById('contact-form').addEventListener('submit', (e) => {
             e.preventDefault();
             const name = document.getElementById('name').value;
