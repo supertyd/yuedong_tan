@@ -7,7 +7,7 @@
     <!-- Google Fonts: Plus Jakarta Sans -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght=300;400;500;600;700;800&display=swap" rel="stylesheet">
     <!-- Tailwind CSS with Typography Plugin CDN -->
     <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
     <!-- FontAwesome Icons CDN -->
@@ -484,10 +484,11 @@
 
         // Helper function to turn a parsed bullet-point paper into a beautiful card
         function renderPaperCard(rawText) {
-            // Highlight Yuedong Tan name
+            // Highlight Yuedong Tan name using a highly elegant underline
+            const underlineHighlight = '<span class="font-semibold border-b border-primary-500 pb-0.5">Yuedong Tan</span>';
             let htmlText = rawText
-                .replace(/Yuedong Tan/g, '<strong>Yuedong Tan (谭跃东)</strong>')
-                .replace(/\*\*Yuedong Tan\*\*/g, '<strong>Yuedong Tan (谭跃东)</strong>');
+                .replace(/Yuedong Tan/g, underlineHighlight)
+                .replace(/\*\*Yuedong Tan\*\*/g, underlineHighlight);
 
             // Extract paper links like [Paper Link](url)
             const linkRegex = /\[Paper Link\]\(([^)]+)\)/i;
