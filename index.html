@@ -61,13 +61,13 @@
                         }
                     },
                     animation: {
-                        'blob': 'blob 7s infinite',
+                        'blob': 'blob 10s infinite',
                     },
                     keyframes: {
                         blob: {
                             '0%': { transform: 'translate(0px, 0px) scale(1)' },
-                            '33%': { transform: 'translate(30px, -50px) scale(1.1)' },
-                            '66%': { transform: 'translate(-20px, 20px) scale(0.95)' },
+                            '33%': { transform: 'translate(30px, -30px) scale(1.05)' },
+                            '66%': { transform: 'translate(-20px, 20px) scale(0.98)' },
                             '100%': { transform: 'translate(0px, 0px) scale(1)' },
                         }
                     }
@@ -112,7 +112,19 @@
             background: #1e293b;
         }
 
-        /* --- Elite Academic Print Stylesheet (Ctrl+P compiles to a clean CV PDF) --- */
+        /* --- Scroll Reveal Classes (Silk smooth movie transition) --- */
+        .reveal-on-scroll {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity 1s cubic-bezier(0.25, 1, 0.5, 1), transform 1s cubic-bezier(0.25, 1, 0.5, 1);
+            will-change: transform, opacity;
+        }
+        .reveal-on-scroll.revealed {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* --- Elite Academic Print Stylesheet --- */
         @media print {
             body {
                 background: #ffffff !important;
@@ -167,10 +179,10 @@
 </head>
 <body class="bg-slate-50 text-slate-800 dark:bg-slate-950 dark:text-slate-100 font-sans transition-colors duration-300 selection:bg-primary-500 selection:text-white">
 
-    <!-- Gradient Background Blobs (for premium look) -->
+    <!-- Gradient Background Blobs (Interactive Mouse parallax mapped) -->
     <div class="fixed inset-0 overflow-hidden pointer-events-none -z-10 opacity-30 dark:opacity-20">
-        <div class="absolute top-[-10%] left-[-10%] w-[500px] h-[500px] rounded-full bg-primary-100 dark:bg-primary-900/30 blur-3xl animate-blob"></div>
-        <div class="absolute bottom-[-10%] right-[-10%] w-[600px] h-[600px] rounded-full bg-secondary-50 dark:bg-secondary-900/20 blur-3xl animate-blob [animation-delay:2s]"></div>
+        <div id="blob-1" class="absolute top-[-10%] left-[-10%] w-[500px] h-[500px] rounded-full bg-primary-100 dark:bg-primary-900/30 blur-3xl transition-transform duration-700 ease-out"></div>
+        <div id="blob-2" class="absolute bottom-[-10%] right-[-10%] w-[600px] h-[600px] rounded-full bg-secondary-50 dark:bg-secondary-900/20 blur-3xl transition-transform duration-700 ease-out"></div>
     </div>
 
     <!-- Sticky Header / Navigation -->
@@ -231,11 +243,11 @@
             <!-- LEFT COLUMN (Sticky Profile Sidebar) -->
             <aside class="md:col-span-4 md:sticky md:top-28 space-y-6 flex flex-col items-center md:items-start text-center md:text-left">
                 <!-- Profile Image with Soft-Square design -->
-                <div class="relative w-48 h-48 sm:w-56 sm:h-56 md:w-64 md:h-64">
-                    <div class="absolute inset-0 rounded-3xl bg-gradient-to-tr from-primary-500 to-secondary-500 opacity-20 blur-xl animate-pulse"></div>
-                    <div class="absolute -inset-1 rounded-3xl bg-gradient-to-tr from-primary-600 to-secondary-500 opacity-30 blur-sm"></div>
+                <div class="relative w-48 h-48 sm:w-56 sm:h-56 md:w-64 md:h-64 group/prof">
+                    <div class="absolute inset-0 rounded-3xl bg-gradient-to-tr from-primary-500 to-secondary-500 opacity-20 blur-xl group-hover/prof:opacity-40 group-hover/prof:scale-105 transition-all duration-500"></div>
+                    <div class="absolute -inset-1 rounded-3xl bg-gradient-to-tr from-primary-600 to-secondary-500 opacity-30 blur-sm group-hover/prof:opacity-50 transition-all duration-500"></div>
                     <div class="absolute inset-0 rounded-3xl bg-white dark:bg-slate-900 border-4 border-white dark:border-slate-800 shadow-xl overflow-hidden">
-                        <img src="https://avatars.githubusercontent.com/u/49368772?v=4" alt="Yuedong Tan" class="w-full h-full object-cover">
+                        <img src="https://avatars.githubusercontent.com/u/49368772?v=4" alt="Yuedong Tan" class="w-full h-full object-cover group-hover/prof:scale-105 transition-transform duration-500">
                     </div>
                 </div>
 
@@ -259,15 +271,15 @@
 
                     <!-- Action Link List -->
                     <div class="pt-2 flex flex-col space-y-2.5 text-sm font-semibold w-full max-w-[280px] mx-auto md:mx-0">
-                        <a href="mailto:tydsuper@gmail.com" class="flex items-center space-x-3 px-4 py-2.5 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:border-primary-500 dark:hover:border-primary-500 shadow-sm hover:shadow transition-all duration-300">
+                        <a href="mailto:tydsuper@gmail.com" class="flex items-center space-x-3 px-4 py-2.5 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:border-primary-500 dark:hover:border-primary-500 shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-300">
                             <i class="fa-solid fa-envelope text-primary-500 w-4"></i>
                             <span class="text-slate-700 dark:text-slate-300">tydsuper@gmail.com</span>
                         </a>
-                        <a href="https://scholar.google.com/citations?user=p7fOQkUAAAAJ" target="_blank" rel="noopener noreferrer" class="flex items-center space-x-3 px-4 py-2.5 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:border-primary-500 dark:hover:border-primary-500 shadow-sm hover:shadow transition-all duration-300">
+                        <a href="https://scholar.google.com/citations?user=p7fOQkUAAAAJ" target="_blank" rel="noopener noreferrer" class="flex items-center space-x-3 px-4 py-2.5 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:border-primary-500 dark:hover:border-primary-500 shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-300">
                             <i class="fa-solid fa-graduation-cap text-primary-500 w-4"></i>
                             <span class="text-slate-700 dark:text-slate-300">Google Scholar</span>
                         </a>
-                        <a href="https://github.com/supertyd" target="_blank" rel="noopener noreferrer" class="flex items-center space-x-3 px-4 py-2.5 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:border-primary-500 dark:hover:border-primary-500 shadow-sm hover:shadow transition-all duration-300">
+                        <a href="https://github.com/supertyd" target="_blank" rel="noopener noreferrer" class="flex items-center space-x-3 px-4 py-2.5 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:border-primary-500 dark:hover:border-primary-500 shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-300">
                             <i class="fa-brands fa-github text-primary-500 w-4"></i>
                             <span class="text-slate-700 dark:text-slate-300">supertyd GitHub</span>
                         </a>
@@ -277,8 +289,8 @@
 
             <!-- RIGHT COLUMN (Scrollable Academic Content) -->
             <div id="about" class="md:col-span-8 space-y-12 scroll-mt-28">
-                <!-- Brief Bio card at the very top -->
-                <div class="p-6 sm:p-8 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm space-y-4">
+                <!-- Brief Bio card at the very top (Animated reveal-on-scroll applied) -->
+                <div class="reveal-on-scroll p-6 sm:p-8 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm space-y-4">
                     <h2 class="text-xl font-bold tracking-tight flex items-center">
                         <span class="w-1.5 h-6 rounded-full bg-primary-600 mr-2.5"></span>
                         <span>Introduction</span>
@@ -289,7 +301,7 @@
                 </div>
 
                 <!-- Custom Beautiful Scrollable News Timeline Section -->
-                <section id="news" class="space-y-6 scroll-mt-28">
+                <section id="news" class="reveal-on-scroll space-y-6 scroll-mt-28">
                     <h2 class="text-2xl font-extrabold tracking-tight flex items-center">
                         <span class="w-1.5 h-6 rounded-full bg-primary-600 mr-2.5"></span>
                         <span>News</span>
@@ -366,12 +378,12 @@
                 </section>
 
                 <!-- Primary Focus Areas Section (Loaded dynamically) -->
-                <section id="focus-areas" class="space-y-4 scroll-mt-28">
+                <section id="focus-areas" class="reveal-on-scroll space-y-4 scroll-mt-28">
                     <h2 class="text-2xl font-extrabold tracking-tight flex items-center">
                         <span class="w-1.5 h-6 rounded-full bg-primary-600 mr-2.5"></span>
                         <span>Primary Focus Areas</span>
                     </h2>
-                    <div id="focus-areas-container" class="p-6 sm:p-8 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm relative min-h-[100px]">
+                    <div id="focus-areas-container" class="p-6 sm:p-8 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm relative min-h-[100px] hover:shadow-md hover:-translate-y-0.5 transition-all duration-300">
                         <!-- Content will be injected here -->
                         <div class="animate-pulse flex space-y-4">
                             <div class="flex-1 space-y-4 py-1">
@@ -386,7 +398,7 @@
                 </section>
 
                 <!-- Publications / Selected Papers Standalone Section (Loaded dynamically) -->
-                <section id="publications" class="space-y-4 scroll-mt-28">
+                <section id="publications" class="reveal-on-scroll space-y-4 scroll-mt-28">
                     <div class="flex items-baseline justify-between flex-wrap gap-2">
                         <h2 class="text-2xl font-extrabold tracking-tight flex items-center">
                             <span class="w-1.5 h-6 rounded-full bg-primary-600 mr-2.5"></span>
@@ -407,7 +419,7 @@
                 </section>
 
                 <!-- Education & Career Experience (Placed beautifully at the bottom, just above contact) -->
-                <section id="experience" class="space-y-6 pt-6 border-t border-slate-200 dark:border-slate-800 scroll-mt-28">
+                <section id="experience" class="reveal-on-scroll space-y-6 pt-6 border-t border-slate-200 dark:border-slate-800 scroll-mt-28">
                     <h2 class="text-2xl font-extrabold tracking-tight flex items-center">
                         <span class="w-1.5 h-6 rounded-full bg-primary-600 mr-2.5"></span>
                         <span>Experience & Affiliations</span>
@@ -494,14 +506,14 @@
                     </div>
                 </section>
 
-                <!-- Contact Section -->
-                <section id="contact" class="pt-6 border-t border-slate-200 dark:border-slate-800 scroll-mt-28">
+                <!-- Contact Section (Equipped with fluid Success Notification card) -->
+                <section id="contact" class="reveal-on-scroll pt-6 border-t border-slate-200 dark:border-slate-800 scroll-mt-28">
                     <div class="space-y-6">
                         <h2 class="text-2xl font-extrabold tracking-tight">Contact</h2>
                         
                         <!-- Main Contact Card -->
                         <div id="contact-wrapper" class="relative overflow-hidden rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm transition-all duration-500">
-                            <!-- Success State Card (Hidden by default, slides up smoothly on submit) -->
+                            <!-- Success State Card -->
                             <div id="contact-success-state" class="absolute inset-0 bg-white dark:bg-slate-900 z-20 flex flex-col items-center justify-center p-6 text-center space-y-4 translate-y-full opacity-0 transition-all duration-500">
                                 <div class="w-16 h-16 rounded-full bg-emerald-100 dark:bg-emerald-950/50 text-emerald-600 dark:text-emerald-400 flex items-center justify-center text-3xl animate-bounce">
                                     <i class="fa-solid fa-paper-plane"></i>
@@ -566,7 +578,7 @@
         const bibtexDatabase = {
             "segthinker": `@article{tan2026segthinker,
   title={SegThinker: Recurrent Vision with Reasoning for Image Segmentation},
-  author={Tan, Yuedong and Pan, Jiancheng and Fu, Yuqian and Van Gool, Luc and Timofte, Radu and Paudel, Danda Pani and Wu, Zongwei},
+  author={Tan, Yuedong and Pan, Jiancheng and Fu, Yuqian mercantile and Van Gool, Luc and Timofte, Radu and Paudel, Danda Pani and Wu, Zongwei},
   journal={Under Review},
   year={2026}
 }`,
@@ -602,7 +614,7 @@
 }`,
             "hotmoe": `@article{sun2025hotmoe,
   title={HotMoE: Exploring Sparse Mixture of Experts for Hyperspectral Object Tracking},
-  author={Sun, Wenfang and Tan, Yuedong and Li, Jingyuan and Hou, Shuwei and Shao, Yingzhao and Wang, Zhe and Song, Beibei},
+  author={Sun, Wenfang and Tan, Yuedong and Li, Jingyuan and Hou, Shuwei and ...},
   journal={IEEE Transactions on Multimedia},
   year={2025}
 }`
@@ -676,6 +688,9 @@
                     pubContainer.innerHTML = "<p class='text-slate-500 py-6 text-center'>No publications found.</p>";
                 }
 
+                // Re-initialize Scroll Reveal Observer after publications finish rendering
+                initScrollObserver();
+
             } catch (err) {
                 console.error(err);
                 focusContainer.innerHTML = "<p class='text-red-500'>Failed to load focus areas.</p>";
@@ -686,7 +701,6 @@
         // Helper function to turn a parsed bullet-point paper into a beautiful card
         function renderPaperCard(rawText) {
             // Strip out markdown bold/italic characters first to prevent them from leaking literally
-            // Strip any backslash escape characters first as well
             let cleanText = rawText.replace(/\\/g, '').replace(/\*\*/g, '').replace(/\*/g, '');
 
             // Highlight Yuedong Tan name using a highly elegant underline
@@ -743,7 +757,7 @@
                 `;
             }
 
-            // Identify publication venue badges (e.g. ICCV2025, Transactions, etc.)
+            // Identify publication venue badges
             let venueBadgeHTML = "";
             if (cleanText.includes('ICCV2025') || cleanText.includes('ICCV 2025')) {
                 venueBadgeHTML = `<span class="inline-flex items-center px-2 py-0.5 rounded bg-indigo-100 dark:bg-indigo-900/40 text-indigo-700 dark:text-indigo-400 text-[10px] font-bold">ICCV 2025</span>`;
@@ -756,7 +770,7 @@
             }
 
             return `
-                <div class="p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-300 space-y-3">
+                <div class="reveal-on-scroll p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm hover:shadow-md hover:-translate-y-0.5 hover:border-primary-500/30 dark:hover:border-primary-500/30 transition-all duration-300 space-y-3">
                     <div class="flex items-start justify-between gap-4 flex-wrap">
                         <div class="flex-1 min-w-0">
                             <p class="text-base text-slate-700 dark:text-slate-300 leading-relaxed">${htmlText}</p>
@@ -926,6 +940,44 @@
         newsScrollbox.addEventListener('scroll', updateNewsMasks);
         // Initial call to set masks on load
         setTimeout(updateNewsMasks, 500);
+
+        // --- Intersection Observer for Scroll Reveal ---
+        function initScrollObserver() {
+            const revealElements = document.querySelectorAll('.reveal-on-scroll');
+            const observerOptions = {
+                root: null,
+                threshold: 0.1, // trigger when 10% of element is in viewport
+                rootMargin: "0px 0px -50px 0px" // trigger slightly before entering viewport
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('revealed');
+                        observer.unobserve(entry.target); // Stop tracking once revealed
+                    }
+                });
+            }, observerOptions);
+
+            revealElements.forEach(el => observer.observe(entryEl = el));
+        }
+
+        // --- 🌌 Dynamic Mouse Parallax Background Blobs ---
+        const blob1 = document.getElementById('blob-1');
+        const blob2 = document.getElementById('blob-2');
+
+        document.addEventListener('mousemove', (e) => {
+            const mouseX = e.clientX;
+            const mouseY = e.clientY;
+
+            // Calculate offset relative to center of the viewport
+            const offsetX = (mouseX - window.innerWidth / 2) * 0.03; // Translate multiplier (adjust for intensity)
+            const offsetY = (mouseY - window.innerHeight / 2) * 0.03;
+
+            // Silky smooth translation drift mapped directly on the background glows
+            blob1.style.transform = `translate(${offsetX}px, ${offsetY}px)`;
+            blob2.style.transform = `translate(${-offsetX}px, ${-offsetY}px)`;
+        });
     </script>
 </body>
 </html>
