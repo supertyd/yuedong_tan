@@ -76,6 +76,18 @@
         .dark ::-webkit-scrollbar-thumb:hover {
             background: #475569;
         }
+
+        /* Hide default scrollbar inside the news scroll box for absolute clean look, while allowing swipe scroll on touch devices */
+        .news-scrollbox::-webkit-scrollbar {
+            width: 3px;
+        }
+        .news-scrollbox::-webkit-scrollbar-thumb {
+            background: #e2e8f0;
+            border-radius: 9999px;
+        }
+        .dark .news-scrollbox::-webkit-scrollbar-thumb {
+            background: #1e293b;
+        }
     </style>
 </head>
 <body class="bg-slate-50 text-slate-800 dark:bg-slate-950 dark:text-slate-100 font-sans transition-colors duration-300 selection:bg-primary-500 selection:text-white">
@@ -98,7 +110,7 @@
                     <span class="w-1.5 h-1.5 rounded-full bg-secondary-500 animate-pulse"></span>
                 </a>
 
-                <!-- Desktop Navigation Links -->
+                <!-- Desktop Navigation Links (Full List) -->
                 <nav class="hidden md:flex items-center space-x-6">
                     <a href="#about" class="nav-link text-sm font-semibold hover:text-primary-600 dark:hover:text-primary-500 transition-colors">Home</a>
                     <a href="#news" class="nav-link text-sm font-semibold hover:text-primary-600 dark:hover:text-primary-500 transition-colors">News</a>
@@ -201,69 +213,80 @@
                     </p>
                 </div>
 
-                <!-- Custom Beautiful News Timeline Section -->
+                <!-- Custom Beautiful Scrollable News Timeline Section -->
                 <section id="news" class="space-y-6 scroll-mt-28">
                     <h2 class="text-2xl font-extrabold tracking-tight flex items-center">
                         <span class="w-1.5 h-6 rounded-full bg-primary-600 mr-2.5"></span>
                         <span>News</span>
                     </h2>
 
-                    <div class="relative pl-6 border-l-2 border-slate-200 dark:border-slate-800 space-y-8">
-                        <!-- News Item 1 -->
-                        <div class="relative group">
-                            <!-- Bullet Icon -->
-                            <div class="absolute -left-[31px] top-1 w-4 h-4 rounded-full bg-primary-500 border-4 border-slate-50 dark:border-slate-950 group-hover:scale-125 transition-transform duration-300 flex items-center justify-center"></div>
+                    <!-- Scroll Window Container with relative layout for absolute gradient overlays -->
+                    <div class="relative">
+                        <!-- Top Fluid Gradient Mask (shows when scrolled down) -->
+                        <div id="news-mask-top" class="absolute top-0 left-0 right-0 h-10 bg-gradient-to-b from-slate-50 dark:from-slate-950 to-transparent pointer-events-none z-10 transition-opacity duration-300 opacity-0"></div>
+                        
+                        <!-- Vertically Scrollable Window -->
+                        <div id="news-scroll-window" class="news-scrollbox max-h-[250px] overflow-y-auto pr-2 scroll-smooth pl-6 border-l-2 border-slate-200 dark:border-slate-800 space-y-8">
                             
-                            <div class="space-y-2">
-                                <div class="flex items-center space-x-2">
-                                    <span class="px-2.5 py-0.5 rounded-lg bg-primary-100 dark:bg-primary-900/30 text-primary-600 dark:text-primary-400 text-xs font-bold font-mono">Mar. 2026</span>
-                                    <span class="inline-flex items-center px-1.5 py-0.5 rounded-md bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-[10px] font-bold"><i class="fa-brands fa-apple mr-1 text-slate-800 dark:text-white"></i>APPLE</span>
+                            <!-- News Item 1 -->
+                            <div class="relative group">
+                                <!-- Bullet Icon -->
+                                <div class="absolute -left-[31px] top-1 w-4 h-4 rounded-full bg-primary-500 border-4 border-slate-50 dark:border-slate-950 group-hover:scale-125 transition-transform duration-300 flex items-center justify-center"></div>
+                                
+                                <div class="space-y-2">
+                                    <div class="flex items-center space-x-2">
+                                        <span class="px-2.5 py-0.5 rounded-lg bg-primary-100 dark:bg-primary-900/30 text-primary-600 dark:text-primary-400 text-xs font-bold font-mono">Mar. 2026</span>
+                                        <span class="inline-flex items-center px-1.5 py-0.5 rounded-md bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-[10px] font-bold"><i class="fa-brands fa-apple mr-1 text-slate-800 dark:text-white"></i>APPLE</span>
+                                    </div>
+                                    <p class="text-base text-slate-700 dark:text-slate-300 font-medium leading-relaxed">
+                                        I am excited to share that I have started my internship at Apple!
+                                    </p>
                                 </div>
-                                <p class="text-base text-slate-700 dark:text-slate-300 font-medium leading-relaxed">
-                                    I am excited to share that I have started my internship at Apple!
-                                </p>
+                            </div>
+
+                            <!-- News Item 2 -->
+                            <div class="relative group">
+                                <!-- Bullet Icon -->
+                                <div class="absolute -left-[31px] top-1 w-4 h-4 rounded-full bg-primary-500 border-4 border-slate-50 dark:border-slate-950 group-hover:scale-125 transition-transform duration-300 flex items-center justify-center"></div>
+                                
+                                <div class="space-y-2">
+                                    <div class="flex items-center space-x-2">
+                                        <span class="px-2.5 py-0.5 rounded-lg bg-primary-100 dark:bg-primary-900/30 text-primary-600 dark:text-primary-400 text-xs font-bold font-mono">Feb. 2026</span>
+                                        <span class="inline-flex items-center px-1.5 py-0.5 rounded-md bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-[10px] font-bold">WORKSHOP</span>
+                                    </div>
+                                    <p class="text-base text-slate-700 dark:text-slate-300 font-medium leading-relaxed">
+                                        We are organizing the CVPR 2026 Workshop on Unified Robotic Vision with Cross-Modal Sensing and Alignment.
+                                    </p>
+                                    <a href="https://urvis-workshop.github.io/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center text-xs font-bold text-primary-600 dark:text-primary-400 hover:underline">
+                                        <span>URVIS Workshop Website</span>
+                                        <i class="fa-solid fa-arrow-up-right-from-square ml-1 text-[10px]"></i>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <!-- News Item 3 -->
+                            <div class="relative group">
+                                <!-- Bullet Icon -->
+                                <div class="absolute -left-[31px] top-1 w-4 h-4 rounded-full bg-primary-500 border-4 border-slate-50 dark:border-slate-950 group-hover:scale-125 transition-transform duration-300 flex items-center justify-center"></div>
+                                
+                                <div class="space-y-2">
+                                    <div class="flex items-center space-x-2">
+                                        <span class="px-2.5 py-0.5 rounded-lg bg-primary-100 dark:bg-primary-900/30 text-primary-600 dark:text-primary-400 text-xs font-bold font-mono">Oct. 2025</span>
+                                        <span class="inline-flex items-center px-1.5 py-0.5 rounded-md bg-amber-100 dark:bg-amber-900/30 text-amber-600 dark:text-amber-400 text-[10px] font-bold"><i class="fa-solid fa-award mr-1"></i>AWARD</span>
+                                    </div>
+                                    <p class="text-base text-slate-700 dark:text-slate-300 font-medium leading-relaxed">
+                                        I am thrilled to announce that our project has been selected for a generous GPU grant from TeleAI. We are incredibly grateful for their support, as only 10 projects were chosen for this award.
+                                    </p>
+                                    <a href="https://mp.weixin.qq.com/s/u3X_NV_791bwo42VaFkWgw?scene=1&click_id=4" target="_blank" rel="noopener noreferrer" class="inline-flex items-center text-xs font-bold text-primary-600 dark:text-primary-400 hover:underline">
+                                        <span>Announcement Link</span>
+                                        <i class="fa-solid fa-arrow-up-right-from-square ml-1 text-[10px]"></i>
+                                    </a>
+                                </div>
                             </div>
                         </div>
 
-                        <!-- News Item 2 -->
-                        <div class="relative group">
-                            <!-- Bullet Icon -->
-                            <div class="absolute -left-[31px] top-1 w-4 h-4 rounded-full bg-primary-500 border-4 border-slate-50 dark:border-slate-950 group-hover:scale-125 transition-transform duration-300 flex items-center justify-center"></div>
-                            
-                            <div class="space-y-2">
-                                <div class="flex items-center space-x-2">
-                                    <span class="px-2.5 py-0.5 rounded-lg bg-primary-100 dark:bg-primary-900/30 text-primary-600 dark:text-primary-400 text-xs font-bold font-mono">Feb. 2026</span>
-                                    <span class="inline-flex items-center px-1.5 py-0.5 rounded-md bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-[10px] font-bold">WORKSHOP</span>
-                                </div>
-                                <p class="text-base text-slate-700 dark:text-slate-300 font-medium leading-relaxed">
-                                    We are organizing the CVPR 2026 Workshop on Unified Robotic Vision with Cross-Modal Sensing and Alignment.
-                                </p>
-                                <a href="https://urvis-workshop.github.io/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center text-xs font-bold text-primary-600 dark:text-primary-400 hover:underline">
-                                    <span>URVIS Workshop Website</span>
-                                    <i class="fa-solid fa-arrow-up-right-from-square ml-1 text-[10px]"></i>
-                                </a>
-                            </div>
-                        </div>
-
-                        <!-- News Item 3 -->
-                        <div class="relative group">
-                            <!-- Bullet Icon -->
-                            <div class="absolute -left-[31px] top-1 w-4 h-4 rounded-full bg-primary-500 border-4 border-slate-50 dark:border-slate-950 group-hover:scale-125 transition-transform duration-300 flex items-center justify-center"></div>
-                            
-                            <div class="space-y-2">
-                                <div class="flex items-center space-x-2">
-                                    <span class="px-2.5 py-0.5 rounded-lg bg-primary-100 dark:bg-primary-900/30 text-primary-600 dark:text-primary-400 text-xs font-bold font-mono">Oct. 2025</span>
-                                    <span class="inline-flex items-center px-1.5 py-0.5 rounded-md bg-amber-100 dark:bg-amber-900/30 text-amber-600 dark:text-amber-400 text-[10px] font-bold"><i class="fa-solid fa-award mr-1"></i>AWARD</span>
-                                </div>
-                                <p class="text-base text-slate-700 dark:text-slate-300 font-medium leading-relaxed">
-                                    I am thrilled to announce that our project has been selected for a generous GPU grant from TeleAI. We are incredibly grateful for their support, as only 10 projects were chosen for this award.
-                                </p>
-                                <a href="https://mp.weixin.qq.com/s/u3X_NV_791bwo42VaFkWgw?scene=1&click_id=4" target="_blank" rel="noopener noreferrer" class="inline-flex items-center text-xs font-bold text-primary-600 dark:text-primary-400 hover:underline">
-                                    <span>Announcement Link</span>
-                                    <i class="fa-solid fa-arrow-up-right-from-square ml-1 text-[10px]"></i>
-                                </a>
-                            </div>
-                        </div>
+                        <!-- Bottom Fluid Gradient Mask (shows when scroll has more items below) -->
+                        <div id="news-mask-bottom" class="absolute bottom-0 left-0 right-0 h-10 bg-gradient-to-t from-slate-50 dark:from-slate-950 to-transparent pointer-events-none z-10 transition-opacity duration-300"></div>
                     </div>
                 </section>
 
@@ -644,6 +667,39 @@
                 }
             });
         });
+
+        // --- News Live Scroll Fade Mask Interactions ---
+        const newsScrollbox = document.getElementById('news-scroll-window');
+        const maskTop = document.getElementById('news-mask-top');
+        const maskBottom = document.getElementById('news-mask-bottom');
+
+        function updateNewsMasks() {
+            const scrollTop = newsScrollbox.scrollTop;
+            const scrollHeight = newsScrollbox.scrollHeight;
+            const clientHeight = newsScrollbox.clientHeight;
+
+            // Top Mask toggle
+            if (scrollTop > 8) {
+                maskTop.classList.remove('opacity-0');
+                maskTop.classList.add('opacity-100');
+            } else {
+                maskTop.classList.remove('opacity-100');
+                maskTop.classList.add('opacity-0');
+            }
+
+            // Bottom Mask toggle
+            if (scrollTop + clientHeight >= scrollHeight - 8) {
+                maskBottom.classList.remove('opacity-100');
+                maskBottom.classList.add('opacity-0');
+            } else {
+                maskBottom.classList.remove('opacity-0');
+                maskBottom.classList.add('opacity-100');
+            }
+        }
+
+        newsScrollbox.addEventListener('scroll', updateNewsMasks);
+        // Initial call to set masks on load
+        setTimeout(updateNewsMasks, 500);
     </script>
 </body>
 </html>
