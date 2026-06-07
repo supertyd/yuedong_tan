@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Yuedong Tan | Personal Academic Homepage</title>
     
-    <!-- SEO & Academic OpenGraph Meta Tags (Boosts Search & Sharing Visibility) -->
+    <!-- SEO & Academic OpenGraph Meta Tags -->
     <meta name="description" content="Yuedong Tan is a student researcher at INSAIT / University of Würzburg, specializing in Multimodal Large Language Models (MLLM) and Tool-Use Agents.">
     <meta name="keywords" content="Yuedong Tan, 谭跃东, INSAIT, University of Würzburg, MLLM, Tool-Use Agents, Computer Vision, Hyperspectral Object Tracking">
     <meta name="author" content="Yuedong Tan">
@@ -100,7 +100,7 @@
             background: #475569;
         }
 
-        /* Hide default scrollbar inside the news scroll box for absolute clean look, while allowing swipe scroll on touch devices */
+        /* Hide default scrollbar inside the news scroll box */
         .news-scrollbox::-webkit-scrollbar {
             width: 3px;
         }
@@ -110,6 +110,58 @@
         }
         .dark .news-scrollbox::-webkit-scrollbar-thumb {
             background: #1e293b;
+        }
+
+        /* --- Elite Academic Print Stylesheet (Ctrl+P compiles to a clean CV PDF) --- */
+        @media print {
+            body {
+                background: #ffffff !important;
+                color: #000000 !important;
+                font-size: 11pt !important;
+            }
+            header, footer, #theme-toggle, #back-to-top, #contact, .gradient-blob, #contact-form, button, .badges-container {
+                display: none !important;
+            }
+            main {
+                padding-top: 0 !important;
+                max-width: 100% !important;
+                width: 100% !important;
+            }
+            .grid {
+                display: block !important;
+            }
+            aside {
+                position: static !important;
+                border-bottom: 2px solid #e2e8f0 !important;
+                padding-bottom: 20px !important;
+                margin-bottom: 30px !important;
+                text-align: left !important;
+            }
+            aside img {
+                width: 120px !important;
+                height: 120px !important;
+                margin: 0 !important;
+            }
+            aside a {
+                border: none !important;
+                box-shadow: none !important;
+                padding: 0 !important;
+                background: transparent !important;
+            }
+            .prose {
+                color: #000000 !important;
+                max-width: 100% !important;
+            }
+            .rounded-2xl {
+                border: none !important;
+                box-shadow: none !important;
+                background: transparent !important;
+                padding: 0 !important;
+            }
+            .news-scrollbox {
+                max-height: none !important;
+                overflow: visible !important;
+            }
         }
     </style>
 </head>
@@ -442,7 +494,7 @@
                     </div>
                 </section>
 
-                <!-- Contact Section (Equipped with fluid Success Notification card) -->
+                <!-- Contact Section -->
                 <section id="contact" class="pt-6 border-t border-slate-200 dark:border-slate-800 scroll-mt-28">
                     <div class="space-y-6">
                         <h2 class="text-2xl font-extrabold tracking-tight">Contact</h2>
@@ -510,6 +562,52 @@
 
     <!-- Interactive JS -->
     <script>
+        // Dictionary of pre-populated BibTeX blocks for each of your publications
+        const bibtexDatabase = {
+            "segthinker": `@article{tan2026segthinker,
+  title={SegThinker: Recurrent Vision with Reasoning for Image Segmentation},
+  author={Tan, Yuedong and Pan, Jiancheng and Fu, Yuqian and Van Gool, Luc and Timofte, Radu and Paudel, Danda Pani and Wu, Zongwei},
+  journal={Under Review},
+  year={2026}
+}`,
+            "videoscan": `@article{li2026videoscan,
+  title={Videoscan: Enabling Efficient Streaming Video Understanding via Frame-level Semantic Carriers},
+  author={Li, Ruanjun and Tan, Yuedong and Shi, Yuanming and Shao, Jiawei},
+  journal={Under Review},
+  year={2026}
+}`,
+            "what": `@inproceedings{tan2025what,
+  title={What You Have is What You Track: Adaptive and Robust Multimodal Tracking},
+  author={Tan, Yuedong and Shao, Jiawei and Shao, Jiawei and Zamfir, Eduard and Li, Ruanjun and An, Zhaochong and Ma, Chao and Paudel, Danda Pani and Van Gool, Luc and Timofte, Radu and others},
+  booktitle={Proceedings of the IEEE/CVF International Conference on Computer Vision (ICCV)},
+  year={2025}
+}`,
+            "xtrack": `@inproceedings{tan2024xtrack,
+  title={XTrack: Multimodal Training Boosts RGB-X Video Object Trackers},
+  author={Tan, Yuedong and Wu, Zongwei and Fu, Yuqian and Zhou, Zhuyun and Sun, Guolei and Ma, Chao and Paudel, Danda Dani and Van Gool, Luc and Timofte, Radu},
+  booktitle={Proceedings of the IEEE/CVF International Conference on Computer Vision (ICCV)},
+  year={2025}
+}`,
+            "hypertrack": `@article{tan2025hypertrack,
+  title={HyperTrack: A Unified Framework for Hyperspectral Object Tracking},
+  author={Tan, Yuedong and Sun, Wenfang and Li, Jingyuan and Hou, Shuwei and Li, Xiaobo and Wang, Zhe and Song, Beibei},
+  journal={IEEE Transactions on Circuits and Systems for Video Technology},
+  year={2025}
+}`,
+            "hhtrack": `@inproceedings{tan2023hhtrack,
+  title={HHTrack: Hyperspectral Object Tracking Based on Hybrid Attention},
+  author={Tan, Yuedong and Sun, Wenfang and Yuan, Jieran and Du, Wenwang and Wang, Zhe and Mao, Nan and Song, Beibei},
+  booktitle={IEEE Workshop on Hyperspectral Image and Signal Processing: Evolution in Remote Sensing},
+  year={2023}
+}`,
+            "hotmoe": `@article{sun2025hotmoe,
+  title={HotMoE: Exploring Sparse Mixture of Experts for Hyperspectral Object Tracking},
+  author={Sun, Wenfang and Tan, Yuedong and Li, Jingyuan and Hou, Shuwei and Shao, Yingzhao and Wang, Zhe and Song, Beibei},
+  journal={IEEE Transactions on Multimedia},
+  year={2025}
+}`
+        };
+
         // Fetch and Render Profile Markdown from supertyd/supertyd README.md
         async function loadProfile() {
             const focusContainer = document.getElementById('focus-areas-container');
@@ -598,31 +696,62 @@
             // Extract paper links like [Paper Link](url)
             const linkRegex = /\[Paper Link\]\(([^)]+)\)/i;
             const match = htmlText.match(linkRegex);
-            let actionButtonsHTML = "";
-            
+            let paperUrl = "";
             if (match) {
-                const url = match[1];
-                // Remove the markdown link from text
+                paperUrl = match[1];
                 htmlText = htmlText.replace(linkRegex, '');
+            }
+
+            // Figure out which bibtex entry fits best by matching keywords in the paper title
+            let bibtexKey = "";
+            const lowerClean = cleanText.toLowerCase();
+            if (lowerClean.includes("segthinker")) bibtexKey = "segthinker";
+            else if (lowerClean.includes("videoscan")) bibtexKey = "videoscan";
+            else if (lowerClean.includes("what you have")) bibtexKey = "what";
+            else if (lowerClean.includes("xtrack")) bibtexKey = "xtrack";
+            else if (lowerClean.includes("hypertrack")) bibtexKey = "hypertrack";
+            else if (lowerClean.includes("hhtrack")) bibtexKey = "hhtrack";
+            else if (lowerClean.includes("hotmoe")) bibtexKey = "hotmoe";
+
+            // Generate Action Buttons (PDF + BibTeX toggle buttons)
+            let actionButtonsHTML = "";
+            if (paperUrl || bibtexKey) {
                 actionButtonsHTML = `
-                    <div class="pt-3">
-                        <a href="${url}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center px-4 py-1.5 rounded-xl bg-primary-100 hover:bg-primary-200 dark:bg-primary-900/40 dark:hover:bg-primary-900/60 text-primary-700 dark:text-primary-300 text-xs font-bold transition-all duration-300">
-                            <i class="fa-solid fa-file-pdf mr-1.5 text-red-500"></i>
-                            <span>PDF / Paper Link</span>
-                        </a>
+                    <div class="pt-3 flex flex-wrap gap-2 items-center">
+                        ${paperUrl ? `
+                            <a href="${paperUrl}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center px-4 py-1.5 rounded-xl bg-primary-100 hover:bg-primary-200 dark:bg-primary-900/40 dark:hover:bg-primary-900/60 text-primary-700 dark:text-primary-300 text-xs font-bold transition-all duration-300">
+                                <i class="fa-solid fa-file-pdf mr-1.5 text-red-500"></i>
+                                <span>PDF</span>
+                            </a>
+                        ` : ''}
+                        ${bibtexKey ? `
+                            <button onclick="toggleBibtex('${bibtexKey}')" class="inline-flex items-center px-4 py-1.5 rounded-xl bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 text-xs font-bold transition-all duration-300">
+                                <i class="fa-solid fa-quote-right mr-1.5 text-primary-500"></i>
+                                <span>BibTeX</span>
+                            </button>
+                        ` : ''}
                     </div>
+                    ${bibtexKey ? `
+                        <div id="bibtex-box-${bibtexKey}" class="hidden mt-3 p-4 rounded-xl bg-slate-50 dark:bg-slate-950/60 border border-slate-200 dark:border-slate-800 transition-all duration-300 relative group/bib">
+                            <!-- Copy Button -->
+                            <button onclick="copyBibtexText('${bibtexKey}')" class="absolute top-3 right-3 p-2 rounded-lg bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-slate-500 hover:text-primary-500 shadow-sm opacity-0 group-hover/bib:opacity-100 transition-opacity duration-300" title="Copy Citation">
+                                <i class="fa-regular fa-copy"></i>
+                            </button>
+                            <pre class="text-[10px] sm:text-xs font-mono text-slate-600 dark:text-slate-400 overflow-x-auto whitespace-pre-wrap select-all pr-10">${bibtexDatabase[bibtexKey]}</pre>
+                        </div>
+                    ` : ''}
                 `;
             }
 
             // Identify publication venue badges (e.g. ICCV2025, Transactions, etc.)
             let venueBadgeHTML = "";
-            if (htmlText.includes('ICCV2025') || htmlText.includes('ICCV 2025')) {
+            if (cleanText.includes('ICCV2025') || cleanText.includes('ICCV 2025')) {
                 venueBadgeHTML = `<span class="inline-flex items-center px-2 py-0.5 rounded bg-indigo-100 dark:bg-indigo-900/40 text-indigo-700 dark:text-indigo-400 text-[10px] font-bold">ICCV 2025</span>`;
-            } else if (htmlText.includes('Under Review')) {
+            } else if (cleanText.includes('Under Review')) {
                 venueBadgeHTML = `<span class="inline-flex items-center px-2 py-0.5 rounded bg-amber-100 dark:bg-amber-900/40 text-amber-700 dark:text-amber-400 text-[10px] font-bold">Under Review</span>`;
-            } else if (htmlText.includes('IEEE Transactions') || htmlText.includes('Transactions on')) {
+            } else if (cleanText.includes('IEEE Transactions') || cleanText.includes('Transactions on')) {
                 venueBadgeHTML = `<span class="inline-flex items-center px-2 py-0.5 rounded bg-green-100 dark:bg-green-900/40 text-green-700 dark:text-green-400 text-[10px] font-bold">IEEE T-CSVT / TMM</span>`;
-            } else if (htmlText.includes('Workshop')) {
+            } else if (cleanText.includes('Workshop')) {
                 venueBadgeHTML = `<span class="inline-flex items-center px-2 py-0.5 rounded bg-blue-100 dark:bg-blue-900/40 text-blue-700 dark:text-blue-400 text-[10px] font-bold">IEEE Workshop</span>`;
             }
 
@@ -638,6 +767,23 @@
                 </div>
             `;
         }
+
+        // Action functions for BibTeX blocks
+        window.toggleBibtex = function(key) {
+            const box = document.getElementById(`bibtex-box-${key}`);
+            if (box) {
+                box.classList.toggle('hidden');
+            }
+        };
+
+        window.copyBibtexText = function(key) {
+            const rawBibtex = bibtexDatabase[key];
+            navigator.clipboard.writeText(rawBibtex).then(() => {
+                alert("BibTeX Citation copied to clipboard!");
+            }).catch(err => {
+                console.error("Failed to copy:", err);
+            });
+        };
 
         // Initialize loading on DOMContentLoaded
         document.addEventListener('DOMContentLoaded', loadProfile);
