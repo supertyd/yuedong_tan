@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Supertyd | Personal Portfolio</title>
+    <!-- Google Fonts: Plus Jakarta Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Tailwind Custom Configuration -->
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: {
+                            50: '#f5f3ff',
+                            100: '#ede9fe',
+                            500: '#6366f1',
+                            600: '#4f46e5',
+                            700: '#4338ca',
+                        },
+                        secondary: {
+                            50: '#f0fdfa',
+                            500: '#14b8a6',
+                            600: '#0d9488',
+                        }
+                    },
+                    animation: {
+                        'blob': 'blob 7s infinite',
+                    },
+                    keyframes: {
+                        blob: {
+                            '0%': { transform: 'translate(0px, 0px) scale(1)' },
+                            '33%': { transform: 'translate(30px, -50px) scale(1.1)' },
+                            '66%': { transform: 'translate(-20px, 20px) scale(0.95)' },
+                            '100%': { transform: 'translate(0px, 0px) scale(1)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .dark ::-webkit-scrollbar-track {
+            background: #0f172a;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 4px;
+        }
+        .dark ::-webkit-scrollbar-thumb {
+            background: #334155;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+        .dark ::-webkit-scrollbar-thumb:hover {
+            background: #475569;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 dark:bg-slate-950 dark:text-slate-100 font-sans transition-colors duration-300 selection:bg-primary-500 selection:text-white">
+
+    <!-- Gradient Background Blobs (for premium look) -->
+    <div class="fixed inset-0 overflow-hidden pointer-events-none -z-10 opacity-40 dark:opacity-25">
+        <div class="absolute top-[-10%] left-[-10%] w-[500px] h-[500px] rounded-full bg-primary-100 dark:bg-primary-900/30 blur-3xl animate-blob"></div>
+        <div class="absolute bottom-[-10%] right-[-10%] w-[600px] h-[600px] rounded-full bg-secondary-50 dark:bg-secondary-900/20 blur-3xl animate-blob [animation-delay:2s]"></div>
+        <div class="absolute top-[40%] left-[50%] w-[400px] h-[400px] rounded-full bg-purple-100 dark:bg-purple-900/20 blur-3xl animate-blob [animation-delay:4s]"></div>
+    </div>
+
+    <!-- Sticky Header / Navigation -->
+    <header id="navbar" class="fixed top-0 left-0 w-full z-50 transition-all duration-300 border-b border-transparent">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <!-- Logo -->
+                <a href="#" class="flex items-center space-x-2 group">
+                    <span class="text-2xl font-extrabold bg-gradient-to-r from-primary-600 to-secondary-500 bg-clip-text text-transparent group-hover:from-secondary-500 group-hover:to-primary-600 transition-all duration-500">
+                        Supertyd
+                    </span>
+                    <span class="w-2 h-2 rounded-full bg-secondary-500 animate-pulse"></span>
+                </a>
+
+                <!-- Desktop Navigation -->
+                <nav class="hidden md:flex items-center space-x-8">
+                    <a href="#hero" class="nav-link text-sm font-semibold hover:text-primary-600 dark:hover:text-primary-500 transition-colors">Home</a>
+                    <a href="#about" class="nav-link text-sm font-semibold hover:text-primary-600 dark:hover:text-primary-500 transition-colors">About</a>
+                    <a href="#projects" class="nav-link text-sm font-semibold hover:text-primary-600 dark:hover:text-primary-500 transition-colors">Projects</a>
+                    <a href="#contact" class="nav-link text-sm font-semibold hover:text-primary-600 dark:hover:text-primary-500 transition-colors">Contact</a>
+                </nav>
+
+                <!-- Header Actions (Dark mode toggle + Mobile menu button) -->
+                <div class="flex items-center space-x-4">
+                    <!-- Dark Mode Toggle Button -->
+                    <button id="theme-toggle" class="p-2.5 rounded-xl bg-white dark:bg-slate-900 shadow-sm border border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-300 hover:text-primary-600 dark:hover:text-primary-500 focus:outline-none transition-all duration-300" aria-label="Toggle Theme">
+                        <i id="theme-toggle-dark-icon" class="fa-solid fa-moon text-lg hidden"></i>
+                        <i id="theme-toggle-light-icon" class="fa-solid fa-sun text-lg hidden"></i>
+                    </button>
+
+                    <!-- Mobile Menu Button -->
+                    <button id="mobile-menu-button" class="md:hidden p-2.5 rounded-xl bg-white dark:bg-slate-900 shadow-sm border border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-300 focus:outline-none" aria-label="Toggle Menu">
+                        <i class="fa-solid fa-bars text-lg"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Navigation Menu -->
+        <div id="mobile-menu" class="hidden md:hidden absolute top-full left-0 w-full bg-white/95 dark:bg-slate-950/95 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 transition-all duration-300 shadow-lg">
+            <div class="px-4 pt-2 pb-6 space-y-3">
+                <a href="#hero" class="mobile-nav-link block px-4 py-2.5 rounded-xl font-medium text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-900 hover:text-primary-600 dark:hover:text-primary-500">Home</a>
+                <a href="#about" class="mobile-nav-link block px-4 py-2.5 rounded-xl font-medium text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-900 hover:text-primary-600 dark:hover:text-primary-500">About</a>
+                <a href="#projects" class="mobile-nav-link block px-4 py-2.5 rounded-xl font-medium text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-900 hover:text-primary-600 dark:hover:text-primary-500">Projects</a>
+                <a href="#contact" class="mobile-nav-link block px-4 py-2.5 rounded-xl font-medium text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-900 hover:text-primary-600 dark:hover:text-primary-500">Contact</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20">
+
+        <!-- Hero Section -->
+        <section id="hero" class="min-h-[calc(100vh-80px)] flex flex-col justify-center py-12 md:py-20">
+            <div class="grid md:grid-cols-12 gap-12 items-center">
+                <!-- Text Area -->
+                <div class="md:col-span-7 space-y-6 text-center md:text-left order-2 md:order-1">
+                    <div class="inline-flex items-center space-x-2 px-3 py-1.5 rounded-full bg-primary-100/60 dark:bg-primary-900/30 text-primary-600 dark:text-primary-400 font-semibold text-xs uppercase tracking-wider">
+                        <span class="w-1.5 h-1.5 rounded-full bg-primary-500 animate-pulse"></span>
+                        <span>Welcome to my workspace</span>
+                    </div>
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight">
+                        Hi, I'm <span class="bg-gradient-to-r from-primary-600 to-secondary-500 bg-clip-text text-transparent">Supertyd</span>
+                    </h1>
+                    <h2 class="text-2xl sm:text-3xl font-bold text-slate-600 dark:text-slate-400">
+                        I build <span id="typing-text" class="text-primary-600 dark:text-primary-400"></span><span class="animate-pulse">|</span>
+                    </h2>
+                    <p class="text-lg text-slate-600 dark:text-slate-300 max-w-xl mx-auto md:mx-0 font-normal leading-relaxed">
+                        A passionate developer specialized in creating high-performance web applications, beautiful user interfaces, and robust system designs. Welcome to my GitHub Page!
+                    </p>
+                    <!-- CTA Buttons -->
+                    <div class="flex flex-col sm:flex-row items-center justify-center md:justify-start gap-4 pt-4">
+                        <a href="#projects" class="w-full sm:w-auto px-8 py-3.5 rounded-xl bg-gradient-to-r from-primary-600 to-primary-700 hover:from-primary-700 hover:to-primary-800 text-white font-semibold shadow-lg shadow-primary-500/20 hover:shadow-primary-500/30 hover:-translate-y-0.5 transition-all duration-300 text-center">
+                            View My Work
+                        </a>
+                        <a href="#contact" class="w-full sm:w-auto px-8 py-3.5 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-800 font-semibold shadow-sm hover:-translate-y-0.5 transition-all duration-300 text-center">
+                            Get In Touch
+                        </a>
+                    </div>
+                    <!-- Social Links -->
+                    <div class="flex items-center justify-center md:justify-start space-x-5 pt-6 text-slate-500 dark:text-slate-400">
+                        <a href="https://github.com/supertyd" target="_blank" rel="noopener noreferrer" class="hover:text-primary-600 dark:hover:text-primary-400 transition-colors text-xl" title="GitHub">
+                            <i class="fa-brands fa-github"></i>
+                        </a>
+                        <a href="#" class="hover:text-primary-600 dark:hover:text-primary-400 transition-colors text-xl" title="LinkedIn">
+                            <i class="fa-brands fa-linkedin"></i>
+                        </a>
+                        <a href="#" class="hover:text-primary-600 dark:hover:text-primary-400 transition-colors text-xl" title="Twitter/X">
+                            <i class="fa-brands fa-twitter"></i>
+                        </a>
+                        <a href="mailto:your.email@example.com" class="hover:text-primary-600 dark:hover:text-primary-400 transition-colors text-xl" title="Email">
+                            <i class="fa-solid fa-envelope"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Avatar / Illustration Area -->
+                <div class="md:col-span-5 flex justify-center order-1 md:order-2">
+                    <div class="relative w-72 h-72 sm:w-80 sm:h-80 md:w-96 md:h-96">
+                        <!-- Background patterns -->
+                        <div class="absolute inset-0 rounded-full bg-gradient-to-tr from-primary-500 to-secondary-500 opacity-20 blur-2xl animate-pulse"></div>
+                        <div class="absolute -inset-1 rounded-3xl bg-gradient-to-tr from-primary-600 to-secondary-500 opacity-30 blur"></div>
+                        
+                        <!-- Main Visual Card (Code Frame) -->
+                        <div class="absolute inset-0 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-6 shadow-xl flex flex-col justify-between overflow-hidden">
+                            <!-- Code Header -->
+                            <div class="flex items-center justify-between border-b border-slate-100 dark:border-slate-800 pb-3">
+                                <div class="flex space-x-2">
+                                    <div class="w-3 h-3 rounded-full bg-red-400"></div>
+                                    <div class="w-3 h-3 rounded-full bg-yellow-400"></div>
+                                    <div class="w-3 h-3 rounded-full bg-green-400"></div>
+                                </div>
+                                <span class="text-xs text-slate-400 font-mono">portfolio.js</span>
+                            </div>
+                            
+                            <!-- Mock Code Content -->
+                            <div class="flex-1 font-mono text-xs sm:text-sm py-4 space-y-2.5 overflow-y-auto">
+                                <div><span class="text-pink-500">const</span> developer = {</div>
+                                <div class="pl-4"><span class="text-blue-500">name</span>: <span class="text-emerald-500">'Supertyd'</span>,</div>
+                                <div class="pl-4"><span class="text-blue-500">role</span>: <span class="text-emerald-500">'Full Stack Architect'</span>,</div>
+                                <div class="pl-4"><span class="text-blue-500">skills</span>: [</div>
+                                <div class="pl-8"><span class="text-emerald-500">'JavaScript'</span>, <span class="text-emerald-500">'React'</span>,</div>
+                                <div class="pl-8"><span class="text-emerald-500">'TailwindCSS'</span>, <span class="text-emerald-500">'Node'</span></div>
+                                <div class="pl-4">],</div>
+                                <div class="pl-4"><span class="text-blue-500">passions</span>: [</div>
+                                <div class="pl-8"><span class="text-emerald-500">'Clean Code'</span>, <span class="text-emerald-500">'Great UI/UX'</span></div>
+                                <div class="pl-4">]</div>
+                                <div>};</div>
+                            </div>
+
+                            <!-- Code Footer -->
+                            <div class="border-t border-slate-100 dark:border-slate-800 pt-3 flex items-center justify-between text-xs text-slate-400 font-mono">
+                                <span>UTF-8</span>
+                                <span>Tab Size: 2</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="py-20 scroll-mt-20">
+            <div class="space-y-12">
+                <!-- Section Title -->
+                <div class="text-center space-y-3">
+                    <h2 class="text-3xl font-extrabold sm:text-4xl">About Me</h2>
+                    <div class="w-16 h-1 bg-gradient-to-r from-primary-600 to-secondary-500 mx-auto rounded-full"></div>
+                    <p class="text-slate-600 dark:text-slate-400 max-w-lg mx-auto">Get to know my core values, experience, and development skillsets.</p>
+                </div>
+
+                <!-- Content Grid -->
+                <div class="grid md:grid-cols-2 gap-12 items-start">
+                    <!-- Text / Intro -->
+                    <div class="space-y-6">
+                        <h3 class="text-2xl font-bold">A little bit about myself</h3>
+                        <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+                            Hello! I am a software enthusiast based in China. I enjoy solving complex problems and turning designs into elegant, interactive interfaces that work flawlessly across all devices.
+                        </p>
+                        <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+                            With structured engineering habits and high-quality coding standards, I ensure that my apps are optimized for speed, responsive, and easy to maintain over time.
+                        </p>
+                        <!-- Highlight Grid -->
+                        <div class="grid grid-cols-2 gap-4 pt-4">
+                            <div class="p-4 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
+                                <div class="text-3xl font-extrabold text-primary-600 dark:text-primary-400">20+</div>
+                                <div class="text-xs text-slate-500 dark:text-slate-400 font-medium">Projects Done</div>
+                            </div>
+                            <div class="p-4 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
+                                <div class="text-3xl font-extrabold text-secondary-500">100%</div>
+                                <div class="text-xs text-slate-500 dark:text-slate-400 font-medium">Dedication Rate</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Skills & Tech Stack -->
+                    <div class="space-y-6">
+                        <h3 class="text-2xl font-bold">My Skills</h3>
+                        <div class="space-y-4">
+                            <!-- Skill Progress Item -->
+                            <div class="space-y-2">
+                                <div class="flex justify-between text-sm font-semibold">
+                                    <span>Frontend (React, Vue, HTML/CSS)</span>
+                                    <span class="text-primary-600 dark:text-primary-400">90%</span>
+                                </div>
+                                <div class="h-2 w-full bg-slate-200 dark:bg-slate-800 rounded-full overflow-hidden">
+                                    <div class="h-full bg-gradient-to-r from-primary-500 to-primary-600 rounded-full" style="width: 90%"></div>
+                                </div>
+                            </div>
+
+                            <!-- Skill Progress Item -->
+                            <div class="space-y-2">
+                                <div class="flex justify-between text-sm font-semibold">
+                                    <span>Backend Development (Node, Express, APIs)</span>
+                                    <span class="text-primary-600 dark:text-primary-400">80%</span>
+                                </div>
+                                <div class="h-2 w-full bg-slate-200 dark:bg-slate-800 rounded-full overflow-hidden">
+                                    <div class="h-full bg-gradient-to-r from-primary-500 to-primary-600 rounded-full" style="width: 80%"></div>
+                                </div>
+                            </div>
+
+                            <!-- Skill Progress Item -->
+                            <div class="space-y-2">
+                                <div class="flex justify-between text-sm font-semibold">
+                                    <span>Databases & DevOps (Git, Docker, SQL)</span>
+                                    <span class="text-primary-600 dark:text-primary-400">75%</span>
+                                </div>
+                                <div class="h-2 w-full bg-slate-200 dark:bg-slate-800 rounded-full overflow-hidden">
+                                    <div class="h-full bg-gradient-to-r from-primary-500 to-primary-600 rounded-full" style="width: 75%"></div>
+                                </div>
+                            </div>
+
+                            <!-- Skill Progress Item -->
+                            <div class="space-y-2">
+                                <div class="flex justify-between text-sm font-semibold">
+                                    <span>UI/UX & Responsive Web Design</span>
+                                    <span class="text-primary-600 dark:text-primary-400">85%</span>
+                                </div>
+                                <div class="h-2 w-full bg-slate-200 dark:bg-slate-800 rounded-full overflow-hidden">
+                                    <div class="h-full bg-gradient-to-r from-primary-500 to-primary-600 rounded-full" style="width: 85%"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Pill Tags -->
+                        <div class="pt-4 flex flex-wrap gap-2.5">
+                            <span class="px-3.5 py-1.5 rounded-lg bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-xs font-semibold">Tailwind CSS</span>
+                            <span class="px-3.5 py-1.5 rounded-lg bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-xs font-semibold">TypeScript</span>
+                            <span class="px-3.5 py-1.5 rounded-lg bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-xs font-semibold">Git</span>
+                            <span class="px-3.5 py-1.5 rounded-lg bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-xs font-semibold">NodeJS</span>
+                            <span class="px-3.5 py-1.5 rounded-lg bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-xs font-semibold">Python</span>
+                            <span class="px-3.5 py-1.5 rounded-lg bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-xs font-semibold">API Design</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="py-20 scroll-mt-20">
+            <div class="space-y-12">
+                <!-- Section Title -->
+                <div class="text-center space-y-3">
+                    <h2 class="text-3xl font-extrabold sm:text-4xl">My Projects</h2>
+                    <div class="w-16 h-1 bg-gradient-to-r from-primary-600 to-secondary-500 mx-auto rounded-full"></div>
+                    <p class="text-slate-600 dark:text-slate-400 max-w-lg mx-auto">Take a look at some of the key web applications and designs I've worked on recently.</p>
+                </div>
+
+                <!-- Filter Controls -->
+                <div class="flex flex-wrap justify-center items-center gap-3">
+                    <button class="project-tab px-5 py-2 rounded-xl text-sm font-semibold transition-all duration-300 bg-primary-600 text-white" data-filter="all">All</button>
+                    <button class="project-tab px-5 py-2 rounded-xl text-sm font-semibold transition-all duration-300 bg-white dark:bg-slate-900 text-slate-600 dark:text-slate-400 border border-slate-200 dark:border-slate-800 hover:border-slate-300 dark:hover:border-slate-700 hover:text-slate-800 dark:hover:text-slate-200" data-filter="frontend">Frontend</button>
+                    <button class="project-tab px-5 py-2 rounded-xl text-sm font-semibold transition-all duration-300 bg-white dark:bg-slate-900 text-slate-600 dark:text-slate-400 border border-slate-200 dark:border-slate-800 hover:border-slate-300 dark:hover:border-slate-700 hover:text-slate-800 dark:hover:text-slate-200" data-filter="fullstack">Full Stack</button>
+                    <button class="project-tab px-5 py-2 rounded-xl text-sm font-semibold transition-all duration-300 bg-white dark:bg-slate-900 text-slate-600 dark:text-slate-400 border border-slate-200 dark:border-slate-800 hover:border-slate-300 dark:hover:border-slate-700 hover:text-slate-800 dark:hover:text-slate-200" data-filter="tool">Tools</button>
+                </div>
+
+                <!-- Projects Grid -->
+                <div id="projects-grid" class="grid sm:md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Project Card 1 -->
+                    <div class="project-card flex flex-col rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 overflow-hidden shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300" data-category="frontend">
+                        <!-- Card Header image placeholder -->
+                        <div class="relative aspect-video bg-gradient-to-br from-primary-500/25 to-secondary-500/25 flex items-center justify-center p-6 text-slate-400 border-b border-slate-200 dark:border-slate-800">
+                            <i class="fa-solid fa-laptop-code text-5xl text-primary-500/80"></i>
+                            <div class="absolute top-4 right-4 px-2.5 py-1 rounded-lg bg-white/95 dark:bg-slate-950/95 backdrop-blur-sm border border-slate-200 dark:border-slate-800 text-[10px] font-bold uppercase tracking-wider text-primary-600 dark:text-primary-400">
+                                Frontend
+                            </div>
+                        </div>
+                        <div class="p-6 flex-1 flex flex-col justify-between space-y-4">
+                            <div class="space-y-2">
+                                <h4 class="text-xl font-bold text-slate-800 dark:text-slate-100">AI Dashboard UI</h4>
+                                <p class="text-sm text-slate-600 dark:text-slate-400 line-clamp-3">
+                                    A fast and responsive analytic dashboard containing complex widgets, charts, dark mode layouts, and custom sidebar animations.
+                                </p>
+                            </div>
+                            <div class="space-y-4">
+                                <div class="flex flex-wrap gap-1.5">
+                                    <span class="px-2 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-[10px] font-semibold">React</span>
+                                    <span class="px-2 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-[10px] font-semibold">Tailwind CSS</span>
+                                    <span class="px-2 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-[10px] font-semibold">Chart.js</span>
+                                </div>
+                                <div class="flex items-center space-x-4 text-sm font-semibold pt-2">
+                                    <a href="#" class="text-primary-600 dark:text-primary-400 hover:text-primary-700 flex items-center space-x-1">
+                                        <span>Demo</span>
+                                        <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
+                                    </a>
+                                    <a href="#" class="text-slate-500 dark:text-slate-400 hover:text-slate-700 dark:hover:text-slate-300 flex items-center space-x-1">
+                                        <span>Source</span>
+                                        <i class="fa-brands fa-github"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project Card 2 -->
+                    <div class="project-card flex flex-col rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 overflow-hidden shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300" data-category="fullstack">
+                        <div class="relative aspect-video bg-gradient-to-br from-indigo-500/25 to-purple-500/25 flex items-center justify-center p-6 text-slate-400 border-b border-slate-200 dark:border-slate-800">
+                            <i class="fa-solid fa-database text-5xl text-indigo-500/80"></i>
+                            <div class="absolute top-4 right-4 px-2.5 py-1 rounded-lg bg-white/95 dark:bg-slate-950/95 backdrop-blur-sm border border-slate-200 dark:border-slate-800 text-[10px] font-bold uppercase tracking-wider text-indigo-500">
+                                Full Stack
+                            </div>
+                        </div>
+                        <div class="p-6 flex-1 flex flex-col justify-between space-y-4">
+                            <div class="space-y-2">
+                                <h4 class="text-xl font-bold text-slate-800 dark:text-slate-100">API Gateway Proxy</h4>
+                                <p class="text-sm text-slate-600 dark:text-slate-400 line-clamp-3">
+                                    A lightweight API request router and security filter designed to handle rate-limiting, auth forwarding, and visual metric graphs.
+                                </p>
+                            </div>
+                            <div class="space-y-4">
+                                <div class="flex flex-wrap gap-1.5">
+                                    <span class="px-2 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-[10px] font-semibold">NodeJS</span>
+                                    <span class="px-2 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-[10px] font-semibold">Redis</span>
+                                    <span class="px-2 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-[10px] font-semibold">Express</span>
+                                </div>
+                                <div class="flex items-center space-x-4 text-sm font-semibold pt-2">
+                                    <a href="#" class="text-primary-600 dark:text-primary-400 hover:text-primary-700 flex items-center space-x-1">
+                                        <span>Demo</span>
+                                        <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
+                                    </a>
+                                    <a href="#" class="text-slate-500 dark:text-slate-400 hover:text-slate-700 dark:hover:text-slate-300 flex items-center space-x-1">
+                                        <span>Source</span>
+                                        <i class="fa-brands fa-github"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project Card 3 -->
+                    <div class="project-card flex flex-col rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 overflow-hidden shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300" data-category="tool">
+                        <div class="relative aspect-video bg-gradient-to-br from-emerald-500/25 to-teal-500/25 flex items-center justify-center p-6 text-slate-400 border-b border-slate-200 dark:border-slate-800">
+                            <i class="fa-solid fa-terminal text-5xl text-emerald-500/80"></i>
+                            <div class="absolute top-4 right-4 px-2.5 py-1 rounded-lg bg-white/95 dark:bg-slate-950/95 backdrop-blur-sm border border-slate-200 dark:border-slate-800 text-[10px] font-bold uppercase tracking-wider text-emerald-500">
+                                Tool
+                            </div>
+                        </div>
+                        <div class="p-6 flex-1 flex flex-col justify-between space-y-4">
+                            <div class="space-y-2">
+                                <h4 class="text-xl font-bold text-slate-800 dark:text-slate-100">CLI Asset Compressor</h4>
+                                <p class="text-sm text-slate-600 dark:text-slate-400 line-clamp-3">
+                                    A command-line script toolkit built to optimize local asset file folders, images, bundle sizing, and compression mappings.
+                                </p>
+                            </div>
+                            <div class="space-y-4">
+                                <div class="flex flex-wrap gap-1.5">
+                                    <span class="px-2 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-[10px] font-semibold">Python</span>
+                                    <span class="px-2 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-[10px] font-semibold">Pillow</span>
+                                    <span class="px-2 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-[10px] font-semibold">Shell</span>
+                                </div>
+                                <div class="flex items-center space-x-4 text-sm font-semibold pt-2">
+                                    <a href="#" class="text-primary-600 dark:text-primary-400 hover:text-primary-700 flex items-center space-x-1">
+                                        <span>Demo</span>
+                                        <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
+                                    </a>
+                                    <a href="#" class="text-slate-500 dark:text-slate-400 hover:text-slate-700 dark:hover:text-slate-300 flex items-center space-x-1">
+                                        <span>Source</span>
+                                        <i class="fa-brands fa-github"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="py-20 scroll-mt-20">
+            <div class="space-y-12">
+                <!-- Section Title -->
+                <div class="text-center space-y-3">
+                    <h2 class="text-3xl font-extrabold sm:text-4xl">Get In Touch</h2>
+                    <div class="w-16 h-1 bg-gradient-to-r from-primary-600 to-secondary-500 mx-auto rounded-full"></div>
+                    <p class="text-slate-600 dark:text-slate-400 max-w-lg mx-auto">Have a project idea, question, or just want to say hi? Send me a message!</p>
+                </div>
+
+                <!-- Contact Grid -->
+                <div class="grid md:grid-cols-12 gap-8 items-start">
+                    <!-- Info details -->
+                    <div class="md:col-span-5 space-y-6">
+                        <div class="p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 space-y-6">
+                            <h3 class="text-xl font-bold">Contact Details</h3>
+                            <div class="space-y-4">
+                                <div class="flex items-start space-x-4">
+                                    <div class="p-3 rounded-xl bg-primary-100/60 dark:bg-primary-900/30 text-primary-600 dark:text-primary-400">
+                                        <i class="fa-solid fa-envelope"></i>
+                                    </div>
+                                    <div>
+                                        <div class="text-xs text-slate-500 dark:text-slate-400 font-medium">Email Me</div>
+                                        <a href="mailto:your.email@example.com" class="text-sm font-semibold hover:text-primary-600 dark:hover:text-primary-400 transition-colors">your.email@example.com</a>
+                                    </div>
+                                </div>
+                                <div class="flex items-start space-x-4">
+                                    <div class="p-3 rounded-xl bg-secondary-100/60 dark:bg-secondary-900/30 text-secondary-600 dark:text-secondary-400">
+                                        <i class="fa-solid fa-location-dot"></i>
+                                    </div>
+                                    <div>
+                                        <div class="text-xs text-slate-500 dark:text-slate-400 font-medium">Location</div>
+                                        <span class="text-sm font-semibold">China</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Message Form -->
+                    <div class="md:col-span-7">
+                        <form id="contact-form" class="p-6 sm:p-8 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 space-y-5 shadow-sm">
+                            <div class="grid sm:grid-cols-2 gap-4">
+                                <div class="space-y-2">
+                                    <label for="name" class="text-xs font-semibold text-slate-500 dark:text-slate-400">Your Name</label>
+                                    <input type="text" id="name" required class="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 text-slate-800 dark:text-white focus:outline-none focus:border-primary-500 dark:focus:border-primary-500 focus:bg-white dark:focus:bg-slate-900 transition-all duration-300">
+                                </div>
+                                <div class="space-y-2">
+                                    <label for="email" class="text-xs font-semibold text-slate-500 dark:text-slate-400">Your Email</label>
+                                    <input type="email" id="email" required class="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 text-slate-800 dark:text-white focus:outline-none focus:border-primary-500 dark:focus:border-primary-500 focus:bg-white dark:focus:bg-slate-900 transition-all duration-300">
+                                </div>
+                            </div>
+                            <div class="space-y-2">
+                                <label for="message" class="text-xs font-semibold text-slate-500 dark:text-slate-400">Message</label>
+                                <textarea id="message" rows="4" required class="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 text-slate-800 dark:text-white focus:outline-none focus:border-primary-500 dark:focus:border-primary-500 focus:bg-white dark:focus:bg-slate-900 transition-all duration-300"></textarea>
+                            </div>
+                            <button type="submit" class="w-full py-3.5 rounded-xl bg-gradient-to-r from-primary-600 to-primary-700 hover:from-primary-700 hover:to-primary-800 text-white font-semibold shadow-lg shadow-primary-500/20 hover:shadow-primary-500/30 hover:-translate-y-0.5 transition-all duration-300 text-center">
+                                Send Message
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950 py-8 mt-20 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <span class="text-sm text-slate-500 dark:text-slate-400">
+                &copy; 2026 Supertyd. All rights reserved.
+            </span>
+            <span class="text-sm text-slate-500 dark:text-slate-400 flex items-center space-x-1">
+                <span>Designed & built with</span>
+                <i class="fa-solid fa-heart text-red-500"></i>
+            </span>
+        </div>
+    </footer>
+
+    <!-- Interactive JS -->
+    <script>
+        // Theme toggler state
+        const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
+        const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
+        const themeToggleBtn = document.getElementById('theme-toggle');
+
+        // Check theme preference
+        if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+            themeToggleLightIcon.classList.remove('hidden');
+        } else {
+            document.documentElement.classList.remove('dark');
+            themeToggleDarkIcon.classList.remove('hidden');
+        }
+
+        // Toggle Theme Button action
+        themeToggleBtn.addEventListener('click', function() {
+            themeToggleDarkIcon.classList.toggle('hidden');
+            themeToggleLightIcon.classList.toggle('hidden');
+
+            if (document.documentElement.classList.contains('dark')) {
+                document.documentElement.classList.remove('dark');
+                localStorage.setItem('color-theme', 'light');
+            } else {
+                document.documentElement.classList.add('dark');
+                localStorage.setItem('color-theme', 'dark');
+            }
+        });
+
+        // Sticky Navbar effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('bg-white/80', 'dark:bg-slate-950/80', 'backdrop-blur-md', 'shadow-sm', 'border-slate-200/50', 'dark:border-slate-800/50', 'h-16');
+                navbar.classList.remove('border-transparent', 'h-20');
+                navbar.firstElementChild.firstElementChild.classList.add('h-16');
+                navbar.firstElementChild.firstElementChild.classList.remove('h-20');
+            } else {
+                navbar.classList.remove('bg-white/80', 'dark:bg-slate-950/80', 'backdrop-blur-md', 'shadow-sm', 'border-slate-200/50', 'dark:border-slate-800/50', 'h-16');
+                navbar.classList.add('border-transparent', 'h-20');
+                navbar.firstElementChild.firstElementChild.classList.remove('h-16');
+                navbar.firstElementChild.firstElementChild.classList.add('h-20');
+            }
+        });
+
+        // Mobile Menu toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileMenuIcon = mobileMenuBtn.querySelector('i');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            if (mobileMenu.classList.contains('hidden')) {
+                mobileMenuIcon.className = 'fa-solid fa-bars text-lg';
+            } else {
+                mobileMenuIcon.className = 'fa-solid fa-xmark text-lg';
+            }
+        });
+
+        // Close mobile menu on click
+        document.querySelectorAll('.mobile-nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+                mobileMenuIcon.className = 'fa-solid fa-bars text-lg';
+            });
+        });
+
+        // Typing Effect
+        const words = ['Modern Websites', 'Clean Code', 'Responsive UIs', 'Interactive Designs'];
+        let wordIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+        const typingText = document.getElementById('typing-text');
+
+        function type() {
+            const currentWord = words[wordIndex];
+            if (isDeleting) {
+                typingText.textContent = currentWord.substring(0, charIndex - 1);
+                charIndex--;
+            } else {
+                typingText.textContent = currentWord.substring(0, charIndex + 1);
+                charIndex++;
+            }
+
+            let typeSpeed = isDeleting ? 40 : 100;
+
+            if (!isDeleting && charIndex === currentWord.length) {
+                typeSpeed = 1500; // Pause at end of word
+                isDeleting = true;
+            } else if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                wordIndex = (wordIndex + 1) % words.length;
+                typeSpeed = 400; // Pause before typing next word
+            }
+
+            setTimeout(type, typeSpeed);
+        }
+        document.addEventListener('DOMContentLoaded', type);
+
+        // Active Link Highlighting on Scroll
+        const sections = document.querySelectorAll('section');
+        const navLinks = document.querySelectorAll('.nav-link');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (window.scrollY >= (sectionTop - 150)) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('text-primary-600', 'dark:text-primary-400', 'border-b-2', 'border-primary-500');
+                if (link.getAttribute('href').slice(1) === current) {
+                    link.classList.add('text-primary-600', 'dark:text-primary-400');
+                }
+            });
+        });
+
+        // Projects Filtering
+        const projectTabs = document.querySelectorAll('.project-tab');
+        const projectCards = document.querySelectorAll('.project-card');
+
+        projectTabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                // Remove active styling from all tabs
+                projectTabs.forEach(t => {
+                    t.className = 'project-tab px-5 py-2 rounded-xl text-sm font-semibold transition-all duration-300 bg-white dark:bg-slate-900 text-slate-600 dark:text-slate-400 border border-slate-200 dark:border-slate-800 hover:border-slate-300 dark:hover:border-slate-700 hover:text-slate-800 dark:hover:text-slate-200';
+                });
+                
+                // Add active styling to clicked tab
+                tab.className = 'project-tab px-5 py-2 rounded-xl text-sm font-semibold transition-all duration-300 bg-primary-600 text-white shadow-md shadow-primary-500/20';
+                
+                const filterValue = tab.getAttribute('data-filter');
+
+                projectCards.forEach(card => {
+                    if (filterValue === 'all' || card.getAttribute('data-category') === filterValue) {
+                        card.style.display = 'flex';
+                        // Add fade-in animation
+                        card.classList.add('animate-fade-in');
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // Simple Form Submission Alert (since there's no backend)
+        document.getElementById('contact-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const name = document.getElementById('name').value;
+            alert(`Thank you, ${name}! Your message has been simulated as sent. Since this is a static GitHub Page, you can wire this up to services like Formspree, Formsubmit, or Netlify Forms!`);
+            document.getElementById('contact-form').reset();
+        });
+    </script>
+</body>
+</html>
