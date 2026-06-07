@@ -7,7 +7,7 @@
     <!-- Google Fonts: Plus Jakarta Sans -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght=300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <!-- Tailwind CSS with Typography Plugin CDN -->
     <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
     <!-- FontAwesome Icons CDN -->
@@ -98,17 +98,41 @@
                     <span class="w-1.5 h-1.5 rounded-full bg-secondary-500 animate-pulse"></span>
                 </a>
 
-                <!-- Navigation Links -->
-                <nav class="flex items-center space-x-6">
-                    <a href="#about" class="nav-link text-xs sm:text-sm font-semibold hover:text-primary-600 dark:hover:text-primary-500 transition-colors">Profile</a>
-                    <a href="#contact" class="nav-link text-xs sm:text-sm font-semibold hover:text-primary-600 dark:hover:text-primary-500 transition-colors">Contact</a>
-                    
+                <!-- Desktop Navigation Links (Full List) -->
+                <nav class="hidden md:flex items-center space-x-6">
+                    <a href="#about" class="nav-link text-sm font-semibold hover:text-primary-600 dark:hover:text-primary-500 transition-colors">Home</a>
+                    <a href="#news" class="nav-link text-sm font-semibold hover:text-primary-600 dark:hover:text-primary-500 transition-colors">News</a>
+                    <a href="#focus-areas" class="nav-link text-sm font-semibold hover:text-primary-600 dark:hover:text-primary-500 transition-colors">Research</a>
+                    <a href="#publications" class="nav-link text-sm font-semibold hover:text-primary-600 dark:hover:text-primary-500 transition-colors">Publications</a>
+                    <a href="#experience" class="nav-link text-sm font-semibold hover:text-primary-600 dark:hover:text-primary-500 transition-colors">Experience</a>
+                    <a href="#contact" class="nav-link text-sm font-semibold hover:text-primary-600 dark:hover:text-primary-500 transition-colors">Contact</a>
+                </nav>
+
+                <!-- Header Actions (Dark mode toggle + Mobile menu button) -->
+                <div class="flex items-center space-x-4">
                     <!-- Dark Mode Toggle Button -->
                     <button id="theme-toggle" class="p-2 rounded-xl bg-white dark:bg-slate-900 shadow-sm border border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-300 hover:text-primary-600 dark:hover:text-primary-500 focus:outline-none transition-all duration-300" aria-label="Toggle Theme">
                         <i id="theme-toggle-dark-icon" class="fa-solid fa-moon text-sm hidden"></i>
                         <i id="theme-toggle-light-icon" class="fa-solid fa-sun text-sm hidden"></i>
                     </button>
-                </nav>
+
+                    <!-- Mobile Menu Button -->
+                    <button id="mobile-menu-button" class="md:hidden p-2.5 rounded-xl bg-white dark:bg-slate-900 shadow-sm border border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-300 focus:outline-none" aria-label="Toggle Menu">
+                        <i class="fa-solid fa-bars text-lg"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Navigation Menu -->
+        <div id="mobile-menu" class="hidden md:hidden absolute top-full left-0 w-full bg-white/95 dark:bg-slate-950/95 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 transition-all duration-300 shadow-lg">
+            <div class="px-4 pt-2 pb-6 space-y-3">
+                <a href="#about" class="mobile-nav-link block px-4 py-2.5 rounded-xl font-medium text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-900 hover:text-primary-600 dark:hover:text-primary-500">Home</a>
+                <a href="#news" class="mobile-nav-link block px-4 py-2.5 rounded-xl font-medium text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-900 hover:text-primary-600 dark:hover:text-primary-500">News</a>
+                <a href="#focus-areas" class="mobile-nav-link block px-4 py-2.5 rounded-xl font-medium text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-900 hover:text-primary-600 dark:hover:text-primary-500">Research</a>
+                <a href="#publications" class="mobile-nav-link block px-4 py-2.5 rounded-xl font-medium text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-900 hover:text-primary-600 dark:hover:text-primary-500">Publications</a>
+                <a href="#experience" class="mobile-nav-link block px-4 py-2.5 rounded-xl font-medium text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-900 hover:text-primary-600 dark:hover:text-primary-500">Experience</a>
+                <a href="#contact" class="mobile-nav-link block px-4 py-2.5 rounded-xl font-medium text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-900 hover:text-primary-600 dark:hover:text-primary-500">Contact</a>
             </div>
         </div>
     </header>
@@ -165,7 +189,7 @@
             </aside>
 
             <!-- RIGHT COLUMN (Scrollable Academic Content) -->
-            <div id="about" class="md:col-span-8 space-y-12">
+            <div id="about" class="md:col-span-8 space-y-12 scroll-mt-28">
                 <!-- Brief Bio card at the very top -->
                 <div class="p-6 sm:p-8 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm space-y-4">
                     <h2 class="text-xl font-bold tracking-tight flex items-center">
@@ -178,10 +202,10 @@
                 </div>
 
                 <!-- Custom Beautiful News Timeline Section -->
-                <section class="space-y-6">
+                <section id="news" class="space-y-6 scroll-mt-28">
                     <h2 class="text-2xl font-extrabold tracking-tight flex items-center">
                         <span class="w-1.5 h-6 rounded-full bg-primary-600 mr-2.5"></span>
-                        <span>📣 NEWS</span>
+                        <span>News</span>
                     </h2>
 
                     <div class="relative pl-6 border-l-2 border-slate-200 dark:border-slate-800 space-y-8">
@@ -244,10 +268,10 @@
                 </section>
 
                 <!-- Primary Focus Areas Section (Loaded dynamically) -->
-                <section class="space-y-4">
+                <section id="focus-areas" class="space-y-4 scroll-mt-28">
                     <h2 class="text-2xl font-extrabold tracking-tight flex items-center">
                         <span class="w-1.5 h-6 rounded-full bg-primary-600 mr-2.5"></span>
-                        <span>🎯 Primary Focus Areas</span>
+                        <span>Primary Focus Areas</span>
                     </h2>
                     <div id="focus-areas-container" class="p-6 sm:p-8 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm relative min-h-[100px]">
                         <!-- Content will be injected here -->
@@ -264,11 +288,16 @@
                 </section>
 
                 <!-- Publications / Selected Papers Standalone Section (Loaded dynamically) -->
-                <section class="space-y-4">
-                    <h2 class="text-2xl font-extrabold tracking-tight flex items-center">
-                        <span class="w-1.5 h-6 rounded-full bg-primary-600 mr-2.5"></span>
-                        <span>📚 Selected Publications</span>
-                    </h2>
+                <section id="publications" class="space-y-4 scroll-mt-28">
+                    <div class="flex items-baseline justify-between flex-wrap gap-2">
+                        <h2 class="text-2xl font-extrabold tracking-tight flex items-center">
+                            <span class="w-1.5 h-6 rounded-full bg-primary-600 mr-2.5"></span>
+                            <span>Selected Publications</span>
+                        </h2>
+                        <span class="text-xs text-slate-500 dark:text-slate-400 font-bold font-mono pl-4 italic bg-slate-100 dark:bg-slate-900/60 px-2 py-1 rounded-lg border border-slate-200 dark:border-slate-800">
+                            * Corresponding Author | † Equal contribution
+                        </span>
+                    </div>
                     
                     <div id="publications-container" class="space-y-4 relative min-h-[200px]">
                         <!-- Content will be injected here dynamically as styled cards -->
@@ -280,10 +309,10 @@
                 </section>
 
                 <!-- Education & Career Experience (Placed beautifully at the bottom, just above contact) -->
-                <section class="space-y-6 pt-6 border-t border-slate-200 dark:border-slate-800">
+                <section id="experience" class="space-y-6 pt-6 border-t border-slate-200 dark:border-slate-800 scroll-mt-28">
                     <h2 class="text-2xl font-extrabold tracking-tight flex items-center">
                         <span class="w-1.5 h-6 rounded-full bg-primary-600 mr-2.5"></span>
-                        <span>🎓 Experience & Affiliations</span>
+                        <span>Experience & Affiliations</span>
                     </h2>
                     
                     <div class="grid grid-cols-1 gap-4">
@@ -454,6 +483,10 @@
 
                     for (let line of lines) {
                         line = line.trim();
+                        // Ignore the legend string itself if it leaks into publications
+                        if (line.includes('* for Corresponding Author') || line.includes('Equal contribution')) {
+                            continue;
+                        }
                         if (line.startsWith('-') || line.startsWith('*')) {
                             // If we already accumulated a paper, render it first
                             if (currentPaperText) {
@@ -488,6 +521,8 @@
             const underlineHighlight = '<span class="font-semibold border-b border-primary-500 pb-0.5">Yuedong Tan</span>';
             let htmlText = rawText
                 .replace(/Yuedong Tan/g, underlineHighlight)
+                .replace(/\*\*Yuedong Tan\*\"/g, underlineHighlight)
+                .replace(/\*\*Yuedong Tan\*\"/g, underlineHighlight)
                 .replace(/\*\*Yuedong Tan\*\*/g, underlineHighlight);
 
             // Extract paper links like [Paper Link](url)
@@ -587,6 +622,27 @@
             const name = document.getElementById('name').value;
             alert(`Thank you, ${name}! Your message has been simulated as sent.`);
             document.getElementById('contact-form').reset();
+        });
+
+        // Active Link Highlighting on Scroll (Synchronized for new IDs)
+        const sections = document.querySelectorAll('main > div > div > section, #about');
+        const navLinks = document.querySelectorAll('.nav-link, .mobile-nav-link');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (window.scrollY >= (sectionTop - 160)) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('text-primary-600', 'dark:text-primary-400', 'font-bold');
+                if (link.getAttribute('href').slice(1) === current) {
+                    link.classList.add('text-primary-600', 'dark:text-primary-400', 'font-bold');
+                }
+            });
         });
     </script>
 </body>
