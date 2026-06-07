@@ -4,6 +4,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Yuedong Tan | Personal Academic Homepage</title>
+    
+    <!-- SEO & Academic OpenGraph Meta Tags (Boosts Search & Sharing Visibility) -->
+    <meta name="description" content="Yuedong Tan is a student researcher at INSAIT / University of Würzburg, specializing in Multimodal Large Language Models (MLLM) and Tool-Use Agents.">
+    <meta name="keywords" content="Yuedong Tan, 谭跃东, INSAIT, University of Würzburg, MLLM, Tool-Use Agents, Computer Vision, Hyperspectral Object Tracking">
+    <meta name="author" content="Yuedong Tan">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://supertyd.github.io/yuedong_tan/">
+    <meta property="og:title" content="Yuedong Tan | Personal Academic Homepage">
+    <meta property="og:description" content="Student researcher at INSAIT / University of Würzburg. Apple Research Intern. Working on MLLMs and Autonomous Agents.">
+    <meta property="og:image" content="https://avatars.githubusercontent.com/u/49368772?v=4">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://supertyd.github.io/yuedong_tan/">
+    <meta property="twitter:title" content="Yuedong Tan | Personal Academic Homepage">
+    <meta property="twitter:description" content="Student researcher at INSAIT / University of Würzburg. Apple Research Intern. Working on MLLMs and Autonomous Agents.">
+    <meta property="twitter:image" content="https://avatars.githubusercontent.com/u/49368772?v=4">
+
+    <!-- Inline SVG Favicon (Elegant Academic Mortarboard) -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%236366f1'%3E%3Cpath d='M12 3L1 9l11 6l9-4.91V17h2V9L12 3z'/%3E%3Cpath d='M21.47 12.24L12 17.4l-9.47-5.16l-.88 1.63L12 19.6l10.35-5.73l-.88-1.63z'/%3E%3C/svg%3E">
+
     <!-- Google Fonts: Plus Jakarta Sans -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -419,35 +442,59 @@
                     </div>
                 </section>
 
-                <!-- Contact Section -->
+                <!-- Contact Section (Equipped with fluid Success Notification card) -->
                 <section id="contact" class="pt-6 border-t border-slate-200 dark:border-slate-800 scroll-mt-28">
                     <div class="space-y-6">
                         <h2 class="text-2xl font-extrabold tracking-tight">Contact</h2>
-                        <form id="contact-form" class="p-6 sm:p-8 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 space-y-5 shadow-sm">
-                            <div class="grid sm:grid-cols-2 gap-4">
-                                <div class="space-y-2">
-                                    <label for="name" class="text-xs font-semibold text-slate-500 dark:text-slate-400">Your Name</label>
-                                    <input type="text" id="name" required class="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 text-slate-800 dark:text-white focus:outline-none focus:border-primary-500 dark:focus:border-primary-500 focus:bg-white dark:focus:bg-slate-900 transition-all duration-300">
+                        
+                        <!-- Main Contact Card -->
+                        <div id="contact-wrapper" class="relative overflow-hidden rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm transition-all duration-500">
+                            <!-- Success State Card (Hidden by default, slides up smoothly on submit) -->
+                            <div id="contact-success-state" class="absolute inset-0 bg-white dark:bg-slate-900 z-20 flex flex-col items-center justify-center p-6 text-center space-y-4 translate-y-full opacity-0 transition-all duration-500">
+                                <div class="w-16 h-16 rounded-full bg-emerald-100 dark:bg-emerald-950/50 text-emerald-600 dark:text-emerald-400 flex items-center justify-center text-3xl animate-bounce">
+                                    <i class="fa-solid fa-paper-plane"></i>
+                                </div>
+                                <div class="space-y-1">
+                                    <h3 class="text-xl font-bold">Message Sent Successfully!</h3>
+                                    <p class="text-sm text-slate-500 dark:text-slate-400 max-w-sm">Thank you, <span id="success-user-name" class="font-bold text-slate-800 dark:text-white"></span>. Your message has been simulated as sent. I will get back to you as soon as possible.</p>
+                                </div>
+                                <button onclick="resetContactForm()" class="px-5 py-2 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-xs font-bold transition-all duration-300">
+                                    Send Another Message
+                                </button>
+                            </div>
+
+                            <!-- Interactive Form -->
+                            <form id="contact-form" class="p-6 sm:p-8 space-y-5">
+                                <div class="grid sm:grid-cols-2 gap-4">
+                                    <div class="space-y-2">
+                                        <label for="name" class="text-xs font-semibold text-slate-500 dark:text-slate-400">Your Name</label>
+                                        <input type="text" id="name" required class="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 text-slate-800 dark:text-white focus:outline-none focus:border-primary-500 dark:focus:border-primary-500 focus:bg-white dark:focus:bg-slate-900 transition-all duration-300">
+                                    </div>
+                                    <div class="space-y-2">
+                                        <label for="email" class="text-xs font-semibold text-slate-500 dark:text-slate-400">Your Email</label>
+                                        <input type="email" id="email" required class="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 text-slate-800 dark:text-white focus:outline-none focus:border-primary-500 dark:focus:border-primary-500 focus:bg-white dark:focus:bg-slate-900 transition-all duration-300">
+                                    </div>
                                 </div>
                                 <div class="space-y-2">
-                                    <label for="email" class="text-xs font-semibold text-slate-500 dark:text-slate-400">Your Email</label>
-                                    <input type="email" id="email" required class="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 text-slate-800 dark:text-white focus:outline-none focus:border-primary-500 dark:focus:border-primary-500 focus:bg-white dark:focus:bg-slate-900 transition-all duration-300">
+                                    <label for="message" class="text-xs font-semibold text-slate-500 dark:text-slate-400">Message</label>
+                                    <textarea id="message" rows="4" required class="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 text-slate-800 dark:text-white focus:outline-none focus:border-primary-500 dark:focus:border-primary-500 focus:bg-white dark:focus:bg-slate-900 transition-all duration-300"></textarea>
                                 </div>
-                            </div>
-                            <div class="space-y-2">
-                                <label for="message" class="text-xs font-semibold text-slate-500 dark:text-slate-400">Message</label>
-                                <textarea id="message" rows="4" required class="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 text-slate-800 dark:text-white focus:outline-none focus:border-primary-500 dark:focus:border-primary-500 focus:bg-white dark:focus:bg-slate-900 transition-all duration-300"></textarea>
-                            </div>
-                            <button type="submit" class="w-full py-3.5 rounded-xl bg-gradient-to-r from-primary-600 to-primary-700 hover:from-primary-700 hover:to-primary-800 text-white font-semibold shadow-lg shadow-primary-500/20 hover:shadow-primary-500/30 hover:-translate-y-0.5 transition-all duration-300 text-center">
-                                Send Message
-                            </button>
-                        </form>
+                                <button type="submit" class="w-full py-3.5 rounded-xl bg-gradient-to-r from-primary-600 to-primary-700 hover:from-primary-700 hover:to-primary-800 text-white font-semibold shadow-lg shadow-primary-500/20 hover:shadow-primary-500/30 hover:-translate-y-0.5 transition-all duration-300 text-center">
+                                    Send Message
+                                </button>
+                            </form>
+                        </div>
                     </div>
                 </section>
             </div>
 
         </div>
     </main>
+
+    <!-- Floating Back to Top Button -->
+    <button id="back-to-top" class="fixed bottom-6 right-6 z-40 p-3 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-300 hover:text-primary-600 dark:hover:text-primary-500 shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300 opacity-0 translate-y-6 pointer-events-none" aria-label="Back to Top">
+        <i class="fa-solid fa-arrow-up text-lg"></i>
+    </button>
 
     <!-- Footer -->
     <footer class="border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950 py-8 transition-all duration-300">
@@ -625,7 +672,10 @@
 
         // Sticky Navbar effect
         const navbar = document.getElementById('navbar');
+        const backToTopBtn = document.getElementById('back-to-top');
+
         window.addEventListener('scroll', () => {
+            // Navbar effect
             if (window.scrollY > 50) {
                 navbar.classList.add('bg-white/80', 'dark:bg-slate-950/80', 'backdrop-blur-md', 'shadow-sm', 'border-slate-200/50', 'dark:border-slate-800/50', 'h-16');
                 navbar.classList.remove('border-transparent', 'h-20');
@@ -637,17 +687,47 @@
                 navbar.firstElementChild.firstElementChild.classList.remove('h-16');
                 navbar.firstElementChild.firstElementChild.classList.add('h-20');
             }
+
+            // Back to Top button effect
+            if (window.scrollY > 300) {
+                backToTopBtn.classList.remove('opacity-0', 'translate-y-6', 'pointer-events-none');
+                backToTopBtn.classList.add('opacity-100', 'translate-y-0');
+            } else {
+                backToTopBtn.classList.add('opacity-0', 'translate-y-6', 'pointer-events-none');
+                backToTopBtn.classList.remove('opacity-100', 'translate-y-0');
+            }
         });
 
-        // Simple Form Submission Alert
-        document.getElementById('contact-form').addEventListener('submit', (e) => {
+        // Smooth scroll to top when clicking back-to-top
+        backToTopBtn.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // --- Contact Form Fluid Notification Toggle ---
+        const contactForm = document.getElementById('contact-form');
+        const successState = document.getElementById('contact-success-state');
+        const successUserName = document.getElementById('success-user-name');
+
+        contactForm.addEventListener('submit', (e) => {
             e.preventDefault();
-            const name = document.getElementById('name').value;
-            alert(`Thank you, ${name}! Your message has been simulated as sent.`);
-            document.getElementById('contact-form').reset();
+            const nameVal = document.getElementById('name').value;
+            
+            // Set dynamic name and animate success state into view
+            successUserName.textContent = nameVal;
+            successState.classList.remove('translate-y-full', 'opacity-0');
+            successState.classList.add('translate-y-0', 'opacity-100');
         });
 
-        // Active Link Highlighting on Scroll (Synchronized for new IDs)
+        function resetContactForm() {
+            // Animate form back and reset fields
+            successState.classList.remove('translate-y-0', 'opacity-100');
+            successState.classList.add('translate-y-full', 'opacity-0');
+            setTimeout(() => {
+                contactForm.reset();
+            }, 300);
+        }
+
+        // Active Link Highlighting on Scroll
         const sections = document.querySelectorAll('main > div > div > section, #about');
         const navLinks = document.querySelectorAll('.nav-link, .mobile-nav-link');
 
