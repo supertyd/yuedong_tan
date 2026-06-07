@@ -243,11 +243,47 @@
                     </div>
                 </section>
 
-                <!-- Education & Career Experience -->
-                <section class="space-y-6">
+                <!-- Primary Focus Areas Section (Loaded dynamically) -->
+                <section class="space-y-4">
                     <h2 class="text-2xl font-extrabold tracking-tight flex items-center">
                         <span class="w-1.5 h-6 rounded-full bg-primary-600 mr-2.5"></span>
-                        <span>Experience & Affiliations</span>
+                        <span>🎯 Primary Focus Areas</span>
+                    </h2>
+                    <div id="focus-areas-container" class="p-6 sm:p-8 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm relative min-h-[100px]">
+                        <!-- Content will be injected here -->
+                        <div class="animate-pulse flex space-y-4">
+                            <div class="flex-1 space-y-4 py-1">
+                                <div class="h-4 bg-slate-200 dark:bg-slate-800 rounded w-3/4"></div>
+                                <div class="space-y-2">
+                                    <div class="h-4 bg-slate-200 dark:bg-slate-800 rounded"></div>
+                                    <div class="h-4 bg-slate-200 dark:bg-slate-800 rounded w-5/6"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Publications / Selected Papers Standalone Section (Loaded dynamically) -->
+                <section class="space-y-4">
+                    <h2 class="text-2xl font-extrabold tracking-tight flex items-center">
+                        <span class="w-1.5 h-6 rounded-full bg-primary-600 mr-2.5"></span>
+                        <span>📚 Selected Publications</span>
+                    </h2>
+                    
+                    <div id="publications-container" class="space-y-4 relative min-h-[200px]">
+                        <!-- Content will be injected here dynamically as styled cards -->
+                        <div class="animate-pulse space-y-4">
+                            <div class="p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 h-28"></div>
+                            <div class="p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 h-28"></div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Education & Career Experience (Placed beautifully at the bottom, just above contact) -->
+                <section class="space-y-6 pt-6 border-t border-slate-200 dark:border-slate-800">
+                    <h2 class="text-2xl font-extrabold tracking-tight flex items-center">
+                        <span class="w-1.5 h-6 rounded-full bg-primary-600 mr-2.5"></span>
+                        <span>🎓 Experience & Affiliations</span>
                     </h2>
                     
                     <div class="grid grid-cols-1 gap-4">
@@ -331,32 +367,6 @@
                     </div>
                 </section>
 
-                <!-- Academic Profile Section -->
-                <section class="space-y-6">
-                    <!-- Markdown Content Container -->
-                    <div class="p-6 sm:p-10 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm relative min-h-[300px]">
-                        <!-- Spinner / Loading State -->
-                        <div id="loading-spinner" class="absolute inset-0 flex flex-col items-center justify-center bg-white/90 dark:bg-slate-900/90 rounded-2xl transition-opacity duration-300">
-                            <div class="w-10 h-10 border-4 border-primary-100 border-t-primary-600 rounded-full animate-spin mb-4"></div>
-                            <p class="text-sm font-semibold text-slate-500 dark:text-slate-400">Loading academic details...</p>
-                        </div>
-
-                        <!-- Dynamic Rendered Markdown Content (Tailwind Typography applied) -->
-                        <article id="markdown-container" class="prose prose-slate dark:prose-invert max-w-none prose-headings:font-bold prose-headings:tracking-tight prose-a:text-primary-600 dark:prose-a:text-primary-400 hover:prose-a:underline prose-strong:text-slate-900 dark:prose-strong:text-white">
-                            <!-- Content will be injected here by JavaScript -->
-                        </article>
-
-                        <!-- Error State -->
-                        <div id="error-container" class="hidden text-center py-10 space-y-4">
-                            <i class="fa-solid fa-triangle-exclamation text-4xl text-red-500"></i>
-                            <p class="text-slate-600 dark:text-slate-400 font-medium">Failed to load profile details.</p>
-                            <button onclick="loadProfile()" class="px-4 py-2 text-xs font-semibold text-white bg-primary-600 rounded-xl hover:bg-primary-700 transition-colors">
-                                Retry Connection
-                            </button>
-                        </div>
-                    </div>
-                </section>
-
                 <!-- Contact Section -->
                 <section id="contact" class="pt-6 border-t border-slate-200 dark:border-slate-800 scroll-mt-28">
                     <div class="space-y-6">
@@ -403,14 +413,8 @@
     <script>
         // Fetch and Render Profile Markdown from supertyd/supertyd README.md
         async function loadProfile() {
-            const spinner = document.getElementById('loading-spinner');
-            const container = document.getElementById('markdown-container');
-            const errorContainer = document.getElementById('error-container');
-
-            spinner.style.opacity = '1';
-            spinner.classList.remove('hidden');
-            container.classList.add('hidden');
-            errorContainer.classList.add('hidden');
+            const focusContainer = document.getElementById('focus-areas-container');
+            const pubContainer = document.getElementById('publications-container');
 
             try {
                 // Fetch the raw README.md file
@@ -419,45 +423,114 @@
                 
                 let markdown = await response.text();
                 
-                // Dynamically remove everything except the Focus Areas and Publications.
-                // We crop the markdown starting from '## Primary Focus Areas' and then filter out the NEWS section entirely.
-                const targetHeader = '## Primary Focus Areas';
-                const targetIndex = markdown.indexOf(targetHeader);
-                if (targetIndex !== -1) {
-                    markdown = markdown.substring(targetIndex);
-                }
-                
-                // Filter out the ## 📣 NEWS section content from the loaded markdown to prevent duplication
+                // --- 1. Extract Primary Focus Areas Section ---
+                const focusHeader = '## Primary Focus Areas';
                 const newsHeader = '## 📣 NEWS';
-                const publicationsHeader = '## 📚 PUBLICATIONS';
+                const focusStartIndex = markdown.indexOf(focusHeader);
                 const newsIndex = markdown.indexOf(newsHeader);
-                const pubIndex = markdown.indexOf(publicationsHeader);
                 
-                if (newsIndex !== -1 && pubIndex !== -1 && pubIndex > newsIndex) {
-                    // Extract parts before NEWS and after PUBLICATIONS
-                    const beforeNews = markdown.substring(0, newsIndex);
-                    const afterNews = markdown.substring(pubIndex);
-                    markdown = beforeNews + afterNews;
-                } else if (newsIndex !== -1) {
-                    // If publications header is not found but news is
-                    markdown = markdown.substring(0, newsIndex);
+                let focusAreasHTML = "<p class='text-slate-500'>No focus areas found.</p>";
+                if (focusStartIndex !== -1 && newsIndex !== -1 && newsIndex > focusStartIndex) {
+                    const focusMarkdown = markdown.substring(focusStartIndex + focusHeader.length, newsIndex);
+                    focusAreasHTML = marked.parse(focusMarkdown);
                 }
+                focusContainer.innerHTML = `<article class="prose prose-slate dark:prose-invert max-w-none prose-p:text-slate-700 dark:prose-p:text-slate-300">${focusAreasHTML}</article>`;
+
+                // --- 2. Extract Publications Section ---
+                const pubHeader = '## 📚 PUBLICATIONS';
+                const pubIndex = markdown.indexOf(pubHeader);
+                let publicationsMarkdown = "";
                 
-                // Parse markdown to HTML using Marked.js
-                const html = marked.parse(markdown);
-                
-                // Inject the generated HTML
-                container.innerHTML = html;
-                
-                // Hide spinner and show content
-                spinner.style.opacity = '0';
-                setTimeout(() => spinner.classList.add('hidden'), 300);
-                container.classList.remove('hidden');
+                if (pubIndex !== -1) {
+                    publicationsMarkdown = markdown.substring(pubIndex + pubHeader.length);
+                }
+
+                // Render Publications nicely
+                if (publicationsMarkdown.trim()) {
+                    // Split by list items (bullet points)
+                    const lines = publicationsMarkdown.split('\n');
+                    let currentPapersHTML = "";
+                    let currentPaperText = "";
+
+                    for (let line of lines) {
+                        line = line.trim();
+                        if (line.startsWith('-') || line.startsWith('*')) {
+                            // If we already accumulated a paper, render it first
+                            if (currentPaperText) {
+                                currentPapersHTML += renderPaperCard(currentPaperText);
+                            }
+                            currentPaperText = line.replace(/^[-*]\s*/, '');
+                        } else if (line) {
+                            // Accumulate multi-line bullet points
+                            currentPaperText += " " + line;
+                        }
+                    }
+                    // Don't forget the last accumulated paper
+                    if (currentPaperText) {
+                        currentPapersHTML += renderPaperCard(currentPaperText);
+                    }
+
+                    pubContainer.innerHTML = currentPapersHTML;
+                } else {
+                    pubContainer.innerHTML = "<p class='text-slate-500 py-6 text-center'>No publications found.</p>";
+                }
+
             } catch (err) {
                 console.error(err);
-                spinner.classList.add('hidden');
-                errorContainer.classList.remove('hidden');
+                focusContainer.innerHTML = "<p class='text-red-500'>Failed to load focus areas.</p>";
+                pubContainer.innerHTML = "<p class='text-red-500 py-6 text-center'>Failed to load publications.</p>";
             }
+        }
+
+        // Helper function to turn a parsed bullet-point paper into a beautiful card
+        function renderPaperCard(rawText) {
+            // Highlight Yuedong Tan name
+            let htmlText = rawText
+                .replace(/Yuedong Tan/g, '<strong>Yuedong Tan (谭跃东)</strong>')
+                .replace(/\*\*Yuedong Tan\*\*/g, '<strong>Yuedong Tan (谭跃东)</strong>');
+
+            // Extract paper links like [Paper Link](url)
+            const linkRegex = /\[Paper Link\]\(([^)]+)\)/i;
+            const match = htmlText.match(linkRegex);
+            let actionButtonsHTML = "";
+            
+            if (match) {
+                const url = match[1];
+                // Remove the markdown link from text
+                htmlText = htmlText.replace(linkRegex, '');
+                actionButtonsHTML = `
+                    <div class="pt-3">
+                        <a href="${url}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center px-4 py-1.5 rounded-xl bg-primary-100 hover:bg-primary-200 dark:bg-primary-900/40 dark:hover:bg-primary-900/60 text-primary-700 dark:text-primary-300 text-xs font-bold transition-all duration-300">
+                            <i class="fa-solid fa-file-pdf mr-1.5 text-red-500"></i>
+                            <span>PDF / Paper Link</span>
+                        </a>
+                    </div>
+                `;
+            }
+
+            // Identify publication venue badges (e.g. ICCV2025, Transactions, etc.)
+            let venueBadgeHTML = "";
+            if (htmlText.includes('ICCV2025') || htmlText.includes('ICCV 2025')) {
+                venueBadgeHTML = `<span class="inline-flex items-center px-2 py-0.5 rounded bg-indigo-100 dark:bg-indigo-900/40 text-indigo-700 dark:text-indigo-400 text-[10px] font-bold">ICCV 2025</span>`;
+            } else if (htmlText.includes('Under Review')) {
+                venueBadgeHTML = `<span class="inline-flex items-center px-2 py-0.5 rounded bg-amber-100 dark:bg-amber-900/40 text-amber-700 dark:text-amber-400 text-[10px] font-bold">Under Review</span>`;
+            } else if (htmlText.includes('IEEE Transactions') || htmlText.includes('Transactions on')) {
+                venueBadgeHTML = `<span class="inline-flex items-center px-2 py-0.5 rounded bg-green-100 dark:bg-green-900/40 text-green-700 dark:text-green-400 text-[10px] font-bold">IEEE T-CSVT / TMM</span>`;
+            } else if (htmlText.includes('Workshop')) {
+                venueBadgeHTML = `<span class="inline-flex items-center px-2 py-0.5 rounded bg-blue-100 dark:bg-blue-900/40 text-blue-700 dark:text-blue-400 text-[10px] font-bold">IEEE Workshop</span>`;
+            }
+
+            return `
+                <div class="p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-300 space-y-3">
+                    <div class="flex items-start justify-between gap-4 flex-wrap">
+                        <div class="flex-1 min-w-0">
+                            <p class="text-base text-slate-700 dark:text-slate-300 leading-relaxed">${htmlText}</p>
+                        </div>
+                        ${venueBadgeHTML ? `<div class="shrink-0">${venueBadgeHTML}</div>` : ''}
+                    </div>
+                    ${actionButtonsHTML}
+                </div>
+            `;
         }
 
         // Initialize loading on DOMContentLoaded
