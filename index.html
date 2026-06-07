@@ -112,7 +112,7 @@
             background: #1e293b;
         }
 
-        /* --- Scroll Reveal Classes (Silk smooth movie transition) --- */
+        /* --- Scroll Reveal Classes --- */
         .reveal-on-scroll {
             opacity: 0;
             transform: translateY(24px);
@@ -179,7 +179,7 @@
 </head>
 <body class="bg-slate-50 text-slate-800 dark:bg-slate-950 dark:text-slate-100 font-sans transition-colors duration-300 selection:bg-primary-500 selection:text-white">
 
-    <!-- Gradient Background Blobs (Interactive Mouse parallax mapped) -->
+    <!-- Gradient Background Blobs -->
     <div class="fixed inset-0 overflow-hidden pointer-events-none -z-10 opacity-30 dark:opacity-20">
         <div id="blob-1" class="absolute top-[-10%] left-[-10%] w-[500px] h-[500px] rounded-full bg-primary-100 dark:bg-primary-900/30 blur-3xl transition-transform duration-700 ease-out"></div>
         <div id="blob-2" class="absolute bottom-[-10%] right-[-10%] w-[600px] h-[600px] rounded-full bg-secondary-50 dark:bg-secondary-900/20 blur-3xl transition-transform duration-700 ease-out"></div>
@@ -199,16 +199,21 @@
 
                 <!-- Desktop Navigation Links (Full List) -->
                 <nav class="hidden md:flex items-center space-x-6">
-                    <a href="#about" class="nav-link text-sm font-semibold hover:text-primary-600 dark:hover:text-primary-500 transition-colors">Home</a>
-                    <a href="#news" class="nav-link text-sm font-semibold hover:text-primary-600 dark:hover:text-primary-500 transition-colors">News</a>
-                    <a href="#focus-areas" class="nav-link text-sm font-semibold hover:text-primary-600 dark:hover:text-primary-500 transition-colors">Research</a>
-                    <a href="#publications" class="nav-link text-sm font-semibold hover:text-primary-600 dark:hover:text-primary-500 transition-colors">Publications</a>
-                    <a href="#experience" class="nav-link text-sm font-semibold hover:text-primary-600 dark:hover:text-primary-500 transition-colors">Experience</a>
-                    <a href="#contact" class="nav-link text-sm font-semibold hover:text-primary-600 dark:hover:text-primary-500 transition-colors">Contact</a>
+                    <a href="#about" class="nav-link text-sm font-semibold hover:text-primary-600 dark:hover:text-primary-500 transition-colors" data-translate="nav-home">Home</a>
+                    <a href="#news" class="nav-link text-sm font-semibold hover:text-primary-600 dark:hover:text-primary-500 transition-colors" data-translate="nav-news">News</a>
+                    <a href="#focus-areas" class="nav-link text-sm font-semibold hover:text-primary-600 dark:hover:text-primary-500 transition-colors" data-translate="nav-research">Research</a>
+                    <a href="#publications" class="nav-link text-sm font-semibold hover:text-primary-600 dark:hover:text-primary-500 transition-colors" data-translate="nav-publications">Publications</a>
+                    <a href="#experience" class="nav-link text-sm font-semibold hover:text-primary-600 dark:hover:text-primary-500 transition-colors" data-translate="nav-experience">Experience</a>
+                    <a href="#contact" class="nav-link text-sm font-semibold hover:text-primary-600 dark:hover:text-primary-500 transition-colors" data-translate="nav-contact">Contact</a>
                 </nav>
 
-                <!-- Header Actions (Dark mode toggle + Mobile menu button) -->
-                <div class="flex items-center space-x-4">
+                <!-- Header Actions (Dark mode toggle + Bilingual Switcher + Mobile menu button) -->
+                <div class="flex items-center space-x-3">
+                    <!-- Bilingual Switcher Button -->
+                    <button id="lang-toggle" class="px-3 py-1.5 rounded-xl border border-slate-200 dark:border-slate-800 text-xs font-extrabold text-slate-700 dark:text-slate-300 hover:text-primary-500 hover:border-primary-500 dark:hover:text-primary-400 dark:hover:border-primary-400 transition-all duration-300" aria-label="Toggle Language">
+                        中
+                    </button>
+
                     <!-- Dark Mode Toggle Button -->
                     <button id="theme-toggle" class="p-2 rounded-xl bg-white dark:bg-slate-900 shadow-sm border border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-300 hover:text-primary-600 dark:hover:text-primary-500 focus:outline-none transition-all duration-300" aria-label="Toggle Theme">
                         <i id="theme-toggle-dark-icon" class="fa-solid fa-moon text-sm hidden"></i>
@@ -226,12 +231,12 @@
         <!-- Mobile Navigation Menu -->
         <div id="mobile-menu" class="hidden md:hidden absolute top-full left-0 w-full bg-white/95 dark:bg-slate-950/95 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 transition-all duration-300 shadow-lg">
             <div class="px-4 pt-2 pb-6 space-y-3">
-                <a href="#about" class="mobile-nav-link block px-4 py-2.5 rounded-xl font-medium text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-900 hover:text-primary-600 dark:hover:text-primary-500">Home</a>
-                <a href="#news" class="mobile-nav-link block px-4 py-2.5 rounded-xl font-medium text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-900 hover:text-primary-600 dark:hover:text-primary-500">News</a>
-                <a href="#focus-areas" class="mobile-nav-link block px-4 py-2.5 rounded-xl font-medium text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-900 hover:text-primary-600 dark:hover:text-primary-500">Research</a>
-                <a href="#publications" class="mobile-nav-link block px-4 py-2.5 rounded-xl font-medium text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-900 hover:text-primary-600 dark:hover:text-primary-500">Publications</a>
-                <a href="#experience" class="mobile-nav-link block px-4 py-2.5 rounded-xl font-medium text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-900 hover:text-primary-600 dark:hover:text-primary-500">Experience</a>
-                <a href="#contact" class="mobile-nav-link block px-4 py-2.5 rounded-xl font-medium text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-900 hover:text-primary-600 dark:hover:text-primary-500">Contact</a>
+                <a href="#about" class="mobile-nav-link block px-4 py-2.5 rounded-xl font-medium text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-900 hover:text-primary-600 dark:hover:text-primary-500" data-translate="nav-home">Home</a>
+                <a href="#news" class="mobile-nav-link block px-4 py-2.5 rounded-xl font-medium text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-900 hover:text-primary-600 dark:hover:text-primary-500" data-translate="nav-news">News</a>
+                <a href="#focus-areas" class="mobile-nav-link block px-4 py-2.5 rounded-xl font-medium text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-900 hover:text-primary-600 dark:hover:text-primary-500" data-translate="nav-research">Research</a>
+                <a href="#publications" class="mobile-nav-link block px-4 py-2.5 rounded-xl font-medium text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-900 hover:text-primary-600 dark:hover:text-primary-500" data-translate="nav-publications">Publications</a>
+                <a href="#experience" class="mobile-nav-link block px-4 py-2.5 rounded-xl font-medium text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-900 hover:text-primary-600 dark:hover:text-primary-500" data-translate="nav-experience">Experience</a>
+                <a href="#contact" class="mobile-nav-link block px-4 py-2.5 rounded-xl font-medium text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-900 hover:text-primary-600 dark:hover:text-primary-500" data-translate="nav-contact">Contact</a>
             </div>
         </div>
     </header>
@@ -260,13 +265,13 @@
                     
                     <div class="inline-flex items-center space-x-1.5 px-3 py-1 rounded-full bg-primary-100/60 dark:bg-primary-900/30 text-primary-600 dark:text-primary-400 font-semibold text-xs tracking-wider">
                         <span class="w-1.5 h-1.5 rounded-full bg-primary-500 animate-pulse"></span>
-                        <span> Intern at Apple</span>
+                        <span data-translate="sidebar-badge"> Intern at Apple</span>
                     </div>
 
                     <div class="text-sm text-slate-600 dark:text-slate-400 space-y-2 font-medium leading-relaxed">
-                        <p><i class="fa-solid fa-graduation-cap mr-2 text-primary-500"></i>Student researcher @ INSAIT</p>
-                        <p><i class="fa-solid fa-university mr-2 text-primary-500"></i>University of Würzburg</p>
-                        <p><i class="fa-solid fa-location-dot mr-2 text-primary-500"></i>Germany / China</p>
+                        <p><i class="fa-solid fa-graduation-cap mr-2 text-primary-500"></i><span data-translate="sidebar-title">Student researcher @ INSAIT</span></p>
+                        <p><i class="fa-solid fa-university mr-2 text-primary-500"></i><span data-translate="sidebar-institution">University of Würzburg</span></p>
+                        <p><i class="fa-solid fa-location-dot mr-2 text-primary-500"></i><span data-translate="sidebar-location">Germany / China</span></p>
                     </div>
 
                     <!-- Action Link List -->
@@ -289,22 +294,22 @@
 
             <!-- RIGHT COLUMN (Scrollable Academic Content) -->
             <div id="about" class="md:col-span-8 space-y-12 scroll-mt-28">
-                <!-- Brief Bio card at the very top (Animated reveal-on-scroll applied) -->
+                <!-- Brief Bio card at the very top -->
                 <div class="reveal-on-scroll p-6 sm:p-8 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm space-y-4">
                     <h2 class="text-xl font-bold tracking-tight flex items-center">
                         <span class="w-1.5 h-6 rounded-full bg-primary-600 mr-2.5"></span>
-                        <span>Introduction</span>
+                        <span data-translate="header-intro">Introduction</span>
                     </h2>
-                    <p class="text-base sm:text-lg text-slate-700 dark:text-slate-300 font-normal leading-relaxed">
-                        Yuedong Tan(谭跃东) is a student researcher at INSAIT/University of Würzburg, under the supervision of Danda Pani Paudel, Radu Timofte, and Luc Van Gool. Previously, I obtained my master’s degree from Xidian University in June 2025. Before that, I received my B.E. degree from Chang’an University, China, in July 2022. I was an intern or visiting student at Tele AI, supervised by Jiawei Shao and Xuelong Li.
+                    <p id="main-bio" class="text-base sm:text-lg text-slate-700 dark:text-slate-300 font-normal leading-relaxed">
+                        <!-- Filled in dynamically by JS depending on Language -->
                     </p>
                 </div>
 
                 <!-- Custom Beautiful Scrollable News Timeline Section -->
-                <section id="news" class="reveal-on-scroll space-y-6 scroll-mt-28">
+                <section id="news" class="space-y-6 scroll-mt-28">
                     <h2 class="text-2xl font-extrabold tracking-tight flex items-center">
                         <span class="w-1.5 h-6 rounded-full bg-primary-600 mr-2.5"></span>
-                        <span>News</span>
+                        <span data-translate="header-news">News</span>
                     </h2>
 
                     <!-- Scroll Window Container with relative layout for absolute gradient overlays -->
@@ -317,15 +322,13 @@
                             
                             <!-- News Item 1 -->
                             <div class="relative group">
-                                <!-- Bullet Icon -->
                                 <div class="absolute -left-[31px] top-1 w-4 h-4 rounded-full bg-primary-500 border-4 border-slate-50 dark:border-slate-950 group-hover:scale-125 transition-transform duration-300 flex items-center justify-center"></div>
-                                
                                 <div class="space-y-2">
                                     <div class="flex items-center space-x-2">
                                         <span class="px-2.5 py-0.5 rounded-lg bg-primary-100 dark:bg-primary-900/30 text-primary-600 dark:text-primary-400 text-xs font-bold font-mono">Mar. 2026</span>
                                         <span class="inline-flex items-center px-1.5 py-0.5 rounded-md bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-[10px] font-bold"><i class="fa-brands fa-apple mr-1 text-slate-800 dark:text-white"></i>APPLE</span>
                                     </div>
-                                    <p class="text-base text-slate-700 dark:text-slate-300 font-medium leading-relaxed">
+                                    <p class="text-base text-slate-700 dark:text-slate-300 font-medium leading-relaxed" data-translate="news-1">
                                         I am excited to share that I have started my internship at Apple!
                                     </p>
                                 </div>
@@ -333,19 +336,17 @@
 
                             <!-- News Item 2 -->
                             <div class="relative group">
-                                <!-- Bullet Icon -->
                                 <div class="absolute -left-[31px] top-1 w-4 h-4 rounded-full bg-primary-500 border-4 border-slate-50 dark:border-slate-950 group-hover:scale-125 transition-transform duration-300 flex items-center justify-center"></div>
-                                
                                 <div class="space-y-2">
                                     <div class="flex items-center space-x-2">
                                         <span class="px-2.5 py-0.5 rounded-lg bg-primary-100 dark:bg-primary-900/30 text-primary-600 dark:text-primary-400 text-xs font-bold font-mono">Feb. 2026</span>
                                         <span class="inline-flex items-center px-1.5 py-0.5 rounded-md bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-[10px] font-bold">WORKSHOP</span>
                                     </div>
-                                    <p class="text-base text-slate-700 dark:text-slate-300 font-medium leading-relaxed">
+                                    <p class="text-base text-slate-700 dark:text-slate-300 font-medium leading-relaxed" data-translate="news-2">
                                         We are organizing the CVPR 2026 Workshop on Unified Robotic Vision with Cross-Modal Sensing and Alignment.
                                     </p>
                                     <a href="https://urvis-workshop.github.io/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center text-xs font-bold text-primary-600 dark:text-primary-400 hover:underline">
-                                        <span>URVIS Workshop Website</span>
+                                        <span data-translate="news-btn-workshop">URVIS Workshop Website</span>
                                         <i class="fa-solid fa-arrow-up-right-from-square ml-1 text-[10px]"></i>
                                     </a>
                                 </div>
@@ -353,35 +354,33 @@
 
                             <!-- News Item 3 -->
                             <div class="relative group">
-                                <!-- Bullet Icon -->
                                 <div class="absolute -left-[31px] top-1 w-4 h-4 rounded-full bg-primary-500 border-4 border-slate-50 dark:border-slate-950 group-hover:scale-125 transition-transform duration-300 flex items-center justify-center"></div>
-                                
                                 <div class="space-y-2">
                                     <div class="flex items-center space-x-2">
                                         <span class="px-2.5 py-0.5 rounded-lg bg-primary-100 dark:bg-primary-900/30 text-primary-600 dark:text-primary-400 text-xs font-bold font-mono">Oct. 2025</span>
                                         <span class="inline-flex items-center px-1.5 py-0.5 rounded-md bg-amber-100 dark:bg-amber-900/30 text-amber-600 dark:text-amber-400 text-[10px] font-bold"><i class="fa-solid fa-award mr-1"></i>AWARD</span>
                                     </div>
-                                    <p class="text-base text-slate-700 dark:text-slate-300 font-medium leading-relaxed">
+                                    <p class="text-base text-slate-700 dark:text-slate-300 font-medium leading-relaxed" data-translate="news-3">
                                         I am thrilled to announce that our project has been selected for a generous GPU grant from TeleAI. We are incredibly grateful for their support, as only 10 projects were chosen for this award.
                                     </p>
                                     <a href="https://mp.weixin.qq.com/s/u3X_NV_791bwo42VaFkWgw?scene=1&click_id=4" target="_blank" rel="noopener noreferrer" class="inline-flex items-center text-xs font-bold text-primary-600 dark:text-primary-400 hover:underline">
-                                        <span>Announcement Link</span>
+                                        <span data-translate="news-btn-award">Announcement Link</span>
                                         <i class="fa-solid fa-arrow-up-right-from-square ml-1 text-[10px]"></i>
                                     </a>
                                 </div>
                             </div>
                         </div>
 
-                        <!-- Bottom Fluid Gradient Mask (shows when scroll has more items below) -->
+                        <!-- Bottom Fluid Gradient Mask -->
                         <div id="news-mask-bottom" class="absolute bottom-0 left-0 right-0 h-10 bg-gradient-to-t from-slate-50 dark:from-slate-950 to-transparent pointer-events-none z-10 transition-opacity duration-300"></div>
                     </div>
                 </section>
 
                 <!-- Primary Focus Areas Section (Loaded dynamically) -->
-                <section id="focus-areas" class="reveal-on-scroll space-y-4 scroll-mt-28">
+                <section id="focus-areas" class="space-y-4 scroll-mt-28">
                     <h2 class="text-2xl font-extrabold tracking-tight flex items-center">
                         <span class="w-1.5 h-6 rounded-full bg-primary-600 mr-2.5"></span>
-                        <span>Primary Focus Areas</span>
+                        <span data-translate="header-focus">Primary Focus Areas</span>
                     </h2>
                     <div id="focus-areas-container" class="p-6 sm:p-8 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm relative min-h-[100px] hover:shadow-md hover:-translate-y-0.5 transition-all duration-300">
                         <!-- Content will be injected here -->
@@ -398,13 +397,13 @@
                 </section>
 
                 <!-- Publications / Selected Papers Standalone Section (Loaded dynamically) -->
-                <section id="publications" class="reveal-on-scroll space-y-4 scroll-mt-28">
+                <section id="publications" class="space-y-4 scroll-mt-28">
                     <div class="flex items-baseline justify-between flex-wrap gap-2">
                         <h2 class="text-2xl font-extrabold tracking-tight flex items-center">
                             <span class="w-1.5 h-6 rounded-full bg-primary-600 mr-2.5"></span>
-                            <span>Selected Publications</span>
+                            <span data-translate="header-publications">Selected Publications</span>
                         </h2>
-                        <span class="text-xs text-slate-500 dark:text-slate-400 font-bold font-mono pl-4 italic bg-slate-100 dark:bg-slate-900/60 px-2 py-1 rounded-lg border border-slate-200 dark:border-slate-800">
+                        <span class="text-xs text-slate-500 dark:text-slate-400 font-bold font-mono pl-4 italic bg-slate-100 dark:bg-slate-900/60 px-2 py-1 rounded-lg border border-slate-200 dark:border-slate-800" data-translate="publications-legend">
                             * Corresponding Author | † Equal contribution
                         </span>
                     </div>
@@ -419,10 +418,10 @@
                 </section>
 
                 <!-- Education & Career Experience (Placed beautifully at the bottom, just above contact) -->
-                <section id="experience" class="reveal-on-scroll space-y-6 pt-6 border-t border-slate-200 dark:border-slate-800 scroll-mt-28">
+                <section id="experience" class="space-y-6 pt-6 border-t border-slate-200 dark:border-slate-800 scroll-mt-28">
                     <h2 class="text-2xl font-extrabold tracking-tight flex items-center">
                         <span class="w-1.5 h-6 rounded-full bg-primary-600 mr-2.5"></span>
-                        <span>Experience & Affiliations</span>
+                        <span data-translate="header-experience">Experience & Affiliations</span>
                     </h2>
                     
                     <div class="grid grid-cols-1 gap-4">
@@ -434,9 +433,9 @@
                             <div class="flex-1 min-w-0">
                                 <div class="flex items-center justify-between flex-wrap gap-1">
                                     <h3 class="font-bold text-slate-800 dark:text-slate-100 truncate">Apple</h3>
-                                    <span class="text-xs text-slate-500 dark:text-slate-400 font-medium">Mar. 2026 - Present</span>
+                                    <span class="text-xs text-slate-500 dark:text-slate-400 font-medium" data-translate="exp-date-apple">Mar. 2026 - Present</span>
                                 </div>
-                                <p class="text-sm font-semibold text-primary-600 dark:text-primary-400">Research Intern</p>
+                                <p class="text-sm font-semibold text-primary-600 dark:text-primary-400" data-translate="exp-role-apple">Research Intern</p>
                             </div>
                         </div>
 
@@ -452,10 +451,10 @@
                             <div class="flex-1 min-w-0">
                                 <div class="flex items-center justify-between flex-wrap gap-1">
                                     <h3 class="font-bold text-slate-800 dark:text-slate-100 truncate">INSAIT / University of Würzburg</h3>
-                                    <span class="text-xs text-slate-500 dark:text-slate-400 font-medium">2025 - Present</span>
+                                    <span class="text-xs text-slate-500 dark:text-slate-400 font-medium" data-translate="exp-date-insait">2025 - Present</span>
                                 </div>
-                                <p class="text-sm font-semibold text-primary-600 dark:text-primary-400">Student Researcher</p>
-                                <p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5">Supervised by Danda Pani Paudel, Radu Timofte, and Luc Van Gool</p>
+                                <p class="text-sm font-semibold text-primary-600 dark:text-primary-400" data-translate="exp-role-insait">Student Researcher</p>
+                                <p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5" data-translate="exp-sub-insait">Supervised by Danda Pani Paudel, Radu Timofte, and Luc Van Gool</p>
                             </div>
                         </div>
 
@@ -466,11 +465,11 @@
                             </div>
                             <div class="flex-1 min-w-0">
                                 <div class="flex items-center justify-between flex-wrap gap-1">
-                                    <h3 class="font-bold text-slate-800 dark:text-slate-100 truncate">Xidian University (西安电子科技大学)</h3>
-                                    <span class="text-xs text-slate-500 dark:text-slate-400 font-medium">Sep. 2022 - Jun. 2025</span>
+                                    <h3 class="font-bold text-slate-800 dark:text-slate-100 truncate" data-translate="exp-title-xidian">Xidian University (西安电子科技大学)</h3>
+                                    <span class="text-xs text-slate-500 dark:text-slate-400 font-medium" data-translate="exp-date-xidian">Sep. 2022 - Jun. 2025</span>
                                 </div>
-                                <p class="text-sm font-semibold text-primary-600 dark:text-primary-400">Master of Science (M.S.)</p>
-                                <p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5">Graduated with high honors in June 2025</p>
+                                <p class="text-sm font-semibold text-primary-600 dark:text-primary-400" data-translate="exp-role-xidian">Master of Science (M.S.)</p>
+                                <p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5" data-translate="exp-sub-xidian">Graduated with high honors in June 2025</p>
                             </div>
                         </div>
 
@@ -481,11 +480,11 @@
                             </div>
                             <div class="flex-1 min-w-0">
                                 <div class="flex items-center justify-between flex-wrap gap-1">
-                                    <h3 class="font-bold text-slate-800 dark:text-slate-100 truncate">Tele AI (China Telecom)</h3>
-                                    <span class="text-xs text-slate-500 dark:text-slate-400 font-medium">2023 - 2025</span>
+                                    <h3 class="font-bold text-slate-800 dark:text-slate-100 truncate" data-translate="exp-title-tele">Tele AI (China Telecom)</h3>
+                                    <span class="text-xs text-slate-500 dark:text-slate-400 font-medium" data-translate="exp-date-tele">2023 - 2025</span>
                                 </div>
-                                <p class="text-sm font-semibold text-primary-600 dark:text-primary-400">Research Intern / Visiting Student</p>
-                                <p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5">Supervised by Jiawei Shao and Xuelong Li</p>
+                                <p class="text-sm font-semibold text-primary-600 dark:text-primary-400" data-translate="exp-role-tele">Research Intern / Visiting Student</p>
+                                <p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5" data-translate="exp-sub-tele">Supervised by Jiawei Shao and Xuelong Li</p>
                             </div>
                         </div>
 
@@ -496,20 +495,20 @@
                             </div>
                             <div class="flex-1 min-w-0">
                                 <div class="flex items-center justify-between flex-wrap gap-1">
-                                    <h3 class="font-bold text-slate-800 dark:text-slate-100 truncate">Chang'an University (长安大学)</h3>
-                                    <span class="text-xs text-slate-500 dark:text-slate-400 font-medium">Sep. 2018 - Jul. 2022</span>
+                                    <h3 class="font-bold text-slate-800 dark:text-slate-100 truncate" data-translate="exp-title-changan">Chang'an University (长安大学)</h3>
+                                    <span class="text-xs text-slate-500 dark:text-slate-400 font-medium" data-translate="exp-date-changan">Sep. 2018 - Jul. 2022</span>
                                 </div>
-                                <p class="text-sm font-semibold text-primary-600 dark:text-primary-400">Bachelor of Engineering (B.E.)</p>
-                                <p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5">Graduated in July 2022</p>
+                                <p class="text-sm font-semibold text-primary-600 dark:text-primary-400" data-translate="exp-role-changan">Bachelor of Engineering (B.E.)</p>
+                                <p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5" data-translate="exp-sub-changan">Graduated in July 2022</p>
                             </div>
                         </div>
                     </div>
                 </section>
 
-                <!-- Contact Section (Equipped with fluid Success Notification card) -->
-                <section id="contact" class="reveal-on-scroll pt-6 border-t border-slate-200 dark:border-slate-800 scroll-mt-28">
+                <!-- Contact Section -->
+                <section id="contact" class="pt-6 border-t border-slate-200 dark:border-slate-800 scroll-mt-28">
                     <div class="space-y-6">
-                        <h2 class="text-2xl font-extrabold tracking-tight">Contact</h2>
+                        <h2 class="text-2xl font-extrabold tracking-tight" data-translate="header-contact">Contact</h2>
                         
                         <!-- Main Contact Card -->
                         <div id="contact-wrapper" class="relative overflow-hidden rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm transition-all duration-500">
@@ -519,10 +518,12 @@
                                     <i class="fa-solid fa-paper-plane"></i>
                                 </div>
                                 <div class="space-y-1">
-                                    <h3 class="text-xl font-bold">Message Sent Successfully!</h3>
-                                    <p class="text-sm text-slate-500 dark:text-slate-400 max-w-sm">Thank you, <span id="success-user-name" class="font-bold text-slate-800 dark:text-white"></span>. Your message has been simulated as sent. I will get back to you as soon as possible.</p>
+                                    <h3 class="text-xl font-bold" data-translate="contact-success-title">Message Sent Successfully!</h3>
+                                    <p class="text-sm text-slate-500 dark:text-slate-400 max-w-sm">
+                                        <span data-translate="contact-success-txt-1">Thank you, </span><span id="success-user-name" class="font-bold text-slate-800 dark:text-white"></span><span data-translate="contact-success-txt-2">. Your message has been simulated as sent. I will get back to you as soon as possible.</span>
+                                    </p>
                                 </div>
-                                <button onclick="resetContactForm()" class="px-5 py-2 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-xs font-bold transition-all duration-300">
+                                <button onclick="resetContactForm()" class="px-5 py-2 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-xs font-bold transition-all duration-300" data-translate="contact-success-btn">
                                     Send Another Message
                                 </button>
                             </div>
@@ -531,19 +532,19 @@
                             <form id="contact-form" class="p-6 sm:p-8 space-y-5">
                                 <div class="grid sm:grid-cols-2 gap-4">
                                     <div class="space-y-2">
-                                        <label for="name" class="text-xs font-semibold text-slate-500 dark:text-slate-400">Your Name</label>
+                                        <label for="name" class="text-xs font-semibold text-slate-500 dark:text-slate-400" data-translate="contact-label-name">Your Name</label>
                                         <input type="text" id="name" required class="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 text-slate-800 dark:text-white focus:outline-none focus:border-primary-500 dark:focus:border-primary-500 focus:bg-white dark:focus:bg-slate-900 transition-all duration-300">
                                     </div>
                                     <div class="space-y-2">
-                                        <label for="email" class="text-xs font-semibold text-slate-500 dark:text-slate-400">Your Email</label>
+                                        <label for="email" class="text-xs font-semibold text-slate-500 dark:text-slate-400" data-translate="contact-label-email">Your Email</label>
                                         <input type="email" id="email" required class="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 text-slate-800 dark:text-white focus:outline-none focus:border-primary-500 dark:focus:border-primary-500 focus:bg-white dark:focus:bg-slate-900 transition-all duration-300">
                                     </div>
                                 </div>
                                 <div class="space-y-2">
-                                    <label for="message" class="text-xs font-semibold text-slate-500 dark:text-slate-400">Message</label>
+                                    <label for="message" class="text-xs font-semibold text-slate-500 dark:text-slate-400" data-translate="contact-label-msg">Message</label>
                                     <textarea id="message" rows="4" required class="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 text-slate-800 dark:text-white focus:outline-none focus:border-primary-500 dark:focus:border-primary-500 focus:bg-white dark:focus:bg-slate-900 transition-all duration-300"></textarea>
                                 </div>
-                                <button type="submit" class="w-full py-3.5 rounded-xl bg-gradient-to-r from-primary-600 to-primary-700 hover:from-primary-700 hover:to-primary-800 text-white font-semibold shadow-lg shadow-primary-500/20 hover:shadow-primary-500/30 hover:-translate-y-0.5 transition-all duration-300 text-center">
+                                <button type="submit" class="w-full py-3.5 rounded-xl bg-gradient-to-r from-primary-600 to-primary-700 hover:from-primary-700 hover:to-primary-800 text-white font-semibold shadow-lg shadow-primary-500/20 hover:shadow-primary-500/30 hover:-translate-y-0.5 transition-all duration-300 text-center" data-translate="contact-btn-submit">
                                     Send Message
                                 </button>
                             </form>
@@ -567,7 +568,7 @@
                 &copy; 2026 Yuedong Tan. All rights reserved.
             </span>
             <span class="text-xs sm:text-sm text-slate-500 dark:text-slate-400 flex items-center space-x-1">
-                <span>Auto-synced Academic Page</span>
+                <span data-translate="footer-badge">Auto-synced Academic Page</span>
             </span>
         </div>
     </footer>
@@ -578,7 +579,7 @@
         const bibtexDatabase = {
             "segthinker": `@article{tan2026segthinker,
   title={SegThinker: Recurrent Vision with Reasoning for Image Segmentation},
-  author={Tan, Yuedong and Pan, Jiancheng and Fu, Yuqian mercantile and Van Gool, Luc and Timofte, Radu and Paudel, Danda Pani and Wu, Zongwei},
+  author={Tan, Yuedong and Pan, Jiancheng and Fu, Yuqian and Van Gool, Luc and Timofte, Radu and Paudel, Danda Pani and Wu, Zongwei},
   journal={Under Review},
   year={2026}
 }`,
@@ -602,23 +603,160 @@
 }`,
             "hypertrack": `@article{tan2025hypertrack,
   title={HyperTrack: A Unified Framework for Hyperspectral Object Tracking},
-  author={Tan, Yuedong and Sun, Wenfang and Li, Jingyuan and Hou, Shuwei and Li, Xiaobo and Wang, Zhe and Song, Beibei},
+  author={Tan, Yuedong and Sun, Wenfang and Li, Jingyuan and Hou, Shuwei ...},
   journal={IEEE Transactions on Circuits and Systems for Video Technology},
   year={2025}
 }`,
             "hhtrack": `@inproceedings{tan2023hhtrack,
   title={HHTrack: Hyperspectral Object Tracking Based on Hybrid Attention},
-  author={Tan, Yuedong and Sun, Wenfang and Yuan, Jieran and Du, Wenwang and Wang, Zhe and Mao, Nan and Song, Beibei},
+  author={Tan, Yuedong and Sun, Wenfang and Yuan, Jieran and Du, Wenwang...},
   booktitle={IEEE Workshop on Hyperspectral Image and Signal Processing: Evolution in Remote Sensing},
   year={2023}
 }`,
             "hotmoe": `@article{sun2025hotmoe,
   title={HotMoE: Exploring Sparse Mixture of Experts for Hyperspectral Object Tracking},
-  author={Sun, Wenfang and Tan, Yuedong and Li, Jingyuan and Hou, Shuwei and ...},
+  author={Sun, Wenfang and Tan, Yuedong and Li, Jingyuan and Hou, Shuwei ...},
   journal={IEEE Transactions on Multimedia},
   year={2025}
 }`
         };
+
+        // --- Bilingual Swapping Engine (Full Static Dictionary mapping) ---
+        const languageDictionary = {
+            en: {
+                "nav-home": "Home",
+                "nav-news": "News",
+                "nav-research": "Research",
+                "nav-publications": "Publications",
+                "nav-experience": "Experience",
+                "nav-contact": "Contact",
+                "sidebar-badge": " Intern at Apple",
+                "sidebar-title": "Student researcher @ INSAIT",
+                "sidebar-institution": "University of Würzburg",
+                "sidebar-location": "Germany / China",
+                "header-intro": "Introduction",
+                "main-bio": "Yuedong Tan(谭跃东) is a student researcher at INSAIT/University of Würzburg, under the supervision of Danda Pani Paudel, Radu Timofte, and Luc Van Gool. Previously, I obtained my master’s degree from Xidian University in June 2025. Before that, I received my B.E. degree from Chang’an University, China, in July 2022. I was an intern or visiting student at Tele AI, supervised by Jiawei Shao and Xuelong Li.",
+                "header-news": "News",
+                "news-1": "I am excited to share that I have started my internship at Apple!",
+                "news-2": "We are organizing the CVPR 2026 Workshop on Unified Robotic Vision with Cross-Modal Sensing and Alignment.",
+                "news-btn-workshop": "URVIS Workshop Website",
+                "news-3": "I am thrilled to announce that our project has been selected for a generous GPU grant from TeleAI. We are incredibly grateful for their support, as only 10 projects were chosen for this award.",
+                "news-btn-award": "Announcement Link",
+                "header-focus": "Primary Focus Areas",
+                "header-publications": "Selected Publications",
+                "publications-legend": "* Corresponding Author | † Equal contribution",
+                "header-experience": "Experience & Affiliations",
+                "exp-date-apple": "Mar. 2026 - Present",
+                "exp-role-apple": "Research Intern",
+                "exp-date-insait": "2025 - Present",
+                "exp-role-insait": "Student Researcher",
+                "exp-sub-insait": "Supervised by Danda Pani Paudel, Radu Timofte, and Luc Van Gool",
+                "exp-title-xidian": "Xidian University (西安电子科技大学)",
+                "exp-date-xidian": "Sep. 2022 - Jun. 2025",
+                "exp-role-xidian": "Master of Science (M.S.)",
+                "exp-sub-xidian": "Graduated with high honors in June 2025",
+                "exp-title-tele": "Tele AI (China Telecom)",
+                "exp-date-tele": "2023 - 2025",
+                "exp-role-tele": "Research Intern / Visiting Student",
+                "exp-sub-tele": "Supervised by Jiawei Shao and Xuelong Li",
+                "exp-title-changan": "Chang'an University (长安大学)",
+                "exp-date-changan": "Sep. 2018 - Jul. 2022",
+                "exp-role-changan": "Bachelor of Engineering (B.E.)",
+                "exp-sub-changan": "Graduated in July 2022",
+                "header-contact": "Contact",
+                "contact-label-name": "Your Name",
+                "contact-label-email": "Your Email",
+                "contact-label-msg": "Message",
+                "contact-btn-submit": "Send Message",
+                "contact-success-title": "Message Sent Successfully!",
+                "contact-success-txt-1": "Thank you, ",
+                "contact-success-txt-2": ". Your message has been simulated as sent. I will get back to you as soon as possible.",
+                "contact-success-btn": "Send Another Message",
+                "footer-badge": "Auto-synced Academic Page"
+            },
+            zh: {
+                "nav-home": "首页",
+                "nav-news": "动态",
+                "nav-research": "核心领域",
+                "nav-publications": "发表论文",
+                "nav-experience": "科研履历",
+                "nav-contact": "取得联系",
+                "sidebar-badge": " 苹果公司 研发实习生",
+                "sidebar-title": "在读研究员 @ INSAIT 研究所",
+                "sidebar-institution": "德国维尔茨堡大学",
+                "sidebar-location": "德国 / 中国",
+                "header-intro": "个人简介",
+                "main-bio": "谭跃东 (Yuedong Tan) 是维尔茨堡大学/INSAIT研究所的在读研究员，师从 Danda Pani Paudel、Radu Timofte 和 Luc Van Gool。在此之前，他于2025年6月在西安电子科技大学获得硕士学位，于2022年7月在长安大学获得工学学士学位。他曾作为实习生和访问学生在 Tele AI 交流学习，师从 邵佳伟 与 李学龙 教授。",
+                "header-news": "新闻动态",
+                "news-1": "我很荣幸地宣布，我已经正式开始在苹果公司（Apple）的研发实习！",
+                "news-2": "我们正在筹办 CVPR 2026 交叉传感器多模态机器人视觉与对齐学术研讨会（Workshop）。",
+                "news-btn-workshop": "URVIS 研讨会官方网站",
+                "news-3": "非常高兴地分享，我们的科研项目已被选中并荣获 TeleAI 丰厚的 GPU 算力专项资助！在竞争激烈的申报中仅有 10 个项目获此殊荣。",
+                "news-btn-award": "TeleAI 算力大奖官方报道",
+                "header-focus": "核心研究方向",
+                "header-publications": "学术论文成果",
+                "publications-legend": "* 通讯作者 | † 共同第一作者",
+                "header-experience": "科研经历与学术单位",
+                "exp-date-apple": "2026年3月 - 至今",
+                "exp-role-apple": "计算机视觉研发实习生",
+                "exp-date-insait": "2025年 - 至今",
+                "exp-role-insait": "联合培养在读研究员",
+                "exp-sub-insait": "导师：Danda Pani Paudel 教授、Radu Timofte 教授 和 Luc Van Gool 教授",
+                "exp-title-xidian": "西安电子科技大学",
+                "exp-date-xidian": "2022年9月 - 2025年6月",
+                "exp-role-xidian": "工学硕士学位（M.S.）",
+                "exp-sub-xidian": "以优秀毕业生荣誉毕业于2025年6月",
+                "exp-title-tele": "中国电信 Tele AI 实验室",
+                "exp-date-tele": "2023年 - 2025年",
+                "exp-role-tele": "访问学生 / 科研实习生",
+                "exp-sub-tele": "指导导师：邵佳伟、李学龙 教授",
+                "exp-title-changan": "长安大学",
+                "exp-date-changan": "2018年9月 - 2022年7月",
+                "exp-role-changan": "工学学士学位（B.E.）",
+                "exp-sub-changan": "毕业于2022年7月",
+                "header-contact": "留言联系",
+                "contact-label-name": "您的姓名",
+                "contact-label-email": "您的邮箱",
+                "contact-label-msg": "留言内容",
+                "contact-btn-submit": "提交留言",
+                "contact-success-title": "留言发送成功！",
+                "contact-success-txt-1": "谢谢您，",
+                "contact-success-txt-2": "。您的留言内容已成功模拟发送，我会尽快给您回信。",
+                "contact-success-btn": "再次发送留言",
+                "footer-badge": "学术主页 自动多源实时同步"
+            }
+        };
+
+        let currentLanguage = localStorage.getItem('site-language') || 'en';
+
+        function applyLanguage(lang) {
+            currentLanguage = lang;
+            localStorage.setItem('site-language', lang);
+
+            // Update button label
+            const toggleBtn = document.getElementById('lang-toggle');
+            toggleBtn.textContent = lang === 'en' ? '中' : 'EN';
+
+            // Apply translations to all DOM elements marked with data-translate
+            document.querySelectorAll('[data-translate]').forEach(element => {
+                const key = element.getAttribute('data-translate');
+                if (languageDictionary[lang][key]) {
+                    element.textContent = languageDictionary[lang][key];
+                }
+            });
+
+            // Update main bio paragraph specifically
+            const bioParagraph = document.getElementById('main-bio');
+            if (bioParagraph) {
+                bioParagraph.textContent = languageDictionary[lang]["main-bio"];
+            }
+        }
+
+        // Add Lang toggle click listener
+        document.getElementById('lang-toggle').addEventListener('click', () => {
+            const nextLang = currentLanguage === 'en' ? 'zh' : 'en';
+            applyLanguage(nextLang);
+        });
 
         // Fetch and Render Profile Markdown from supertyd/supertyd README.md
         async function loadProfile() {
@@ -701,6 +839,7 @@
         // Helper function to turn a parsed bullet-point paper into a beautiful card
         function renderPaperCard(rawText) {
             // Strip out markdown bold/italic characters first to prevent them from leaking literally
+            // Strip any backslash escape characters first as well
             let cleanText = rawText.replace(/\\/g, '').replace(/\*\*/g, '').replace(/\*/g, '');
 
             // Highlight Yuedong Tan name using a highly elegant underline
@@ -757,7 +896,7 @@
                 `;
             }
 
-            // Identify publication venue badges
+            // Identify publication venue badges (e.g. ICCV2025, Transactions, etc.)
             let venueBadgeHTML = "";
             if (cleanText.includes('ICCV2025') || cleanText.includes('ICCV 2025')) {
                 venueBadgeHTML = `<span class="inline-flex items-center px-2 py-0.5 rounded bg-indigo-100 dark:bg-indigo-900/40 text-indigo-700 dark:text-indigo-400 text-[10px] font-bold">ICCV 2025</span>`;
@@ -800,7 +939,10 @@
         };
 
         // Initialize loading on DOMContentLoaded
-        document.addEventListener('DOMContentLoaded', loadProfile);
+        document.addEventListener('DOMContentLoaded', () => {
+            loadProfile();
+            applyLanguage(currentLanguage); // initialize default or stored language
+        });
 
         // Theme toggler state
         const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
@@ -959,7 +1101,7 @@
                 });
             }, observerOptions);
 
-            revealElements.forEach(el => observer.observe(entryEl = el));
+            revealElements.forEach(el => observer.observe(el));
         }
 
         // --- 🌌 Dynamic Mouse Parallax Background Blobs ---
@@ -971,7 +1113,7 @@
             const mouseY = e.clientY;
 
             // Calculate offset relative to center of the viewport
-            const offsetX = (mouseX - window.innerWidth / 2) * 0.03; // Translate multiplier (adjust for intensity)
+            const offsetX = (mouseX - window.innerWidth / 2) * 0.03; // Translate multiplier
             const offsetY = (mouseY - window.innerHeight / 2) * 0.03;
 
             // Silky smooth translation drift mapped directly on the background glows
