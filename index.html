@@ -25,7 +25,7 @@
     <meta property="twitter:image" content="https://avatars.githubusercontent.com/u/49368772?v=4">
 
     <!-- Inline SVG Favicon (Elegant Academic Mortarboard) -->
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%231d1d1f'%3E%3Cpath d='M12 3L1 9l11 6l9-4.91V17h2V9L12 3z'/%3E%3Cpath d='M21.47 12.24L12 17.4l-9.47-5.16l-.88 1.63L12 19.6l10.35-5.73l-.88-1.63z'/%3E%3C/svg%3E">
+    <link class="fav-icon" rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%231d1d1f'%3E%3Cpath d='M12 3L1 9l11 6l9-4.91V17h2V9L12 3z'/%3E%3Cpath d='M21.47 12.24L12 17.4l-9.47-5.16l-.88 1.63L12 19.6l10.35-5.73l-.88-1.63z'/%3E%3C/svg%3E">
 
     <!-- Google Fonts: Plus Jakarta Sans & SF Pro-like alternative (Inter) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -65,6 +65,12 @@
                         'float': 'float 8s ease-in-out infinite',
                     },
                     keyframes: {
+                        blob: {
+                            '0%': { transform: 'translate(0px, 0px) scale(1)' },
+                            '33%': { transform: 'translate(30px, -30px) scale(1.05)' },
+                            '66%': { transform: 'translate(-20px, 20px) scale(0.98)' },
+                            '100%': { transform: 'translate(0px, 0px) scale(1)' },
+                        },
                         float: {
                             '0%, 100%': { transform: 'translateY(0)' },
                             '50%': { transform: 'translateY(-3px)' }
@@ -104,7 +110,7 @@
             width: 3px;
         }
         .news-scrollbox::-webkit-scrollbar-thumb {
-            background: #d1d1d6;
+            background: #e2e8f0;
             border-radius: 9999px;
         }
         .dark .news-scrollbox::-webkit-scrollbar-thumb {
@@ -178,13 +184,18 @@
 </head>
 <body class="bg-[#f5f5f7] text-[#1d1d1f] dark:bg-black dark:text-[#f5f5f7] font-sans transition-colors duration-500 selection:bg-neutral-800 dark:selection:bg-neutral-200 selection:text-white dark:selection:text-black">
 
+    <!-- Gradient Background Blobs -->
+    <div class="fixed inset-0 overflow-hidden pointer-events-none -z-10 opacity-30 dark:opacity-20">
+        <div id="blob-1" class="absolute top-[-10%] left-[-10%] w-[500px] h-[500px] rounded-full bg-primary-100 dark:bg-primary-900/30 blur-3xl transition-transform duration-700 ease-out"></div>
+        <div id="blob-2" class="absolute bottom-[-10%] right-[-10%] w-[600px] h-[600px] rounded-full bg-secondary-50 dark:bg-secondary-900/20 blur-3xl transition-transform duration-700 ease-out"></div>
+    </div>
+
     <!-- Sticky Header / Navigation (Apple design frosted bar) -->
     <header id="navbar" class="fixed top-0 left-0 w-full z-50 transition-all duration-300 border-b border-transparent bg-white/70 dark:bg-black/70 backdrop-blur-xl">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-14">
                 <!-- Logo -->
                 <a href="#" class="flex items-center space-x-1.5 group font-sans tracking-tight">
-                    <i class="fa-brands fa-apple text-lg text-[#1d1d1f] dark:text-[#f5f5f7] group-hover:scale-105 transition-transform duration-300"></i>
                     <span class="text-sm font-bold text-[#1d1d1f] dark:text-[#f5f5f7]">
                         Yuedong Tan
                     </span>
@@ -224,12 +235,12 @@
         <!-- Mobile Navigation Menu -->
         <div id="mobile-menu" class="hidden md:hidden absolute top-full left-0 w-full bg-white/95 dark:bg-black/95 backdrop-blur-md border-b border-neutral-200 dark:border-neutral-800 transition-all duration-300 shadow-lg">
             <div class="px-4 pt-2 pb-6 space-y-3">
-                <a href="#about" class="mobile-nav-link block px-4 py-2 rounded-xl text-sm font-medium text-neutral-600 dark:text-neutral-300 hover:bg-neutral-100 dark:hover:bg-neutral-900" data-translate="nav-home">Home</a>
-                <a href="#news" class="mobile-nav-link block px-4 py-2 rounded-xl text-sm font-medium text-neutral-600 dark:text-neutral-300 hover:bg-neutral-100 dark:hover:bg-neutral-900" data-translate="nav-news">News</a>
-                <a href="#focus-areas" class="mobile-nav-link block px-4 py-2 rounded-xl text-sm font-medium text-neutral-600 dark:text-neutral-300 hover:bg-neutral-100 dark:hover:bg-neutral-900" data-translate="nav-research">Research</a>
-                <a href="#publications" class="mobile-nav-link block px-4 py-2 rounded-xl text-sm font-medium text-neutral-600 dark:text-neutral-300 hover:bg-neutral-100 dark:hover:bg-neutral-900" data-translate="nav-publications">Publications</a>
-                <a href="#experience" class="mobile-nav-link block px-4 py-2 rounded-xl text-sm font-medium text-neutral-600 dark:text-neutral-300 hover:bg-neutral-100 dark:hover:bg-neutral-900" data-translate="nav-experience">Experience</a>
-                <a href="#contact" class="mobile-nav-link block px-4 py-2 rounded-xl text-sm font-medium text-neutral-600 dark:text-neutral-300 hover:bg-neutral-100 dark:hover:bg-neutral-900" data-translate="nav-contact">Contact</a>
+                <a href="#about" class="mobile-nav-link block px-4 py-2 text-sm font-medium text-neutral-600 dark:text-neutral-300 hover:bg-neutral-100 dark:hover:bg-neutral-900" data-translate="nav-home">Home</a>
+                <a href="#news" class="mobile-nav-link block px-4 py-2 text-sm font-medium text-neutral-600 dark:text-neutral-300 hover:bg-neutral-100 dark:hover:bg-neutral-900" data-translate="nav-news">News</a>
+                <a href="#focus-areas" class="mobile-nav-link block px-4 py-2 text-sm font-medium text-neutral-600 dark:text-neutral-300 hover:bg-neutral-100 dark:hover:bg-neutral-900" data-translate="nav-research">Research</a>
+                <a href="#publications" class="mobile-nav-link block px-4 py-2 text-sm font-medium text-neutral-600 dark:text-neutral-300 hover:bg-neutral-100 dark:hover:bg-neutral-900" data-translate="nav-publications">Publications</a>
+                <a href="#experience" class="mobile-nav-link block px-4 py-2 text-sm font-medium text-neutral-600 dark:text-neutral-300 hover:bg-neutral-100 dark:hover:bg-neutral-900" data-translate="nav-experience">Experience</a>
+                <a href="#contact" class="mobile-nav-link block px-4 py-2 text-sm font-medium text-neutral-600 dark:text-neutral-300 hover:bg-neutral-100 dark:hover:bg-neutral-900" data-translate="nav-contact">Contact</a>
             </div>
         </div>
     </header>
@@ -238,9 +249,9 @@
     <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-20">
         <div class="grid grid-cols-1 md:grid-cols-12 gap-10 items-start">
             
-            <!-- LEFT COLUMN (Sticky Profile Sidebar - Elegant Apple-floating) -->
+            <!-- LEFT COLUMN -->
             <aside class="md:col-span-4 md:sticky md:top-24 space-y-6 flex flex-col items-center md:items-start text-center md:text-left animate-float">
-                <!-- Profile Image with Soft-Square design (Apple-style Bento Frame) -->
+                <!-- Profile Image -->
                 <div class="relative w-48 h-48 sm:w-56 sm:h-56 md:w-60 md:h-64 group/prof shrink-0">
                     <div class="absolute inset-0 rounded-[24px] bg-neutral-200 dark:bg-[#1d1d1f] shadow-lg group-hover/prof:shadow-xl transition-all duration-500 overflow-hidden border border-neutral-200/50 dark:border-neutral-800">
                         <img src="https://avatars.githubusercontent.com/u/49368772?v=4" alt="Yuedong Tan" class="w-full h-full object-cover group-hover/prof:scale-102 transition-transform duration-500">
@@ -259,7 +270,7 @@
                         <span data-translate="sidebar-badge"> Intern at Apple</span>
                     </div>
 
-                    <div class="text-xs text-neutral-500 dark:text-neutral-400 space-y-2 font-medium leading-relaxed">
+                    <div class="text-sm text-neutral-500 dark:text-neutral-400 space-y-2 font-medium leading-relaxed font-sans">
                         <p><i class="fa-solid fa-graduation-cap mr-2 text-neutral-400"></i><span data-translate="sidebar-title">Student researcher @ INSAIT</span></p>
                         <p><i class="fa-solid fa-university mr-2 text-neutral-400"></i><span data-translate="sidebar-institution">University of Würzburg</span></p>
                         <p><i class="fa-solid fa-location-dot mr-2 text-neutral-400"></i><span data-translate="sidebar-location">Germany / China</span></p>
@@ -269,21 +280,21 @@
                     <div class="pt-2 flex flex-col space-y-2 text-xs font-semibold w-full max-w-[260px] mx-auto md:mx-0">
                         <a href="mailto:tydsuper@gmail.com" class="flex items-center space-x-3 px-3.5 py-2.5 rounded-xl bg-white dark:bg-[#1d1d1f] border border-neutral-200 dark:border-neutral-800 hover:border-neutral-400 dark:hover:border-neutral-600 transition-all duration-300">
                             <i class="fa-solid fa-envelope text-neutral-400 w-4"></i>
-                            <span class="text-neutral-700 dark:text-neutral-300">tydsuper@gmail.com</span>
+                            <span class="text-slate-700 dark:text-slate-300">tydsuper@gmail.com</span>
                         </a>
-                        <a href="https://scholar.google.com/citations?user=p7fOQkUAAAAJ" target="_blank" rel="noopener noreferrer" class="flex items-center space-x-3 px-3.5 py-2.5 rounded-xl bg-white dark:bg-[#1d1d1f] border border-neutral-200 dark:border-neutral-800 hover:border-neutral-400 dark:hover:border-neutral-600 transition-all duration-300">
+                        <a href="https://scholar.google.com/citations?user=p7fOQkUAAAAJ" target="_blank" rel="noopener noreferrer" class="flex items-center space-x-3 px-4 py-2.5 rounded-xl bg-white dark:bg-[#1d1d1f] border border-neutral-200 dark:border-neutral-800 hover:border-primary-500 dark:hover:border-primary-500 shadow-sm hover:shadow transition-all duration-300">
                             <i class="fa-solid fa-graduation-cap text-neutral-400 w-4"></i>
-                            <span class="text-neutral-700 dark:text-neutral-300">Google Scholar</span>
+                            <span class="text-slate-700 dark:text-slate-300">Google Scholar</span>
                         </a>
-                        <a href="https://github.com/supertyd" target="_blank" rel="noopener noreferrer" class="flex items-center space-x-3 px-3.5 py-2.5 rounded-xl bg-white dark:bg-[#1d1d1f] border border-neutral-200 dark:border-neutral-800 hover:border-neutral-400 dark:hover:border-neutral-600 transition-all duration-300">
+                        <a href="https://github.com/supertyd" target="_blank" rel="noopener noreferrer" class="flex items-center space-x-3 px-4 py-2.5 rounded-xl bg-white dark:bg-[#1d1d1f] border border-neutral-200 dark:border-neutral-800 hover:border-primary-500 dark:hover:border-primary-500 shadow-sm hover:shadow transition-all duration-300">
                             <i class="fa-brands fa-github text-neutral-400 w-4"></i>
-                            <span class="text-neutral-700 dark:text-neutral-300">supertyd GitHub</span>
+                            <span class="text-slate-700 dark:text-slate-300">supertyd GitHub</span>
                         </a>
                     </div>
                 </div>
             </aside>
 
-            <!-- RIGHT COLUMN (Scrollable Academic Content - Apple Bento Layout) -->
+            <!-- RIGHT COLUMN -->
             <div id="about" class="md:col-span-8 space-y-8 scroll-mt-20">
                 <!-- Brief Bio card at the very top -->
                 <div class="reveal-on-scroll p-6 sm:p-8 rounded-[18px] bg-white dark:bg-[#1c1c1e] border border-neutral-200 dark:border-[#2c2c2e] shadow-sm space-y-3">
@@ -303,9 +314,9 @@
                         <span data-translate="header-news">News</span>
                     </h2>
 
-                    <!-- Scroll Window Container with relative layout for absolute gradient overlays -->
+                    <!-- Scroll Window Container -->
                     <div class="relative">
-                        <!-- Top Fluid Gradient Mask (shows when scrolled down) -->
+                        <!-- Top Fluid Gradient Mask -->
                         <div id="news-mask-top" class="absolute top-0 left-0 right-0 h-10 bg-gradient-to-b from-[#f5f5f7] dark:from-black to-transparent pointer-events-none z-10 transition-opacity duration-300 opacity-0"></div>
                         
                         <!-- Vertically Scrollable Window -->
@@ -406,7 +417,7 @@
                     </div>
                 </section>
 
-                <!-- Education & Career Experience (Apple style bento lists) -->
+                <!-- Education & Career Experience -->
                 <section id="experience" class="space-y-4 scroll-mt-20">
                     <h2 class="text-lg font-bold tracking-tight flex items-center">
                         <span class="w-1 h-4 rounded-full bg-[#1d1d1f] dark:bg-[#f5f5f7] mr-2"></span>
@@ -499,7 +510,7 @@
                     <div class="space-y-4">
                         <h2 class="text-lg font-bold tracking-tight" data-translate="header-contact">Contact</h2>
                         
-                        <!-- Main Contact Card (Apple design Bento wrapper) -->
+                        <!-- Main Contact Card -->
                         <div id="contact-wrapper" class="relative overflow-hidden rounded-[18px] bg-white dark:bg-[#1c1c1e] border border-neutral-200 dark:border-[#2c2c2e] shadow-sm transition-all duration-500">
                             <!-- Success State Card -->
                             <div id="contact-success-state" class="absolute inset-0 bg-white dark:bg-[#1c1c1e] z-20 flex flex-col items-center justify-center p-6 text-center space-y-4 translate-y-full opacity-0 transition-all duration-500">
@@ -586,7 +597,7 @@
 }`,
             "xtrack": `@inproceedings{tan2024xtrack,
   title={XTrack: Multimodal Training Boosts RGB-X Video Object Trackers},
-  author={Tan, Yuedong and Wu, Zongwei and Fu, Yuqian and Zhou, Zhuyun and Sun, Guolei and Ma, Chao and Paudel, Danda Dani and Van Gool, Luc and Timofte, Radu},
+  author={Tan, Yuedong and Wu, Zongwei and Fu, Yuqian and Zhou, Zhuyun and Sun, Guolei and Ma, Chao&dagger; and Paudel, Danda Dani and Van Gool, Luc and Timofte, Radu},
   booktitle={Proceedings of the IEEE/CVF International Conference on Computer Vision (ICCV)},
   year={2025}
 }`,
@@ -598,7 +609,7 @@
 }`,
             "hhtrack": `@inproceedings{tan2023hhtrack,
   title={HHTrack: Hyperspectral Object Tracking Based on Hybrid Attention},
-  author={Tan, Yuedong and Sun, Wenfang and Yuan, Jieran and Du, Wenwang...},
+  author={Tan, Yuedong ...},
   booktitle={IEEE Workshop on Hyperspectral Image and Signal Processing: Evolution in Remote Sensing},
   year={2023}
 }`,
