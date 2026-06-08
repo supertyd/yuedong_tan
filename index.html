@@ -14,14 +14,14 @@
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://supertyd.github.io/yuedong_tan/">
     <meta property="og:title" content="Yuedong Tan | Personal Academic Homepage">
-    <meta property="og:description" content="Student researcher at INSAIT / University of Würzburg. Apple Research Intern. Working on MLLMs and Autonomous Agents.">
+    <meta property="og:description" content="Student researcher at INSAIT / University of Würzburg. Working on MLLMs and Autonomous Agents.">
     <meta property="og:image" content="https://avatars.githubusercontent.com/u/49368772?v=4">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://supertyd.github.io/yuedong_tan/">
     <meta property="twitter:title" content="Yuedong Tan | Personal Academic Homepage">
-    <meta property="twitter:description" content="Student researcher at INSAIT / University of Würzburg. Apple Research Intern. Working on MLLMs and Autonomous Agents.">
+    <meta property="twitter:description" content="Student researcher at INSAIT / University of Würzburg. Working on MLLMs and Autonomous Agents.">
     <meta property="twitter:image" content="https://avatars.githubusercontent.com/u/49368772?v=4">
 
     <!-- Inline SVG Favicon (Elegant Academic Mortarboard) -->
@@ -264,11 +264,6 @@
                         <h1 class="text-2xl font-bold tracking-tight text-[#1d1d1f] dark:text-[#f5f5f7]">Yuedong Tan</h1>
                         <p class="text-base font-semibold text-neutral-400 dark:text-neutral-500">谭跃东</p>
                     </div>
-                    
-                    <div class="inline-flex items-center space-x-1.5 px-3 py-1 rounded-full bg-neutral-200/50 dark:bg-neutral-900 text-[#1d1d1f] dark:text-[#f5f5f7] font-semibold text-[11px] tracking-tight">
-                        <i class="fa-brands fa-apple text-xs"></i>
-                        <span data-translate="sidebar-badge"> Intern at Apple</span>
-                    </div>
 
                     <div class="text-sm text-neutral-500 dark:text-neutral-400 space-y-2 font-medium leading-relaxed font-sans">
                         <p><i class="fa-solid fa-graduation-cap mr-2 text-neutral-400"></i><span data-translate="sidebar-title">Student researcher @ INSAIT</span></p>
@@ -390,7 +385,7 @@
                                 <div class="h-4 bg-neutral-200 dark:bg-neutral-800 rounded w-3/4"></div>
                                 <div class="space-y-2">
                                     <div class="h-4 bg-neutral-200 dark:bg-neutral-800 rounded"></div>
-                                    <div class="h-4 bg-neutral-200 dark:bg-neutral-800 rounded w-5/6"></div>
+                                    <div class="h-4 bg-slate-200 dark:bg-slate-800 rounded w-5/6"></div>
                                 </div>
                             </div>
                         </div>
@@ -960,7 +955,6 @@
         const backToTopBtn = document.getElementById('back-to-top');
 
         window.addEventListener('scroll', () => {
-            // Navbar bottom outline toggle on scroll
             if (window.scrollY > 30) {
                 navbar.classList.add('border-neutral-200/50', 'dark:border-neutral-800/80');
                 navbar.classList.remove('border-transparent');
@@ -969,7 +963,6 @@
                 navbar.classList.add('border-transparent');
             }
 
-            // Back to Top button effect
             if (window.scrollY > 300) {
                 backToTopBtn.classList.remove('opacity-0', 'translate-y-6', 'pointer-events-none');
                 backToTopBtn.classList.add('opacity-100', 'translate-y-0');
@@ -979,7 +972,6 @@
             }
         });
 
-        // Smooth scroll to top when clicking back-to-top
         backToTopBtn.addEventListener('click', () => {
             window.scrollTo({ top: 0, behavior: 'smooth' });
         });
@@ -992,7 +984,6 @@
         contactForm.addEventListener('submit', (e) => {
             e.preventDefault();
             const nameVal = document.getElementById('name').value;
-            
             successUserName.textContent = nameVal;
             successState.classList.remove('translate-y-full', 'opacity-0');
             successState.classList.add('translate-y-0', 'opacity-100');
