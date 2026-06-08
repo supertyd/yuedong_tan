@@ -25,55 +25,49 @@
     <meta property="twitter:image" content="https://avatars.githubusercontent.com/u/49368772?v=4">
 
     <!-- Inline SVG Favicon (Elegant Academic Mortarboard) -->
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%236366f1'%3E%3Cpath d='M12 3L1 9l11 6l9-4.91V17h2V9L12 3z'/%3E%3Cpath d='M21.47 12.24L12 17.4l-9.47-5.16l-.88 1.63L12 19.6l10.35-5.73l-.88-1.63z'/%3E%3C/svg%3E">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%231d1d1f'%3E%3Cpath d='M12 3L1 9l11 6l9-4.91V17h2V9L12 3z'/%3E%3Cpath d='M21.47 12.24L12 17.4l-9.47-5.16l-.88 1.63L12 19.6l10.35-5.73l-.88-1.63z'/%3E%3C/svg%3E">
 
-    <!-- Google Fonts: Plus Jakarta Sans -->
+    <!-- Google Fonts: Plus Jakarta Sans & SF Pro-like alternative (Inter) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <!-- Tailwind CSS with Typography Plugin CDN -->
     <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
     <!-- FontAwesome Icons CDN -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Marked.js Markdown Parser CDN -->
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-    <!-- Tailwind Custom Configuration -->
+    <!-- Tailwind Custom Configuration (Apple space theme mapped) -->
     <script>
         tailwind.config = {
             darkMode: 'class',
             theme: {
                 extend: {
                     fontFamily: {
-                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                        sans: ['Inter', '-apple-system', 'BlinkMacSystemFont', 'system-ui', 'sans-serif'],
                     },
                     colors: {
-                        primary: {
-                            50: '#f5f3ff',
-                            100: '#ede9fe',
-                            500: '#6366f1',
-                            600: '#4f46e5',
-                            700: '#4338ca',
+                        apple: {
+                            canvas: '#f5f5f7',
+                            card: '#ffffff',
+                            text: '#1d1d1f',
+                            line: '#e8e8ed',
+                            accent: '#0066cc', // Apple Pro Blue
                         },
-                        secondary: {
-                            50: '#f0fdfa',
-                            500: '#14b8a6',
-                            600: '#0d9488',
+                        appleDark: {
+                            canvas: '#000000',
+                            card: '#1d1d1f',
+                            text: '#f5f5f7',
+                            line: '#333336',
                         }
                     },
                     animation: {
-                        'blob': 'blob 12s infinite',
-                        'float': 'float 6s ease-in-out infinite',
+                        'float': 'float 8s ease-in-out infinite',
                     },
                     keyframes: {
-                        blob: {
-                            '0%': { transform: 'translate(0px, 0px) scale(1)' },
-                            '33%': { transform: 'translate(30px, -30px) scale(1.05)' },
-                            '66%': { transform: 'translate(-20px, 20px) scale(0.98)' },
-                            '100%': { transform: 'translate(0px, 0px) scale(1)' },
-                        },
                         float: {
                             '0%, 100%': { transform: 'translateY(0)' },
-                            '50%': { transform: 'translateY(-4px)' }
+                            '50%': { transform: 'translateY(-3px)' }
                         }
                     }
                 }
@@ -89,20 +83,20 @@
             background: transparent;
         }
         .dark ::-webkit-scrollbar-track {
-            background: #0f172a;
+            background: #000000;
         }
         ::-webkit-scrollbar-thumb {
             background: #cbd5e1;
             border-radius: 4px;
         }
         .dark ::-webkit-scrollbar-thumb {
-            background: #334155;
+            background: #2d2d2f;
         }
         ::-webkit-scrollbar-thumb:hover {
             background: #94a3b8;
         }
         .dark ::-webkit-scrollbar-thumb:hover {
-            background: #475569;
+            background: #3d3d3f;
         }
 
         /* Hide default scrollbar inside the news scroll box */
@@ -110,18 +104,18 @@
             width: 3px;
         }
         .news-scrollbox::-webkit-scrollbar-thumb {
-            background: #e2e8f0;
+            background: #d1d1d6;
             border-radius: 9999px;
         }
         .dark .news-scrollbox::-webkit-scrollbar-thumb {
-            background: #1e293b;
+            background: #424245;
         }
 
         /* --- Scroll Reveal Classes --- */
         .reveal-on-scroll {
             opacity: 0;
-            transform: translateY(24px);
-            transition: opacity 1s cubic-bezier(0.25, 1, 0.5, 1), transform 1s cubic-bezier(0.25, 1, 0.5, 1);
+            transform: translateY(16px);
+            transition: opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1), transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
             will-change: transform, opacity;
         }
         .reveal-on-scroll.revealed {
@@ -129,36 +123,7 @@
             transform: translateY(0);
         }
 
-        /* --- 🌐 Technical Dot Grid Background --- */
-        .tech-grid-bg {
-            background-size: 36px 36px;
-            background-image: radial-gradient(circle, rgba(99, 102, 241, 0.04) 1px, transparent 1px);
-        }
-        .dark .tech-grid-bg {
-            background-image: radial-gradient(circle, rgba(99, 102, 241, 0.08) 1px, transparent 1px);
-        }
-
-        /* --- 💫 Glossy Shimmer Sweep button effect --- */
-        .btn-shimmer {
-            position: relative;
-            overflow: hidden;
-        }
-        .btn-shimmer::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -150%;
-            width: 50%;
-            height: 100%;
-            background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.25), transparent);
-            transform: skewX(-25deg);
-            transition: 0.75s;
-        }
-        .btn-shimmer:hover::after {
-            left: 150%;
-        }
-
-        /* --- Elite Academic Print Stylesheet --- */
+        /* --- Apple Print Stylesheet --- */
         @media print {
             body {
                 background: #ffffff !important;
@@ -211,158 +176,150 @@
         }
     </style>
 </head>
-<body class="tech-grid-bg bg-slate-50 text-slate-800 dark:bg-slate-950 dark:text-slate-100 font-sans transition-colors duration-300 selection:bg-primary-500 selection:text-white">
+<body class="bg-[#f5f5f7] text-[#1d1d1f] dark:bg-black dark:text-[#f5f5f7] font-sans transition-colors duration-500 selection:bg-neutral-800 dark:selection:bg-neutral-200 selection:text-white dark:selection:text-black">
 
-    <!-- Gradient Background Blobs -->
-    <div class="fixed inset-0 overflow-hidden pointer-events-none -z-10 opacity-30 dark:opacity-20">
-        <div id="blob-1" class="absolute top-[-10%] left-[-10%] w-[500px] h-[500px] rounded-full bg-primary-100 dark:bg-primary-900/30 blur-3xl transition-transform duration-700 ease-out"></div>
-        <div id="blob-2" class="absolute bottom-[-10%] right-[-10%] w-[600px] h-[600px] rounded-full bg-secondary-50 dark:bg-secondary-900/20 blur-3xl transition-transform duration-700 ease-out"></div>
-    </div>
-
-    <!-- Sticky Header / Navigation -->
-    <header id="navbar" class="fixed top-0 left-0 w-full z-50 transition-all duration-300 border-b border-transparent">
+    <!-- Sticky Header / Navigation (Apple design frosted bar) -->
+    <header id="navbar" class="fixed top-0 left-0 w-full z-50 transition-all duration-300 border-b border-transparent bg-white/70 dark:bg-black/70 backdrop-blur-xl">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex items-center justify-between h-20">
+            <div class="flex items-center justify-between h-14">
                 <!-- Logo -->
-                <a href="#" class="flex items-center space-x-2 group">
-                    <span class="text-xl font-extrabold bg-gradient-to-r from-primary-600 to-secondary-500 bg-clip-text text-transparent group-hover:from-secondary-500 group-hover:to-primary-600 transition-all duration-500">
+                <a href="#" class="flex items-center space-x-1.5 group font-sans tracking-tight">
+                    <i class="fa-brands fa-apple text-lg text-[#1d1d1f] dark:text-[#f5f5f7] group-hover:scale-105 transition-transform duration-300"></i>
+                    <span class="text-sm font-bold text-[#1d1d1f] dark:text-[#f5f5f7]">
                         Yuedong Tan
                     </span>
-                    <span class="w-1.5 h-1.5 rounded-full bg-secondary-500 animate-pulse"></span>
                 </a>
 
-                <!-- Desktop Navigation Links (Full List) -->
+                <!-- Desktop Navigation Links -->
                 <nav class="hidden md:flex items-center space-x-6">
-                    <a href="#about" class="nav-link text-sm font-semibold hover:text-primary-600 dark:hover:text-primary-500 transition-colors" data-translate="nav-home">Home</a>
-                    <a href="#news" class="nav-link text-sm font-semibold hover:text-primary-600 dark:hover:text-primary-500 transition-colors" data-translate="nav-news">News</a>
-                    <a href="#focus-areas" class="nav-link text-sm font-semibold hover:text-primary-600 dark:hover:text-primary-500 transition-colors" data-translate="nav-research">Research</a>
-                    <a href="#publications" class="nav-link text-sm font-semibold hover:text-primary-600 dark:hover:text-primary-500 transition-colors" data-translate="nav-publications">Publications</a>
-                    <a href="#experience" class="nav-link text-sm font-semibold hover:text-primary-600 dark:hover:text-primary-500 transition-colors" data-translate="nav-experience">Experience</a>
-                    <a href="#contact" class="nav-link text-sm font-semibold hover:text-primary-600 dark:hover:text-primary-500 transition-colors" data-translate="nav-contact">Contact</a>
+                    <a href="#about" class="nav-link text-xs font-semibold text-neutral-500 hover:text-black dark:text-neutral-400 dark:hover:text-white transition-colors" data-translate="nav-home">Home</a>
+                    <a href="#news" class="nav-link text-xs font-semibold text-neutral-500 hover:text-black dark:text-neutral-400 dark:hover:text-white transition-colors" data-translate="nav-news">News</a>
+                    <a href="#focus-areas" class="nav-link text-xs font-semibold text-neutral-500 hover:text-black dark:text-neutral-400 dark:hover:text-white transition-colors" data-translate="nav-research">Research</a>
+                    <a href="#publications" class="nav-link text-xs font-semibold text-neutral-500 hover:text-black dark:text-neutral-400 dark:hover:text-white transition-colors" data-translate="nav-publications">Publications</a>
+                    <a href="#experience" class="nav-link text-xs font-semibold text-neutral-500 hover:text-black dark:text-neutral-400 dark:hover:text-white transition-colors" data-translate="nav-experience">Experience</a>
+                    <a href="#contact" class="nav-link text-xs font-semibold text-neutral-500 hover:text-black dark:text-neutral-400 dark:hover:text-white transition-colors" data-translate="nav-contact">Contact</a>
                 </nav>
 
-                <!-- Header Actions (Dark mode toggle + Bilingual Switcher + Mobile menu button) -->
-                <div class="flex items-center space-x-3">
-                    <!-- Bilingual Switcher Button (Shimmer Sweep added) -->
-                    <button id="lang-toggle" class="btn-shimmer px-3 py-1.5 rounded-xl border border-slate-200 dark:border-slate-800 text-xs font-extrabold text-slate-700 dark:text-slate-300 hover:text-primary-500 hover:border-primary-500 dark:hover:text-primary-400 dark:hover:border-primary-400 transition-all duration-300 bg-white dark:bg-slate-900 shadow-sm" aria-label="Toggle Language">
+                <!-- Header Actions -->
+                <div class="flex items-center space-x-3.5">
+                    <!-- Bilingual Switcher Button -->
+                    <button id="lang-toggle" class="px-2.5 py-1 rounded-lg border border-neutral-200 dark:border-neutral-800 text-[10px] font-extrabold text-neutral-600 dark:text-neutral-300 hover:text-black dark:hover:text-white hover:border-black dark:hover:border-white transition-all duration-300 bg-white dark:bg-[#1d1d1f]" aria-label="Toggle Language">
                         中
                     </button>
 
                     <!-- Dark Mode Toggle Button -->
-                    <button id="theme-toggle" class="p-2 rounded-xl bg-white dark:bg-slate-900 shadow-sm border border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-300 hover:text-primary-600 dark:hover:text-primary-500 focus:outline-none transition-all duration-300" aria-label="Toggle Theme">
+                    <button id="theme-toggle" class="text-neutral-500 hover:text-black dark:text-neutral-400 dark:hover:text-white focus:outline-none transition-colors duration-300" aria-label="Toggle Theme">
                         <i id="theme-toggle-dark-icon" class="fa-solid fa-moon text-sm hidden"></i>
                         <i id="theme-toggle-light-icon" class="fa-solid fa-sun text-sm hidden"></i>
                     </button>
 
                     <!-- Mobile Menu Button -->
-                    <button id="mobile-menu-button" class="md:hidden p-2.5 rounded-xl bg-white dark:bg-slate-900 shadow-sm border border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-300 focus:outline-none" aria-label="Toggle Menu">
-                        <i class="fa-solid fa-bars text-lg"></i>
+                    <button id="mobile-menu-button" class="md:hidden text-neutral-500 hover:text-black dark:text-neutral-400 dark:hover:text-white focus:outline-none" aria-label="Toggle Menu">
+                        <i class="fa-solid fa-bars text-base"></i>
                     </button>
                 </div>
             </div>
         </div>
 
         <!-- Mobile Navigation Menu -->
-        <div id="mobile-menu" class="hidden md:hidden absolute top-full left-0 w-full bg-white/95 dark:bg-slate-950/95 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 transition-all duration-300 shadow-lg">
+        <div id="mobile-menu" class="hidden md:hidden absolute top-full left-0 w-full bg-white/95 dark:bg-black/95 backdrop-blur-md border-b border-neutral-200 dark:border-neutral-800 transition-all duration-300 shadow-lg">
             <div class="px-4 pt-2 pb-6 space-y-3">
-                <a href="#about" class="mobile-nav-link block px-4 py-2.5 rounded-xl font-medium text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-900 hover:text-primary-600 dark:hover:text-primary-500" data-translate="nav-home">Home</a>
-                <a href="#news" class="mobile-nav-link block px-4 py-2.5 rounded-xl font-medium text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-900 hover:text-primary-600 dark:hover:text-primary-500" data-translate="nav-news">News</a>
-                <a href="#focus-areas" class="mobile-nav-link block px-4 py-2.5 rounded-xl font-medium text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-900 hover:text-primary-600 dark:hover:text-primary-500" data-translate="nav-research">Research</a>
-                <a href="#publications" class="mobile-nav-link block px-4 py-2.5 rounded-xl font-medium text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-900 hover:text-primary-600 dark:hover:text-primary-500" data-translate="nav-publications">Publications</a>
-                <a href="#experience" class="mobile-nav-link block px-4 py-2.5 rounded-xl font-medium text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-900 hover:text-primary-600 dark:hover:text-primary-500" data-translate="nav-experience">Experience</a>
-                <a href="#contact" class="mobile-nav-link block px-4 py-2.5 rounded-xl font-medium text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-900 hover:text-primary-600 dark:hover:text-primary-500" data-translate="nav-contact">Contact</a>
+                <a href="#about" class="mobile-nav-link block px-4 py-2 rounded-xl text-sm font-medium text-neutral-600 dark:text-neutral-300 hover:bg-neutral-100 dark:hover:bg-neutral-900" data-translate="nav-home">Home</a>
+                <a href="#news" class="mobile-nav-link block px-4 py-2 rounded-xl text-sm font-medium text-neutral-600 dark:text-neutral-300 hover:bg-neutral-100 dark:hover:bg-neutral-900" data-translate="nav-news">News</a>
+                <a href="#focus-areas" class="mobile-nav-link block px-4 py-2 rounded-xl text-sm font-medium text-neutral-600 dark:text-neutral-300 hover:bg-neutral-100 dark:hover:bg-neutral-900" data-translate="nav-research">Research</a>
+                <a href="#publications" class="mobile-nav-link block px-4 py-2 rounded-xl text-sm font-medium text-neutral-600 dark:text-neutral-300 hover:bg-neutral-100 dark:hover:bg-neutral-900" data-translate="nav-publications">Publications</a>
+                <a href="#experience" class="mobile-nav-link block px-4 py-2 rounded-xl text-sm font-medium text-neutral-600 dark:text-neutral-300 hover:bg-neutral-100 dark:hover:bg-neutral-900" data-translate="nav-experience">Experience</a>
+                <a href="#contact" class="mobile-nav-link block px-4 py-2 rounded-xl text-sm font-medium text-neutral-600 dark:text-neutral-300 hover:bg-neutral-100 dark:hover:bg-neutral-900" data-translate="nav-contact">Contact</a>
             </div>
         </div>
     </header>
 
     <!-- Main Content Grid -->
-    <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-32 pb-20">
-        <div class="grid grid-cols-1 md:grid-cols-12 gap-12 items-start">
+    <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-20">
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-10 items-start">
             
-            <!-- LEFT COLUMN (Sticky Profile Sidebar - 3D Gentle float animation applied) -->
-            <aside class="md:col-span-4 md:sticky md:top-28 space-y-6 flex flex-col items-center md:items-start text-center md:text-left animate-float">
-                <!-- Profile Image with Soft-Square design -->
-                <div class="relative w-48 h-48 sm:w-56 sm:h-56 md:w-64 md:h-64 group/prof">
-                    <div class="absolute inset-0 rounded-3xl bg-gradient-to-tr from-primary-500 to-secondary-500 opacity-20 blur-xl group-hover/prof:opacity-40 group-hover/prof:scale-105 transition-all duration-500"></div>
-                    <div class="absolute -inset-1 rounded-3xl bg-gradient-to-tr from-primary-600 to-secondary-500 opacity-30 blur-sm group-hover/prof:opacity-50 transition-all duration-500"></div>
-                    <div class="absolute inset-0 rounded-3xl bg-white dark:bg-slate-900 border-4 border-white dark:border-slate-800 shadow-xl overflow-hidden">
-                        <img src="https://avatars.githubusercontent.com/u/49368772?v=4" alt="Yuedong Tan" class="w-full h-full object-cover group-hover/prof:scale-105 transition-transform duration-500">
+            <!-- LEFT COLUMN (Sticky Profile Sidebar - Elegant Apple-floating) -->
+            <aside class="md:col-span-4 md:sticky md:top-24 space-y-6 flex flex-col items-center md:items-start text-center md:text-left animate-float">
+                <!-- Profile Image with Soft-Square design (Apple-style Bento Frame) -->
+                <div class="relative w-48 h-48 sm:w-56 sm:h-56 md:w-60 md:h-64 group/prof shrink-0">
+                    <div class="absolute inset-0 rounded-[24px] bg-neutral-200 dark:bg-[#1d1d1f] shadow-lg group-hover/prof:shadow-xl transition-all duration-500 overflow-hidden border border-neutral-200/50 dark:border-neutral-800">
+                        <img src="https://avatars.githubusercontent.com/u/49368772?v=4" alt="Yuedong Tan" class="w-full h-full object-cover group-hover/prof:scale-102 transition-transform duration-500">
                     </div>
                 </div>
 
                 <!-- Personal Info -->
                 <div class="space-y-4 w-full">
-                    <div class="space-y-1.5">
-                        <h1 class="text-3xl font-extrabold tracking-tight">Yuedong Tan</h1>
-                        <p class="text-lg font-bold bg-gradient-to-r from-primary-600 to-secondary-500 bg-clip-text text-transparent">谭跃东</p>
+                    <div class="space-y-1">
+                        <h1 class="text-2xl font-bold tracking-tight text-[#1d1d1f] dark:text-[#f5f5f7]">Yuedong Tan</h1>
+                        <p class="text-base font-semibold text-neutral-400 dark:text-neutral-500">谭跃东</p>
                     </div>
                     
-                    <div class="inline-flex items-center space-x-1.5 px-3 py-1 rounded-full bg-primary-100/60 dark:bg-primary-900/30 text-primary-600 dark:text-primary-400 font-semibold text-xs tracking-wider">
-                        <span class="w-1.5 h-1.5 rounded-full bg-primary-500 animate-pulse"></span>
+                    <div class="inline-flex items-center space-x-1.5 px-3 py-1 rounded-full bg-neutral-200/50 dark:bg-neutral-900 text-[#1d1d1f] dark:text-[#f5f5f7] font-semibold text-[11px] tracking-tight">
+                        <i class="fa-brands fa-apple text-xs"></i>
                         <span data-translate="sidebar-badge"> Intern at Apple</span>
                     </div>
 
-                    <div class="text-sm text-slate-600 dark:text-slate-400 space-y-2 font-medium leading-relaxed font-sans">
-                        <p><i class="fa-solid fa-graduation-cap mr-2 text-primary-500"></i><span data-translate="sidebar-title">Student researcher @ INSAIT</span></p>
-                        <p><i class="fa-solid fa-university mr-2 text-primary-500"></i><span data-translate="sidebar-institution">University of Würzburg</span></p>
-                        <p><i class="fa-solid fa-location-dot mr-2 text-primary-500"></i><span data-translate="sidebar-location">Germany / China</span></p>
+                    <div class="text-xs text-neutral-500 dark:text-neutral-400 space-y-2 font-medium leading-relaxed">
+                        <p><i class="fa-solid fa-graduation-cap mr-2 text-neutral-400"></i><span data-translate="sidebar-title">Student researcher @ INSAIT</span></p>
+                        <p><i class="fa-solid fa-university mr-2 text-neutral-400"></i><span data-translate="sidebar-institution">University of Würzburg</span></p>
+                        <p><i class="fa-solid fa-location-dot mr-2 text-neutral-400"></i><span data-translate="sidebar-location">Germany / China</span></p>
                     </div>
 
                     <!-- Action Link List -->
-                    <div class="pt-2 flex flex-col space-y-2.5 text-sm font-semibold w-full max-w-[280px] mx-auto md:mx-0">
-                        <a href="mailto:tydsuper@gmail.com" class="flex items-center space-x-3 px-4 py-2.5 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:border-primary-500 dark:hover:border-primary-500 shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-300">
-                            <i class="fa-solid fa-envelope text-primary-500 w-4"></i>
-                            <span class="text-slate-700 dark:text-slate-300">tydsuper@gmail.com</span>
+                    <div class="pt-2 flex flex-col space-y-2 text-xs font-semibold w-full max-w-[260px] mx-auto md:mx-0">
+                        <a href="mailto:tydsuper@gmail.com" class="flex items-center space-x-3 px-3.5 py-2.5 rounded-xl bg-white dark:bg-[#1d1d1f] border border-neutral-200 dark:border-neutral-800 hover:border-neutral-400 dark:hover:border-neutral-600 transition-all duration-300">
+                            <i class="fa-solid fa-envelope text-neutral-400 w-4"></i>
+                            <span class="text-neutral-700 dark:text-neutral-300">tydsuper@gmail.com</span>
                         </a>
-                        <a href="https://scholar.google.com/citations?user=p7fOQkUAAAAJ" target="_blank" rel="noopener noreferrer" class="flex items-center space-x-3 px-4 py-2.5 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:border-primary-500 dark:hover:border-primary-500 shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-300">
-                            <i class="fa-solid fa-graduation-cap text-primary-500 w-4"></i>
-                            <span class="text-slate-700 dark:text-slate-300">Google Scholar</span>
+                        <a href="https://scholar.google.com/citations?user=p7fOQkUAAAAJ" target="_blank" rel="noopener noreferrer" class="flex items-center space-x-3 px-3.5 py-2.5 rounded-xl bg-white dark:bg-[#1d1d1f] border border-neutral-200 dark:border-neutral-800 hover:border-neutral-400 dark:hover:border-neutral-600 transition-all duration-300">
+                            <i class="fa-solid fa-graduation-cap text-neutral-400 w-4"></i>
+                            <span class="text-neutral-700 dark:text-neutral-300">Google Scholar</span>
                         </a>
-                        <a href="https://github.com/supertyd" target="_blank" rel="noopener noreferrer" class="flex items-center space-x-3 px-4 py-2.5 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:border-primary-500 dark:hover:border-primary-500 shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-300">
-                            <i class="fa-brands fa-github text-primary-500 w-4"></i>
-                            <span class="text-slate-700 dark:text-slate-300">supertyd GitHub</span>
+                        <a href="https://github.com/supertyd" target="_blank" rel="noopener noreferrer" class="flex items-center space-x-3 px-3.5 py-2.5 rounded-xl bg-white dark:bg-[#1d1d1f] border border-neutral-200 dark:border-neutral-800 hover:border-neutral-400 dark:hover:border-neutral-600 transition-all duration-300">
+                            <i class="fa-brands fa-github text-neutral-400 w-4"></i>
+                            <span class="text-neutral-700 dark:text-neutral-300">supertyd GitHub</span>
                         </a>
                     </div>
                 </div>
             </aside>
 
-            <!-- RIGHT COLUMN (Scrollable Academic Content) -->
-            <div id="about" class="md:col-span-8 space-y-12 scroll-mt-28">
+            <!-- RIGHT COLUMN (Scrollable Academic Content - Apple Bento Layout) -->
+            <div id="about" class="md:col-span-8 space-y-8 scroll-mt-20">
                 <!-- Brief Bio card at the very top -->
-                <div class="spotlight-card reveal-on-scroll p-6 sm:p-8 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm space-y-4">
-                    <h2 class="text-xl font-bold tracking-tight flex items-center">
-                        <span class="w-1.5 h-6 rounded-full bg-primary-600 mr-2.5"></span>
+                <div class="reveal-on-scroll p-6 sm:p-8 rounded-[18px] bg-white dark:bg-[#1c1c1e] border border-neutral-200 dark:border-[#2c2c2e] shadow-sm space-y-3">
+                    <h2 class="text-lg font-bold tracking-tight flex items-center">
+                        <span class="w-1 h-4 rounded-full bg-[#1d1d1f] dark:bg-[#f5f5f7] mr-2"></span>
                         <span data-translate="header-intro">Introduction</span>
                     </h2>
-                    <p id="main-bio" class="text-base sm:text-lg text-slate-700 dark:text-slate-300 font-normal leading-relaxed">
+                    <p id="main-bio" class="text-sm sm:text-base text-neutral-600 dark:text-neutral-300 font-normal leading-relaxed">
                         <!-- Filled in dynamically by JS depending on Language -->
                     </p>
                 </div>
 
                 <!-- Custom Beautiful Scrollable News Timeline Section -->
-                <section id="news" class="spotlight-card reveal-on-scroll space-y-6 scroll-mt-28">
-                    <h2 class="text-2xl font-extrabold tracking-tight flex items-center">
-                        <span class="w-1.5 h-6 rounded-full bg-primary-600 mr-2.5"></span>
+                <section id="news" class="space-y-4 scroll-mt-20">
+                    <h2 class="text-lg font-bold tracking-tight flex items-center">
+                        <span class="w-1 h-4 rounded-full bg-[#1d1d1f] dark:bg-[#f5f5f7] mr-2"></span>
                         <span data-translate="header-news">News</span>
                     </h2>
 
                     <!-- Scroll Window Container with relative layout for absolute gradient overlays -->
                     <div class="relative">
                         <!-- Top Fluid Gradient Mask (shows when scrolled down) -->
-                        <div id="news-mask-top" class="absolute top-0 left-0 right-0 h-10 bg-gradient-to-b from-slate-50 dark:from-slate-950 to-transparent pointer-events-none z-10 transition-opacity duration-300 opacity-0"></div>
+                        <div id="news-mask-top" class="absolute top-0 left-0 right-0 h-10 bg-gradient-to-b from-[#f5f5f7] dark:from-black to-transparent pointer-events-none z-10 transition-opacity duration-300 opacity-0"></div>
                         
                         <!-- Vertically Scrollable Window -->
-                        <div id="news-scroll-window" class="news-scrollbox max-h-[250px] overflow-y-auto pr-2 scroll-smooth pl-6 border-l-2 border-slate-200 dark:border-slate-800 space-y-8">
+                        <div id="news-scroll-window" class="news-scrollbox max-h-[220px] overflow-y-auto pr-2 scroll-smooth pl-6 border-l border-neutral-200 dark:border-neutral-800 space-y-6">
                             
                             <!-- News Item 1 -->
                             <div class="relative group">
-                                <div class="absolute -left-[31px] top-1 w-4 h-4 rounded-full bg-primary-500 border-4 border-slate-50 dark:border-slate-950 group-hover:scale-125 transition-transform duration-300 flex items-center justify-center"></div>
-                                <div class="space-y-2">
+                                <div class="absolute -left-[30px] top-1 w-3 h-3 rounded-full bg-neutral-400 dark:bg-neutral-600 border-2 border-white dark:border-black group-hover:scale-125 transition-transform duration-300"></div>
+                                <div class="space-y-1">
                                     <div class="flex items-center space-x-2">
-                                        <span class="px-2.5 py-0.5 rounded-lg bg-primary-100 dark:bg-primary-900/30 text-primary-600 dark:text-primary-400 text-xs font-bold font-mono">Mar. 2026</span>
-                                        <span class="inline-flex items-center px-1.5 py-0.5 rounded-md bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-[10px] font-bold"><i class="fa-brands fa-apple mr-1 text-slate-800 dark:text-white"></i>APPLE</span>
+                                        <span class="px-2 py-0.5 rounded bg-neutral-200/60 dark:bg-neutral-900 text-neutral-600 dark:text-neutral-400 text-[10px] font-bold font-mono">Mar. 2026</span>
+                                        <span class="inline-flex items-center px-1.5 py-0.5 rounded bg-neutral-200/30 dark:bg-neutral-900 text-[9px] font-bold text-neutral-500"><i class="fa-brands fa-apple mr-1"></i>APPLE</span>
                                     </div>
-                                    <p class="text-base text-slate-700 dark:text-slate-300 font-medium leading-relaxed" data-translate="news-1">
+                                    <p class="text-sm text-neutral-600 dark:text-neutral-300 font-medium leading-relaxed" data-translate="news-1">
                                         I am excited to share that I have started my internship at Apple!
                                     </p>
                                 </div>
@@ -370,194 +327,192 @@
 
                             <!-- News Item 2 -->
                             <div class="relative group">
-                                <div class="absolute -left-[31px] top-1 w-4 h-4 rounded-full bg-primary-500 border-4 border-slate-50 dark:border-slate-950 group-hover:scale-125 transition-transform duration-300 flex items-center justify-center"></div>
-                                <div class="space-y-2">
+                                <div class="absolute -left-[30px] top-1 w-3 h-3 rounded-full bg-neutral-400 dark:bg-neutral-600 border-2 border-white dark:border-black group-hover:scale-125 transition-transform duration-300"></div>
+                                <div class="space-y-1">
                                     <div class="flex items-center space-x-2">
-                                        <span class="px-2.5 py-0.5 rounded-lg bg-primary-100 dark:bg-primary-900/30 text-primary-600 dark:text-primary-400 text-xs font-bold font-mono">Feb. 2026</span>
-                                        <span class="inline-flex items-center px-1.5 py-0.5 rounded-md bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-[10px] font-bold">WORKSHOP</span>
+                                        <span class="px-2 py-0.5 rounded bg-neutral-200/60 dark:bg-neutral-900 text-neutral-600 dark:text-neutral-400 text-[10px] font-bold font-mono">Feb. 2026</span>
+                                        <span class="inline-flex items-center px-1.5 py-0.5 rounded bg-neutral-200/30 dark:bg-neutral-900 text-[9px] font-bold text-neutral-500">WORKSHOP</span>
                                     </div>
-                                    <p class="text-base text-slate-700 dark:text-slate-300 font-medium leading-relaxed" data-translate="news-2">
+                                    <p class="text-sm text-neutral-600 dark:text-neutral-300 font-medium leading-relaxed" data-translate="news-2">
                                         We are organizing the CVPR 2026 Workshop on Unified Robotic Vision with Cross-Modal Sensing and Alignment.
                                     </p>
-                                    <a href="https://urvis-workshop.github.io/" target="_blank" rel="noopener noreferrer" class="btn-shimmer inline-flex items-center text-xs font-bold text-primary-600 dark:text-primary-400 hover:underline">
+                                    <a href="https://urvis-workshop.github.io/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center text-[11px] font-bold text-[#0066cc] dark:text-[#2997ff] hover:underline">
                                         <span data-translate="news-btn-workshop">URVIS Workshop Website</span>
-                                        <i class="fa-solid fa-arrow-up-right-from-square ml-1 text-[10px]"></i>
+                                        <i class="fa-solid fa-arrow-up-right-from-square ml-1 text-[9px]"></i>
                                     </a>
                                 </div>
                             </div>
 
                             <!-- News Item 3 -->
                             <div class="relative group">
-                                <div class="absolute -left-[31px] top-1 w-4 h-4 rounded-full bg-primary-500 border-4 border-slate-50 dark:border-slate-950 group-hover:scale-125 transition-transform duration-300 flex items-center justify-center"></div>
-                                <div class="space-y-2">
+                                <div class="absolute -left-[30px] top-1 w-3 h-3 rounded-full bg-neutral-400 dark:bg-neutral-600 border-2 border-white dark:border-black group-hover:scale-125 transition-transform duration-300"></div>
+                                <div class="space-y-1">
                                     <div class="flex items-center space-x-2">
-                                        <span class="px-2.5 py-0.5 rounded-lg bg-primary-100 dark:bg-primary-900/30 text-primary-600 dark:text-primary-400 text-xs font-bold font-mono">Oct. 2025</span>
-                                        <span class="inline-flex items-center px-1.5 py-0.5 rounded-md bg-amber-100 dark:bg-amber-900/30 text-amber-600 dark:text-amber-400 text-[10px] font-bold"><i class="fa-solid fa-award mr-1"></i>AWARD</span>
+                                        <span class="px-2 py-0.5 rounded bg-neutral-200/60 dark:bg-neutral-900 text-neutral-600 dark:text-neutral-400 text-[10px] font-bold font-mono">Oct. 2025</span>
+                                        <span class="inline-flex items-center px-1.5 py-0.5 rounded bg-amber-100/30 dark:bg-amber-900/10 text-amber-600 dark:text-amber-500 text-[9px] font-bold">AWARD</span>
                                     </div>
-                                    <p class="text-base text-slate-700 dark:text-slate-300 font-medium leading-relaxed" data-translate="news-3">
+                                    <p class="text-sm text-neutral-600 dark:text-neutral-300 font-medium leading-relaxed" data-translate="news-3">
                                         I am thrilled to announce that our project has been selected for a generous GPU grant from TeleAI. We are incredibly grateful for their support, as only 10 projects were chosen for this award.
                                     </p>
-                                    <a href="https://mp.weixin.qq.com/s/u3X_NV_791bwo42VaFkWgw?scene=1&click_id=4" target="_blank" rel="noopener noreferrer" class="btn-shimmer inline-flex items-center text-xs font-bold text-primary-600 dark:text-primary-400 hover:underline">
+                                    <a href="https://mp.weixin.qq.com/s/u3X_NV_791bwo42VaFkWgw?scene=1&click_id=4" target="_blank" rel="noopener noreferrer" class="inline-flex items-center text-[11px] font-bold text-[#0066cc] dark:text-[#2997ff] hover:underline">
                                         <span data-translate="news-btn-award">Announcement Link</span>
-                                        <i class="fa-solid fa-arrow-up-right-from-square ml-1 text-[10px]"></i>
+                                        <i class="fa-solid fa-arrow-up-right-from-square ml-1 text-[9px]"></i>
                                     </a>
                                 </div>
                             </div>
                         </div>
 
                         <!-- Bottom Fluid Gradient Mask -->
-                        <div id="news-mask-bottom" class="absolute bottom-0 left-0 right-0 h-10 bg-gradient-to-t from-slate-50 dark:from-slate-950 to-transparent pointer-events-none z-10 transition-opacity duration-300"></div>
+                        <div id="news-mask-bottom" class="absolute bottom-0 left-0 right-0 h-10 bg-gradient-to-t from-[#f5f5f7] dark:from-black to-transparent pointer-events-none z-10 transition-opacity duration-300"></div>
                     </div>
                 </section>
 
-                <!-- Primary Focus Areas Section (Loaded dynamically) -->
-                <section id="focus-areas" class="reveal-on-scroll space-y-4 scroll-mt-28">
-                    <h2 class="text-2xl font-extrabold tracking-tight flex items-center">
-                        <span class="w-1.5 h-6 rounded-full bg-primary-600 mr-2.5"></span>
+                <!-- Primary Focus Areas Section -->
+                <section id="focus-areas" class="space-y-3 scroll-mt-20">
+                    <h2 class="text-lg font-bold tracking-tight flex items-center">
+                        <span class="w-1 h-4 rounded-full bg-[#1d1d1f] dark:bg-[#f5f5f7] mr-2"></span>
                         <span data-translate="header-focus">Primary Focus Areas</span>
                     </h2>
-                    <div id="focus-areas-container" class="spotlight-card p-6 sm:p-8 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm relative min-h-[100px] hover:shadow-md hover:-translate-y-0.5 transition-all duration-300">
-                        <!-- Content will be injected here -->
+                    <div id="focus-areas-container" class="p-6 rounded-[18px] bg-white dark:bg-[#1c1c1e] border border-neutral-200 dark:border-[#2c2c2e] shadow-sm relative min-h-[80px]">
                         <div class="animate-pulse flex space-y-4">
                             <div class="flex-1 space-y-4 py-1">
-                                <div class="h-4 bg-slate-200 dark:bg-slate-800 rounded w-3/4"></div>
+                                <div class="h-4 bg-neutral-200 dark:bg-neutral-800 rounded w-3/4"></div>
                                 <div class="space-y-2">
-                                    <div class="h-4 bg-slate-200 dark:bg-slate-800 rounded"></div>
-                                    <div class="h-4 bg-slate-200 dark:bg-slate-800 rounded w-5/6"></div>
+                                    <div class="h-4 bg-neutral-200 dark:bg-neutral-800 rounded"></div>
+                                    <div class="h-4 bg-neutral-200 dark:bg-neutral-800 rounded w-5/6"></div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </section>
 
-                <!-- Publications / Selected Papers Standalone Section (Loaded dynamically) -->
-                <section id="publications" class="space-y-4 scroll-mt-28">
+                <!-- Publications / Selected Papers Standalone Section -->
+                <section id="publications" class="space-y-4 scroll-mt-20">
                     <div class="flex items-baseline justify-between flex-wrap gap-2">
-                        <h2 class="text-2xl font-extrabold tracking-tight flex items-center">
-                            <span class="w-1.5 h-6 rounded-full bg-primary-600 mr-2.5"></span>
+                        <h2 class="text-lg font-bold tracking-tight flex items-center">
+                            <span class="w-1 h-4 rounded-full bg-[#1d1d1f] dark:bg-[#f5f5f7] mr-2"></span>
                             <span data-translate="header-publications">Selected Publications</span>
                         </h2>
-                        <span class="text-xs text-slate-500 dark:text-slate-400 font-bold font-mono pl-4 italic bg-slate-100 dark:bg-slate-900/60 px-2 py-1 rounded-lg border border-slate-200 dark:border-slate-800" data-translate="publications-legend">
+                        <span class="text-[10px] text-neutral-400 dark:text-neutral-500 font-bold font-mono pl-4 italic rounded-lg" data-translate="publications-legend">
                             * Corresponding Author | † Equal contribution
                         </span>
                     </div>
                     
-                    <div id="publications-container" class="space-y-4 relative min-h-[200px]">
-                        <!-- Content will be injected here dynamically as styled cards -->
+                    <div id="publications-container" class="space-y-3 relative min-h-[160px]">
                         <div class="animate-pulse space-y-4">
-                            <div class="p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 h-28"></div>
-                            <div class="p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 h-28"></div>
+                            <div class="p-6 rounded-[18px] bg-white dark:bg-[#1c1c1e] border border-neutral-200 h-24"></div>
+                            <div class="p-6 rounded-[18px] bg-white dark:bg-[#1c1c1e] border border-neutral-200 h-24"></div>
                         </div>
                     </div>
                 </section>
 
-                <!-- Education & Career Experience (Placed beautifully at the bottom, just above contact) -->
-                <section id="experience" class="space-y-6 pt-6 border-t border-slate-200 dark:border-slate-800 scroll-mt-28">
-                    <h2 class="text-2xl font-extrabold tracking-tight flex items-center">
-                        <span class="w-1.5 h-6 rounded-full bg-primary-600 mr-2.5"></span>
+                <!-- Education & Career Experience (Apple style bento lists) -->
+                <section id="experience" class="space-y-4 scroll-mt-20">
+                    <h2 class="text-lg font-bold tracking-tight flex items-center">
+                        <span class="w-1 h-4 rounded-full bg-[#1d1d1f] dark:bg-[#f5f5f7] mr-2"></span>
                         <span data-translate="header-experience">Experience & Affiliations</span>
                     </h2>
                     
-                    <div class="grid grid-cols-1 gap-4">
+                    <div class="grid grid-cols-1 gap-3">
                         <!-- Apple -->
-                        <div class="spotlight-card p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 flex items-center space-x-4 hover:shadow-md hover:-translate-y-0.5 transition-all duration-300 group">
-                            <div class="w-16 h-16 rounded-xl bg-slate-50 dark:bg-slate-950 flex items-center justify-center p-2.5 border border-slate-100 dark:border-slate-800/80 shrink-0 group-hover:scale-105 transition-transform duration-300">
+                        <div class="p-5 rounded-[18px] bg-white dark:bg-[#1c1c1e] border border-neutral-200 dark:border-[#2c2c2e] flex items-center space-x-4 hover:border-neutral-300 dark:hover:border-[#3c3c3e] transition-all duration-300 group">
+                            <div class="w-12 h-12 rounded-xl bg-neutral-100 dark:bg-neutral-900 flex items-center justify-center p-2.5 border border-neutral-200/50 dark:border-neutral-800 shrink-0 group-hover:scale-102 transition-transform duration-300">
                                 <img src="assets/apple.svg" alt="Apple Inc." class="max-w-full max-h-full object-contain dark:invert">
                             </div>
                             <div class="flex-1 min-w-0">
                                 <div class="flex items-center justify-between flex-wrap gap-1">
-                                    <h3 class="font-bold text-slate-800 dark:text-slate-100 truncate">Apple</h3>
-                                    <span class="text-xs text-slate-500 dark:text-slate-400 font-medium" data-translate="exp-date-apple">Mar. 2026 - Present</span>
+                                    <h3 class="text-sm font-bold text-[#1d1d1f] dark:text-[#f5f5f7] truncate">Apple</h3>
+                                    <span class="text-[11px] text-neutral-400 dark:text-neutral-500 font-medium" data-translate="exp-date-apple">Mar. 2026 - Present</span>
                                 </div>
-                                <p class="text-sm font-semibold text-primary-600 dark:text-primary-400" data-translate="exp-role-apple">Research Intern</p>
+                                <p class="text-xs font-semibold text-neutral-500 dark:text-neutral-400" data-translate="exp-role-apple">Research Intern</p>
                             </div>
                         </div>
 
                         <!-- University of Würzburg / INSAIT -->
-                        <div class="spotlight-card p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 flex items-center space-x-4 hover:shadow-md hover:-translate-y-0.5 transition-all duration-300 group">
-                            <div class="w-16 h-16 rounded-xl bg-white flex items-center justify-center p-1 border border-slate-100 dark:border-slate-800/80 shrink-0 group-hover:scale-105 transition-transform duration-300">
+                        <div class="p-5 rounded-[18px] bg-white dark:bg-[#1c1c1e] border border-neutral-200 dark:border-[#2c2c2e] flex items-center space-x-4 hover:border-neutral-300 dark:hover:border-[#3c3c3e] transition-all duration-300 group">
+                            <div class="w-12 h-12 rounded-xl bg-neutral-100 dark:bg-neutral-900 flex items-center justify-center p-1 border border-neutral-200/50 dark:border-neutral-800 shrink-0 group-hover:scale-102 transition-transform duration-300">
                                 <div class="flex items-center justify-center h-full w-full gap-1">
-                                    <img src="assets/insait.png" alt="INSAIT" class="h-6 object-contain" style="max-width: 50%;">
-                                    <div class="w-px h-6 bg-slate-200 dark:bg-slate-800"></div>
-                                    <img src="assets/wuerzburg.svg" alt="University of Würzburg Logo" class="h-8 object-contain" style="max-width: 50%;">
+                                    <img src="assets/insait.png" alt="INSAIT" class="h-4 object-contain" style="max-width: 48%;">
+                                    <div class="w-px h-4 bg-neutral-300 dark:bg-neutral-800"></div>
+                                    <img src="assets/wuerzburg.svg" alt="University of Würzburg Logo" class="h-6 object-contain" style="max-width: 48%;">
                                 </div>
                             </div>
                             <div class="flex-1 min-w-0">
                                 <div class="flex items-center justify-between flex-wrap gap-1">
-                                    <h3 class="font-bold text-slate-800 dark:text-slate-100 truncate">INSAIT / University of Würzburg</h3>
-                                    <span class="text-xs text-slate-500 dark:text-slate-400 font-medium" data-translate="exp-date-insait">2025 - Present</span>
+                                    <h3 class="text-sm font-bold text-[#1d1d1f] dark:text-[#f5f5f7] truncate">INSAIT / University of Würzburg</h3>
+                                    <span class="text-[11px] text-neutral-400 dark:text-neutral-500 font-medium" data-translate="exp-date-insait">2025 - Present</span>
                                 </div>
-                                <p class="text-sm font-semibold text-primary-600 dark:text-primary-400" data-translate="exp-role-insait">Student Researcher</p>
-                                <p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5" data-translate="exp-sub-insait">Supervised by Danda Pani Paudel, Radu Timofte, and Luc Van Gool</p>
+                                <p class="text-xs font-semibold text-neutral-500 dark:text-neutral-400" data-translate="exp-role-insait">Student Researcher</p>
+                                <p class="text-[10px] text-neutral-400 dark:text-neutral-500 mt-0.5" data-translate="exp-sub-insait">Supervised by Danda Pani Paudel, Radu Timofte, and Luc Van Gool</p>
                             </div>
                         </div>
 
                         <!-- Xidian University -->
-                        <div class="spotlight-card p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 flex items-center space-x-4 hover:shadow-md hover:-translate-y-0.5 transition-all duration-300 group">
-                            <div class="w-16 h-16 rounded-xl bg-white flex items-center justify-center p-1.5 border border-slate-100 dark:border-slate-800/80 shrink-0 group-hover:scale-105 transition-transform duration-300">
+                        <div class="p-5 rounded-[18px] bg-white dark:bg-[#1c1c1e] border border-neutral-200 dark:border-[#2c2c2e] flex items-center space-x-4 hover:border-neutral-300 dark:hover:border-[#3c3c3e] transition-all duration-300 group">
+                            <div class="w-12 h-12 rounded-xl bg-neutral-100 dark:bg-neutral-900 flex items-center justify-center p-1.5 border border-neutral-200/50 dark:border-neutral-800 shrink-0 group-hover:scale-102 transition-transform duration-300">
                                 <img src="assets/xidian.png" alt="Xidian University" class="max-w-full max-h-full object-contain">
                             </div>
                             <div class="flex-1 min-w-0">
                                 <div class="flex items-center justify-between flex-wrap gap-1">
-                                    <h3 class="font-bold text-slate-800 dark:text-slate-100 truncate" data-translate="exp-title-xidian">Xidian University (西安电子科技大学)</h3>
-                                    <span class="text-xs text-slate-500 dark:text-slate-400 font-medium" data-translate="exp-date-xidian">Sep. 2022 - Jun. 2025</span>
+                                    <h3 class="text-sm font-bold text-[#1d1d1f] dark:text-[#f5f5f7] truncate" data-translate="exp-title-xidian">Xidian University (西安电子科技大学)</h3>
+                                    <span class="text-[11px] text-neutral-400 dark:text-neutral-500 font-medium" data-translate="exp-date-xidian">Sep. 2022 - Jun. 2025</span>
                                 </div>
-                                <p class="text-sm font-semibold text-primary-600 dark:text-primary-400" data-translate="exp-role-xidian">Master of Science (M.S.)</p>
-                                <p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5" data-translate="exp-sub-xidian">Graduated with high honors in June 2025</p>
+                                <p class="text-xs font-semibold text-neutral-500 dark:text-neutral-400" data-translate="exp-role-xidian">Master of Science (M.S.)</p>
+                                <p class="text-[10px] text-neutral-400 dark:text-neutral-500 mt-0.5" data-translate="exp-sub-xidian">Graduated with high honors in June 2025</p>
                             </div>
                         </div>
 
                         <!-- Tele AI -->
-                        <div class="spotlight-card p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 flex items-center space-x-4 hover:shadow-md hover:-translate-y-0.5 transition-all duration-300 group">
-                            <div class="w-16 h-16 rounded-xl bg-white flex items-center justify-center p-0.5 border border-slate-100 dark:border-slate-800/80 shrink-0 group-hover:scale-105 transition-transform duration-300">
+                        <div class="p-5 rounded-[18px] bg-white dark:bg-[#1c1c1e] border border-neutral-200 dark:border-[#2c2c2e] flex items-center space-x-4 hover:border-neutral-300 dark:hover:border-[#3c3c3e] transition-all duration-300 group">
+                            <div class="w-12 h-12 rounded-xl bg-neutral-100 dark:bg-neutral-900 flex items-center justify-center p-1 border border-neutral-200/50 dark:border-neutral-800 shrink-0 group-hover:scale-102 transition-transform duration-300">
                                 <img src="assets/teleai.jpg" alt="Tele AI" class="w-full h-full object-contain rounded-lg">
                             </div>
                             <div class="flex-1 min-w-0">
                                 <div class="flex items-center justify-between flex-wrap gap-1">
-                                    <h3 class="font-bold text-slate-800 dark:text-slate-100 truncate" data-translate="exp-title-tele">Tele AI (China Telecom)</h3>
-                                    <span class="text-xs text-slate-500 dark:text-slate-400 font-medium" data-translate="exp-date-tele">2023 - 2025</span>
+                                    <h3 class="text-sm font-bold text-[#1d1d1f] dark:text-[#f5f5f7] truncate" data-translate="exp-title-tele">Tele AI (China Telecom)</h3>
+                                    <span class="text-[11px] text-neutral-400 dark:text-neutral-500 font-medium" data-translate="exp-date-tele">2023 - 2025</span>
                                 </div>
-                                <p class="text-sm font-semibold text-primary-600 dark:text-primary-400" data-translate="exp-role-tele">Research Intern / Visiting Student</p>
-                                <p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5" data-translate="exp-sub-tele">Supervised by Jiawei Shao and Xuelong Li</p>
+                                <p class="text-xs font-semibold text-neutral-500 dark:text-neutral-400" data-translate="exp-role-tele">Research Intern / Visiting Student</p>
+                                <p class="text-[10px] text-neutral-400 dark:text-neutral-500 mt-0.5" data-translate="exp-sub-tele">Supervised by Jiawei Shao and Xuelong Li</p>
                             </div>
                         </div>
 
                         <!-- Chang'an University -->
-                        <div class="spotlight-card p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 flex items-center space-x-4 hover:shadow-md hover:-translate-y-0.5 transition-all duration-300 group">
-                            <div class="w-16 h-16 rounded-xl bg-white flex items-center justify-center p-1 border border-slate-100 dark:border-slate-800/80 shrink-0 group-hover:scale-105 transition-transform duration-300">
+                        <div class="p-5 rounded-[18px] bg-white dark:bg-[#1c1c1e] border border-neutral-200 dark:border-[#2c2c2e] flex items-center space-x-4 hover:border-neutral-300 dark:hover:border-[#3c3c3e] transition-all duration-300 group">
+                            <div class="w-12 h-12 rounded-xl bg-neutral-100 dark:bg-neutral-900 flex items-center justify-center p-1 border border-neutral-200/50 dark:border-neutral-800 shrink-0 group-hover:scale-102 transition-transform duration-300">
                                 <img src="assets/changan_emblem.jpg" alt="Chang'an University" class="max-w-full max-h-full object-contain">
                             </div>
                             <div class="flex-1 min-w-0">
                                 <div class="flex items-center justify-between flex-wrap gap-1">
-                                    <h3 class="font-bold text-slate-800 dark:text-slate-100 truncate" data-translate="exp-title-changan">Chang'an University (长安大学)</h3>
-                                    <span class="text-xs text-slate-500 dark:text-slate-400 font-medium" data-translate="exp-date-changan">Sep. 2018 - Jul. 2022</span>
+                                    <h3 class="text-sm font-bold text-[#1d1d1f] dark:text-[#f5f5f7] truncate" data-translate="exp-title-changan">Chang'an University (长安大学)</h3>
+                                    <span class="text-[11px] text-neutral-400 dark:text-neutral-500 font-medium" data-translate="exp-date-changan">Sep. 2018 - Jul. 2022</span>
                                 </div>
-                                <p class="text-sm font-semibold text-primary-600 dark:text-primary-400" data-translate="exp-role-changan">Bachelor of Engineering (B.E.)</p>
-                                <p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5" data-translate="exp-sub-changan">Graduated in July 2022</p>
+                                <p class="text-xs font-semibold text-neutral-500 dark:text-neutral-400" data-translate="exp-role-changan">Bachelor of Engineering (B.E.)</p>
+                                <p class="text-[10px] text-neutral-400 dark:text-neutral-500 mt-0.5" data-translate="exp-sub-changan">Graduated in July 2022</p>
                             </div>
                         </div>
                     </div>
                 </section>
 
                 <!-- Contact Section -->
-                <section id="contact" class="pt-6 border-t border-slate-200 dark:border-slate-800 scroll-mt-28">
-                    <div class="space-y-6">
-                        <h2 class="text-2xl font-extrabold tracking-tight" data-translate="header-contact">Contact</h2>
+                <section id="contact" class="pt-6 border-t border-neutral-200 dark:border-neutral-800 scroll-mt-20">
+                    <div class="space-y-4">
+                        <h2 class="text-lg font-bold tracking-tight" data-translate="header-contact">Contact</h2>
                         
-                        <!-- Main Contact Card -->
-                        <div id="contact-wrapper" class="relative overflow-hidden rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm transition-all duration-500">
+                        <!-- Main Contact Card (Apple design Bento wrapper) -->
+                        <div id="contact-wrapper" class="relative overflow-hidden rounded-[18px] bg-white dark:bg-[#1c1c1e] border border-neutral-200 dark:border-[#2c2c2e] shadow-sm transition-all duration-500">
                             <!-- Success State Card -->
-                            <div id="contact-success-state" class="absolute inset-0 bg-white dark:bg-slate-900 z-20 flex flex-col items-center justify-center p-6 text-center space-y-4 translate-y-full opacity-0 transition-all duration-500">
-                                <div class="w-16 h-16 rounded-full bg-emerald-100 dark:bg-emerald-950/50 text-emerald-600 dark:text-emerald-400 flex items-center justify-center text-3xl animate-bounce">
+                            <div id="contact-success-state" class="absolute inset-0 bg-white dark:bg-[#1c1c1e] z-20 flex flex-col items-center justify-center p-6 text-center space-y-4 translate-y-full opacity-0 transition-all duration-500">
+                                <div class="w-12 h-12 rounded-full bg-neutral-100 dark:bg-neutral-800 text-neutral-700 dark:text-neutral-300 flex items-center justify-center text-xl animate-bounce">
                                     <i class="fa-solid fa-paper-plane"></i>
                                 </div>
                                 <div class="space-y-1">
-                                    <h3 class="text-xl font-bold" data-translate="contact-success-title">Message Sent Successfully!</h3>
-                                    <p class="text-sm text-slate-500 dark:text-slate-400 max-w-sm">
-                                        <span data-translate="contact-success-txt-1">Thank you, </span><span id="success-user-name" class="font-bold text-slate-800 dark:text-white"></span><span data-translate="contact-success-txt-2">. Your message has been simulated as sent. I will get back to you as soon as possible.</span>
+                                    <h3 class="text-base font-bold" data-translate="contact-success-title">Message Sent Successfully!</h3>
+                                    <p class="text-xs text-neutral-500 dark:text-neutral-400 max-w-sm">
+                                        <span data-translate="contact-success-txt-1">Thank you, </span><span id="success-user-name" class="font-bold text-[#1d1d1f] dark:text-white"></span><span data-translate="contact-success-txt-2">. Your message has been simulated as sent. I will get back to you as soon as possible.</span>
                                     </p>
                                 </div>
-                                <button onclick="resetContactForm()" class="px-5 py-2 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-xs font-bold transition-all duration-300" data-translate="contact-success-btn">
+                                <button onclick="resetContactForm()" class="px-4 py-1.5 rounded-lg bg-neutral-100 dark:bg-neutral-800 hover:bg-neutral-200 dark:hover:bg-neutral-700 text-[11px] font-bold transition-all duration-300" data-translate="contact-success-btn">
                                     Send Another Message
                                 </button>
                             </div>
@@ -565,20 +520,20 @@
                             <!-- Interactive Form -->
                             <form id="contact-form" class="p-6 sm:p-8 space-y-5">
                                 <div class="grid sm:grid-cols-2 gap-4">
-                                    <div class="space-y-2">
-                                        <label for="name" class="text-xs font-semibold text-slate-500 dark:text-slate-400" data-translate="contact-label-name">Your Name</label>
-                                        <input type="text" id="name" required class="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 text-slate-800 dark:text-white focus:outline-none focus:border-primary-500 dark:focus:border-primary-500 focus:bg-white dark:focus:bg-slate-900 transition-all duration-300">
+                                    <div class="space-y-1.5">
+                                        <label for="name" class="text-[10px] font-bold uppercase tracking-tight text-neutral-400 dark:text-neutral-500" data-translate="contact-label-name">Your Name</label>
+                                        <input type="text" id="name" required class="w-full px-3 py-2.5 rounded-xl border border-neutral-200 dark:border-neutral-800 bg-[#f5f5f7] dark:bg-neutral-900 text-neutral-800 dark:text-white focus:outline-none focus:border-neutral-400 dark:focus:border-neutral-600 focus:bg-white dark:focus:bg-[#1c1c1e] text-sm transition-all duration-300">
                                     </div>
-                                    <div class="space-y-2">
-                                        <label for="email" class="text-xs font-semibold text-slate-500 dark:text-slate-400" data-translate="contact-label-email">Your Email</label>
-                                        <input type="email" id="email" required class="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 text-slate-800 dark:text-white focus:outline-none focus:border-primary-500 dark:focus:border-primary-500 focus:bg-white dark:focus:bg-slate-900 transition-all duration-300">
+                                    <div class="space-y-1.5">
+                                        <label for="email" class="text-[10px] font-bold uppercase tracking-tight text-neutral-400 dark:text-neutral-500" data-translate="contact-label-email">Your Email</label>
+                                        <input type="email" id="email" required class="w-full px-3 py-2.5 rounded-xl border border-neutral-200 dark:border-neutral-800 bg-[#f5f5f7] dark:bg-neutral-900 text-neutral-800 dark:text-white focus:outline-none focus:border-neutral-400 dark:focus:border-neutral-600 focus:bg-white dark:focus:bg-[#1c1c1e] text-sm transition-all duration-300">
                                     </div>
                                 </div>
-                                <div class="space-y-2">
-                                    <label for="message" class="text-xs font-semibold text-slate-500 dark:text-slate-400" data-translate="contact-label-msg">Message</label>
-                                    <textarea id="message" rows="4" required class="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 text-slate-800 dark:text-white focus:outline-none focus:border-primary-500 dark:focus:border-primary-500 focus:bg-white dark:focus:bg-slate-900 transition-all duration-300"></textarea>
+                                <div class="space-y-1.5">
+                                    <label for="message" class="text-[10px] font-bold uppercase tracking-tight text-neutral-400 dark:text-neutral-500" data-translate="contact-label-msg">Message</label>
+                                    <textarea id="message" rows="4" required class="w-full px-3 py-2.5 rounded-xl border border-neutral-200 dark:border-neutral-800 bg-[#f5f5f7] dark:bg-neutral-900 text-neutral-800 dark:text-white focus:outline-none focus:border-neutral-400 dark:focus:border-neutral-600 focus:bg-white dark:focus:bg-[#1c1c1e] text-sm transition-all duration-300"></textarea>
                                 </div>
-                                <button type="submit" class="btn-shimmer w-full py-3.5 rounded-xl bg-gradient-to-r from-primary-600 to-primary-700 hover:from-primary-700 hover:to-primary-800 text-white font-semibold shadow-lg shadow-primary-500/20 hover:shadow-primary-500/30 hover:-translate-y-0.5 transition-all duration-300 text-center" data-translate="contact-btn-submit">
+                                <button type="submit" class="w-full py-3 rounded-xl bg-neutral-900 dark:bg-[#f5f5f7] text-white dark:text-black font-semibold text-sm hover:scale-[1.01] active:scale-[0.99] transition-all duration-300 text-center" data-translate="contact-btn-submit">
                                     Send Message
                                 </button>
                             </form>
@@ -591,17 +546,17 @@
     </main>
 
     <!-- Floating Back to Top Button -->
-    <button id="back-to-top" class="fixed bottom-6 right-6 z-40 p-3 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-300 hover:text-primary-600 dark:hover:text-primary-500 shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300 opacity-0 translate-y-6 pointer-events-none" aria-label="Back to Top">
-        <i class="fa-solid fa-arrow-up text-lg"></i>
+    <button id="back-to-top" class="fixed bottom-6 right-6 z-40 p-2.5 rounded-xl bg-white dark:bg-[#1c1c1e] border border-neutral-200 dark:border-neutral-800 text-neutral-500 dark:text-neutral-400 hover:text-black dark:hover:text-white shadow-md hover:shadow-lg transition-all duration-300 opacity-0 translate-y-6 pointer-events-none" aria-label="Back to Top">
+        <i class="fa-solid fa-arrow-up text-sm"></i>
     </button>
 
     <!-- Footer -->
-    <footer class="border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950 py-8 transition-all duration-300">
+    <footer class="border-t border-neutral-200 dark:border-neutral-800 bg-white dark:bg-black py-8 transition-all duration-500">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
-            <span class="text-xs sm:text-sm text-slate-500 dark:text-slate-400">
+            <span class="text-[11px] text-neutral-400 dark:text-neutral-500">
                 &copy; 2026 Yuedong Tan. All rights reserved.
             </span>
-            <span class="text-xs sm:text-sm text-slate-500 dark:text-slate-400 flex items-center space-x-1">
+            <span class="text-[11px] text-neutral-400 dark:text-neutral-500">
                 <span data-translate="footer-badge">Auto-synced Academic Page</span>
             </span>
         </div>
@@ -631,7 +586,7 @@
 }`,
             "xtrack": `@inproceedings{tan2024xtrack,
   title={XTrack: Multimodal Training Boosts RGB-X Video Object Trackers},
-  author={Tan, Yuedong and Wu, Zongwei and Fu, Yuqian and Zhou, Zhuyun and Sun, Guolei and Ma, Chao&dagger; and Paudel, Danda Dani and Van Gool, Luc and Timofte, Radu},
+  author={Tan, Yuedong and Wu, Zongwei and Fu, Yuqian and Zhou, Zhuyun and Sun, Guolei and Ma, Chao and Paudel, Danda Dani and Van Gool, Luc and Timofte, Radu},
   booktitle={Proceedings of the IEEE/CVF International Conference on Computer Vision (ICCV)},
   year={2025}
 }`,
@@ -810,7 +765,7 @@
                     const focusMarkdown = markdown.substring(focusStartIndex + focusHeader.length, newsIndex);
                     focusAreasHTML = marked.parse(focusMarkdown);
                 }
-                focusContainer.innerHTML = `<article class="prose prose-slate dark:prose-invert max-w-none prose-p:text-slate-700 dark:prose-p:text-slate-300">${focusAreasHTML}</article>`;
+                focusContainer.innerHTML = `<article class="prose prose-slate dark:prose-invert max-w-none prose-p:text-neutral-500 dark:prose-p:text-neutral-400 text-sm">${focusAreasHTML}</article>`;
 
                 // --- 2. Extract Publications Section ---
                 const pubHeader = '## 📚 PUBLICATIONS';
@@ -847,16 +802,15 @@
 
                     pubContainer.innerHTML = currentPapersHTML;
                 } else {
-                    pubContainer.innerHTML = "<p class='text-slate-500 py-6 text-center'>No publications found.</p>";
+                    pubContainer.innerHTML = "<p class='text-neutral-500 py-6 text-center text-sm'>No publications found.</p>";
                 }
 
                 initScrollObserver();
-                initCardSpotlightListeners();
 
             } catch (err) {
                 console.error(err);
-                focusContainer.innerHTML = "<p class='text-red-500'>Failed to load focus areas.</p>";
-                pubContainer.innerHTML = "<p class='text-red-500 py-6 text-center'>Failed to load publications.</p>";
+                focusContainer.innerHTML = "<p class='text-red-500 text-sm'>Failed to load focus areas.</p>";
+                pubContainer.innerHTML = "<p class='text-red-500 py-6 text-center text-sm'>Failed to load publications.</p>";
             }
         }
 
@@ -864,7 +818,7 @@
         function renderPaperCard(rawText) {
             let cleanText = rawText.replace(/\\/g, '').replace(/\*\*/g, '').replace(/\*/g, '');
 
-            const underlineHighlight = '<span class="font-semibold border-b border-primary-500 pb-0.5">Yuedong Tan</span>';
+            const underlineHighlight = '<span class="font-bold border-b border-black dark:border-white pb-0.5">Yuedong Tan</span>';
             let htmlText = cleanText.replace(/Yuedong Tan/g, underlineHighlight);
 
             const linkRegex = /\[Paper Link\]\(([^)]+)\)/i;
@@ -890,24 +844,24 @@
                 actionButtonsHTML = `
                     <div class="pt-3 flex flex-wrap gap-2 items-center">
                         ${paperUrl ? `
-                            <a href="${paperUrl}" target="_blank" rel="noopener noreferrer" class="btn-shimmer inline-flex items-center px-4 py-1.5 rounded-xl bg-primary-100 hover:bg-primary-200 dark:bg-primary-900/40 dark:hover:bg-primary-900/60 text-primary-700 dark:text-primary-300 text-xs font-bold transition-all duration-300">
-                                <i class="fa-solid fa-file-pdf mr-1.5 text-red-500"></i>
+                            <a href="${paperUrl}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center px-3 py-1 rounded-lg bg-neutral-100 hover:bg-neutral-200 dark:bg-neutral-800 dark:hover:bg-neutral-700 text-[#1d1d1f] dark:text-neutral-300 text-xs font-bold transition-all duration-300">
+                                <i class="fa-solid fa-file-pdf mr-1.5 text-neutral-500 dark:text-neutral-400"></i>
                                 <span>PDF</span>
                             </a>
                         ` : ''}
                         ${bibtexKey ? `
-                            <button onclick="toggleBibtex('${bibtexKey}')" class="btn-shimmer inline-flex items-center px-4 py-1.5 rounded-xl bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 text-xs font-bold transition-all duration-300">
-                                <i class="fa-solid fa-quote-right mr-1.5 text-primary-500"></i>
+                            <button onclick="toggleBibtex('${bibtexKey}')" class="inline-flex items-center px-3 py-1 rounded-lg bg-neutral-100 hover:bg-neutral-200 dark:bg-neutral-800 dark:hover:bg-neutral-700 text-neutral-700 dark:text-neutral-300 text-xs font-bold transition-all duration-300">
+                                <i class="fa-solid fa-quote-right mr-1.5 text-neutral-400"></i>
                                 <span>BibTeX</span>
                             </button>
                         ` : ''}
                     </div>
                     ${bibtexKey ? `
-                        <div id="bibtex-box-${bibtexKey}" class="hidden mt-3 p-4 rounded-xl bg-slate-50 dark:bg-slate-950/60 border border-slate-200 dark:border-slate-800 transition-all duration-300 relative group/bib">
-                            <button onclick="copyBibtexText('${bibtexKey}')" class="absolute top-3 right-3 p-2 rounded-lg bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-slate-500 hover:text-primary-500 shadow-sm opacity-0 group-hover/bib:opacity-100 transition-opacity duration-300" title="Copy Citation">
+                        <div id="bibtex-box-${bibtexKey}" class="hidden mt-3 p-4 rounded-xl bg-neutral-50 dark:bg-neutral-900/60 border border-neutral-200 dark:border-neutral-800 transition-all duration-300 relative group/bib">
+                            <button onclick="copyBibtexText('${bibtexKey}')" class="absolute top-3 right-3 p-1.5 rounded-lg bg-white dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 text-neutral-400 hover:text-black dark:hover:text-white shadow-sm opacity-0 group-hover/bib:opacity-100 transition-opacity duration-300" title="Copy Citation">
                                 <i class="fa-regular fa-copy"></i>
                             </button>
-                            <pre class="text-[10px] sm:text-xs font-mono text-slate-600 dark:text-slate-400 overflow-x-auto whitespace-pre-wrap select-all pr-10">${bibtexDatabase[bibtexKey]}</pre>
+                            <pre class="text-[10px] sm:text-xs font-mono text-neutral-500 dark:text-neutral-400 overflow-x-auto whitespace-pre-wrap select-all pr-10">${bibtexDatabase[bibtexKey]}</pre>
                         </div>
                     ` : ''}
                 `;
@@ -915,20 +869,20 @@
 
             let venueBadgeHTML = "";
             if (cleanText.includes('ICCV2025') || cleanText.includes('ICCV 2025')) {
-                venueBadgeHTML = `<span class="inline-flex items-center px-2 py-0.5 rounded bg-indigo-100 dark:bg-indigo-900/40 text-indigo-700 dark:text-indigo-400 text-[10px] font-bold">ICCV 2025</span>`;
+                venueBadgeHTML = `<span class="inline-flex items-center px-2 py-0.5 rounded bg-neutral-200/50 dark:bg-neutral-800 text-neutral-700 dark:text-neutral-300 text-[9px] font-bold">ICCV 2025</span>`;
             } else if (cleanText.includes('Under Review')) {
-                venueBadgeHTML = `<span class="inline-flex items-center px-2 py-0.5 rounded bg-amber-100 dark:bg-amber-900/40 text-amber-700 dark:text-amber-400 text-[10px] font-bold">Under Review</span>`;
+                venueBadgeHTML = `<span class="inline-flex items-center px-2 py-0.5 rounded bg-neutral-150 dark:bg-neutral-800/80 text-neutral-500 text-[9px] font-bold">Under Review</span>`;
             } else if (cleanText.includes('IEEE Transactions') || cleanText.includes('Transactions on')) {
-                venueBadgeHTML = `<span class="inline-flex items-center px-2 py-0.5 rounded bg-green-100 dark:bg-green-900/40 text-green-700 dark:text-green-400 text-[10px] font-bold">IEEE T-CSVT / TMM</span>`;
+                venueBadgeHTML = `<span class="inline-flex items-center px-2 py-0.5 rounded bg-neutral-200/50 dark:bg-neutral-800 text-neutral-700 dark:text-neutral-300 text-[9px] font-bold">IEEE T-CSVT / TMM</span>`;
             } else if (cleanText.includes('Workshop')) {
-                venueBadgeHTML = `<span class="inline-flex items-center px-2 py-0.5 rounded bg-blue-100 dark:bg-blue-900/40 text-blue-700 dark:text-blue-400 text-[10px] font-bold">IEEE Workshop</span>`;
+                venueBadgeHTML = `<span class="inline-flex items-center px-2 py-0.5 rounded bg-neutral-200/50 dark:bg-neutral-800 text-neutral-700 dark:text-neutral-300 text-[9px] font-bold">IEEE Workshop</span>`;
             }
 
             return `
-                <div class="spotlight-card reveal-on-scroll p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm hover:shadow-md hover:-translate-y-0.5 hover:border-primary-500/30 dark:hover:border-primary-500/30 transition-all duration-300 space-y-3 relative overflow-hidden">
+                <div class="reveal-on-scroll p-6 rounded-[18px] bg-white dark:bg-[#1c1c1e] border border-neutral-200 dark:border-[#2c2c2e] shadow-sm hover:border-neutral-400 dark:hover:border-[#3c3c3e] transition-all duration-300 space-y-3 relative overflow-hidden">
                     <div class="flex items-start justify-between gap-4 flex-wrap relative z-10">
                         <div class="flex-1 min-w-0">
-                            <p class="text-base text-slate-700 dark:text-slate-300 leading-relaxed">${htmlText}</p>
+                            <p class="text-sm sm:text-base text-neutral-600 dark:text-neutral-300 leading-relaxed">${htmlText}</p>
                         </div>
                         ${venueBadgeHTML ? `<div class="shrink-0">${venueBadgeHTML}</div>` : ''}
                     </div>
@@ -959,7 +913,7 @@
         // Initialize loading on DOMContentLoaded
         document.addEventListener('DOMContentLoaded', () => {
             loadProfile();
-            applyLanguage(currentLanguage); // initialize default or stored language
+            applyLanguage(currentLanguage);
         });
 
         // Theme toggler state
@@ -995,18 +949,16 @@
         const backToTopBtn = document.getElementById('back-to-top');
 
         window.addEventListener('scroll', () => {
-            if (window.scrollY > 50) {
-                navbar.classList.add('bg-white/80', 'dark:bg-slate-950/80', 'backdrop-blur-md', 'shadow-sm', 'border-slate-200/50', 'dark:border-slate-800/50', 'h-16');
-                navbar.classList.remove('border-transparent', 'h-20');
-                navbar.firstElementChild.firstElementChild.classList.add('h-16');
-                navbar.firstElementChild.firstElementChild.classList.remove('h-20');
+            // Navbar bottom outline toggle on scroll
+            if (window.scrollY > 30) {
+                navbar.classList.add('border-neutral-200/50', 'dark:border-neutral-800/80');
+                navbar.classList.remove('border-transparent');
             } else {
-                navbar.classList.remove('bg-white/80', 'dark:bg-slate-950/80', 'backdrop-blur-md', 'shadow-sm', 'border-slate-200/50', 'dark:border-slate-800/50', 'h-16');
-                navbar.classList.add('border-transparent', 'h-20');
-                navbar.firstElementChild.firstElementChild.classList.remove('h-16');
-                navbar.firstElementChild.firstElementChild.classList.add('h-20');
+                navbar.classList.remove('border-neutral-200/50', 'dark:border-neutral-800/80');
+                navbar.classList.add('border-transparent');
             }
 
+            // Back to Top button effect
             if (window.scrollY > 300) {
                 backToTopBtn.classList.remove('opacity-0', 'translate-y-6', 'pointer-events-none');
                 backToTopBtn.classList.add('opacity-100', 'translate-y-0');
@@ -1016,6 +968,7 @@
             }
         });
 
+        // Smooth scroll to top when clicking back-to-top
         backToTopBtn.addEventListener('click', () => {
             window.scrollTo({ top: 0, behavior: 'smooth' });
         });
@@ -1028,6 +981,7 @@
         contactForm.addEventListener('submit', (e) => {
             e.preventDefault();
             const nameVal = document.getElementById('name').value;
+            
             successUserName.textContent = nameVal;
             successState.classList.remove('translate-y-full', 'opacity-0');
             successState.classList.add('translate-y-0', 'opacity-100');
@@ -1055,9 +1009,11 @@
             });
 
             navLinks.forEach(link => {
-                link.classList.remove('text-primary-600', 'dark:text-primary-400', 'font-bold');
+                link.classList.remove('text-black', 'dark:text-white', 'font-bold');
+                link.classList.add('text-neutral-500', 'dark:text-neutral-400');
                 if (link.getAttribute('href').slice(1) === current) {
-                    link.classList.add('text-primary-600', 'dark:text-primary-400', 'font-bold');
+                    link.classList.remove('text-neutral-500', 'dark:text-neutral-400');
+                    link.classList.add('text-black', 'dark:text-white', 'font-bold');
                 }
             });
         });
@@ -1111,55 +1067,6 @@
             }, observerOptions);
 
             revealElements.forEach(el => observer.observe(el));
-        }
-
-        // --- 🌌 Dynamic Mouse Parallax Background Blobs ---
-        const blob1 = document.getElementById('blob-1');
-        const blob2 = document.getElementById('blob-2');
-
-        document.addEventListener('mousemove', (e) => {
-            const mouseX = e.clientX;
-            const mouseY = e.clientY;
-
-            const offsetX = (mouseX - window.innerWidth / 2) * 0.02;
-            const offsetY = (mouseY - window.innerHeight / 2) * 0.02;
-
-            blob1.style.transform = `translate(${offsetX}px, ${offsetY}px)`;
-            blob2.style.transform = `translate(${-offsetX}px, ${-offsetY}px)`;
-        });
-
-        // --- 🔦 Dynamic Spotlight Card Hover Tracking ---
-        function initCardSpotlightListeners() {
-            const spotlightCards = document.querySelectorAll('.spotlight-card');
-            
-            spotlightCards.forEach(card => {
-                // Ensure card is relative positioned
-                card.style.position = 'relative';
-
-                // Append spotlight circle overlay dynamically
-                const overlay = document.createElement('div');
-                overlay.className = 'spotlight-overlay pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 -z-0';
-                
-                // Set initial background gradient
-                overlay.style.background = 'radial-gradient(400px circle at var(--x, 0px) var(--y, 0px), rgba(99, 102, 241, 0.06), transparent 80%)';
-                
-                // Insert as first child so it sits behind content
-                card.insertBefore(overlay, card.firstChild);
-
-                card.addEventListener('mousemove', (e) => {
-                    const rect = card.getBoundingClientRect();
-                    const x = e.clientX - rect.left;
-                    const y = e.clientY - rect.top;
-                    
-                    overlay.style.setProperty('--x', `${x}px`);
-                    overlay.style.setProperty('--y', `${y}px`);
-                    overlay.style.opacity = '1';
-                });
-
-                card.addEventListener('mouseleave', () => {
-                    overlay.style.opacity = '0';
-                });
-            });
         }
     </script>
 </body>
