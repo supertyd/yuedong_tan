@@ -207,6 +207,7 @@
                     <a href="#news" class="nav-link text-xs font-semibold text-neutral-500 hover:text-black dark:text-neutral-400 dark:hover:text-white transition-colors" data-translate="nav-news">News</a>
                     <a href="#focus-areas" class="nav-link text-xs font-semibold text-neutral-500 hover:text-black dark:text-neutral-400 dark:hover:text-white transition-colors" data-translate="nav-research">Research</a>
                     <a href="#publications" class="nav-link text-xs font-semibold text-neutral-500 hover:text-black dark:text-neutral-400 dark:hover:text-white transition-colors" data-translate="nav-publications">Publications</a>
+                    <a href="#projects" class="nav-link text-xs font-semibold text-neutral-500 hover:text-black dark:text-neutral-400 dark:hover:text-white transition-colors" data-translate="nav-projects">Projects</a>
                     <a href="#experience" class="nav-link text-xs font-semibold text-neutral-500 hover:text-black dark:text-neutral-400 dark:hover:text-white transition-colors" data-translate="nav-experience">Experience</a>
                     <a href="#contact" class="nav-link text-xs font-semibold text-neutral-500 hover:text-black dark:text-neutral-400 dark:hover:text-white transition-colors" data-translate="nav-contact">Contact</a>
                 </nav>
@@ -239,6 +240,7 @@
                 <a href="#news" class="mobile-nav-link block px-4 py-2 text-sm font-medium text-neutral-600 dark:text-neutral-300 hover:bg-neutral-100 dark:hover:bg-neutral-900" data-translate="nav-news">News</a>
                 <a href="#focus-areas" class="mobile-nav-link block px-4 py-2 text-sm font-medium text-neutral-600 dark:text-neutral-300 hover:bg-neutral-100 dark:hover:bg-neutral-900" data-translate="nav-research">Research</a>
                 <a href="#publications" class="mobile-nav-link block px-4 py-2 text-sm font-medium text-neutral-600 dark:text-neutral-300 hover:bg-neutral-100 dark:hover:bg-neutral-900" data-translate="nav-publications">Publications</a>
+                <a href="#projects" class="mobile-nav-link block px-4 py-2 text-sm font-medium text-neutral-600 dark:text-neutral-300 hover:bg-neutral-100 dark:hover:bg-neutral-900" data-translate="nav-projects">Projects</a>
                 <a href="#experience" class="mobile-nav-link block px-4 py-2 text-sm font-medium text-neutral-600 dark:text-neutral-300 hover:bg-neutral-100 dark:hover:bg-neutral-900" data-translate="nav-experience">Experience</a>
                 <a href="#contact" class="mobile-nav-link block px-4 py-2 text-sm font-medium text-neutral-600 dark:text-neutral-300 hover:bg-neutral-100 dark:hover:bg-neutral-900" data-translate="nav-contact">Contact</a>
             </div>
@@ -426,6 +428,30 @@
                         <div class="animate-pulse space-y-4">
                             <div class="p-6 rounded-[18px] bg-white dark:bg-[#1c1c1e] border border-neutral-200 h-24"></div>
                             <div class="p-6 rounded-[18px] bg-white dark:bg-[#1c1c1e] border border-neutral-200 h-24"></div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Projects Section -->
+                <section id="projects" class="space-y-4 scroll-mt-20">
+                    <h2 class="text-lg font-bold tracking-tight flex items-center">
+                        <span class="w-1 h-4 rounded-full bg-[#1d1d1f] dark:bg-[#f5f5f7] mr-2"></span>
+                        <span data-translate="header-projects">Selected Projects</span>
+                    </h2>
+                    <div class="p-6 rounded-[18px] bg-white dark:bg-[#1c1c1e] border border-neutral-200 dark:border-[#2c2c2e] shadow-sm space-y-3">
+                        <div class="flex items-start justify-between gap-4 flex-wrap">
+                            <div class="flex-1 min-w-0">
+                                <h3 class="text-base font-bold text-[#1d1d1f] dark:text-[#f5f5f7]">EgoGears</h3>
+                                <p class="mt-2 text-sm text-neutral-600 dark:text-neutral-300 leading-relaxed" data-translate="project-egogears">
+                                    A first-person outdoor video-understanding benchmark evaluating single-video understanding and cross-video spatial and route reasoning across real-world encounters.
+                                </p>
+                            </div>
+                            <span class="shrink-0 px-2 py-0.5 rounded bg-neutral-200/50 dark:bg-neutral-800 text-neutral-600 dark:text-neutral-300 text-[10px] font-bold">2026</span>
+                        </div>
+                        <div class="flex flex-wrap gap-3 pt-1 text-[11px] font-bold">
+                            <a href="https://arxiv.org/abs/2609.37938" target="_blank" rel="noopener noreferrer" class="text-[#0066cc] dark:text-[#2997ff] hover:underline">Paper <i class="fa-solid fa-arrow-up-right-from-square ml-1 text-[9px]"></i></a>
+                            <a href="https://github.com/lei-qi-233/EgoGears" target="_blank" rel="noopener noreferrer" class="text-[#0066cc] dark:text-[#2997ff] hover:underline">Code <i class="fa-solid fa-arrow-up-right-from-square ml-1 text-[9px]"></i></a>
+                            <a href="https://huggingface.co/datasets/lei-qi-233/EgoGears" target="_blank" rel="noopener noreferrer" class="text-[#0066cc] dark:text-[#2997ff] hover:underline">Dataset <i class="fa-solid fa-arrow-up-right-from-square ml-1 text-[9px]"></i></a>
                         </div>
                     </div>
                 </section>
@@ -652,6 +678,7 @@
                 "nav-news": "News",
                 "nav-research": "Research",
                 "nav-publications": "Publications",
+                "nav-projects": "Projects",
                 "nav-experience": "Experience",
                 "nav-contact": "Contact",
                 "sidebar-badge": " Intern at Apple",
@@ -668,6 +695,8 @@
                 "news-btn-workshop": "URVIS Workshop Website",
                 "news-3": "I am thrilled to announce that our project has been selected for a generous GPU grant from TeleAI. We are incredibly grateful for their support, as only 10 projects were chosen for this award.",
                 "news-btn-award": "Announcement Link",
+                "header-projects": "Selected Projects",
+                "project-egogears": "A first-person outdoor video-understanding benchmark evaluating single-video understanding and cross-video spatial and route reasoning across real-world encounters.",
                 "header-focus": "Primary Focus Areas",
                 "header-publications": "Selected Publications",
                 "publications-legend": "* Corresponding Author | † Equal contribution",
@@ -709,6 +738,7 @@
                 "nav-news": "动态",
                 "nav-research": "核心领域",
                 "nav-publications": "发表论文",
+                "nav-projects": "项目",
                 "nav-experience": "科研履历",
                 "nav-contact": "取得联系",
                 "sidebar-badge": " 苹果公司 研发实习生",
@@ -725,6 +755,8 @@
                 "news-btn-workshop": "URVIS 研讨会官方网站",
                 "news-3": "非常高兴地分享，我们的科研项目已被选中并荣获 TeleAI 丰厚的 GPU 算力专项资助！在竞争激烈的申报中仅有 10 个项目获此殊荣。",
                 "news-btn-award": "TeleAI 算力大奖官方报道",
+                "header-projects": "代表项目",
+                "project-egogears": "第一人称户外视频理解基准，评估单视频理解及真实场景中的跨视频空间与路线推理能力。",
                 "header-focus": "核心研究方向",
                 "header-publications": "学术论文成果",
                 "publications-legend": "* 通讯作者 | † 共同第一作者",
