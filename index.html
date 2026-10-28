@@ -627,6 +627,14 @@
     <script>
         // Dictionary of pre-populated BibTeX blocks for each of your publications
         const bibtexDatabase = {
+            "egogears": `@misc{tan2026doeslocalvideounderstanding,
+  title={Does Local Video Understanding Transfer Across Encounters? The EgoGears Benchmark},
+  author={Tan, Yuedong and Qi, Lei and Liu, Yu and Wen, Di and Liu, Ruiping and Wang, Xiaoye and Chen, Yufan and Zheng, Junwei and Wu, Chengzhi and Zhang, Chen and Chen, Zhihang and Sun, Haiwen and Wu, Zongwei and Timofte, Radu and Paudel, Danda Pani and Peng, Kunyu},
+  year={2026},
+  eprint={2609.37938},
+  archivePrefix={arXiv},
+  primaryClass={cs.CV}
+},
             "segthinker": `@article{tan2026segthinker,
   title={SegThinker: Recurrent Vision with Reasoning for Image Segmentation},
   author={Tan, Yuedong and Pan, Jiancheng and Fu, Yuqian and Van Gool, Luc and Timofte, Radu and Paudel, Danda Pani and Wu, Zongwei},
@@ -910,7 +918,8 @@
 
             let bibtexKey = "";
             const lowerClean = cleanText.toLowerCase();
-            if (lowerClean.includes("segthinker")) bibtexKey = "segthinker";
+            if (lowerClean.includes("egogears")) bibtexKey = "egogears";
+            else if (lowerClean.includes("segthinker")) bibtexKey = "segthinker";
             else if (lowerClean.includes("videoscan")) bibtexKey = "videoscan";
             else if (lowerClean.includes("what you have")) bibtexKey = "what";
             else if (lowerClean.includes("xtrack")) bibtexKey = "xtrack";
