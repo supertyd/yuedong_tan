@@ -400,15 +400,13 @@
                         <span data-translate="header-focus">Primary Focus Areas</span>
                     </h2>
                     <div id="focus-areas-container" class="p-6 rounded-[18px] bg-white dark:bg-[#1c1c1e] border border-neutral-200 dark:border-[#2c2c2e] shadow-sm relative min-h-[80px]">
-                        <div class="animate-pulse flex space-y-4">
-                            <div class="flex-1 space-y-4 py-1">
-                                <div class="h-4 bg-neutral-200 dark:bg-neutral-800 rounded w-3/4"></div>
-                                <div class="space-y-2">
-                                    <div class="h-4 bg-neutral-200 dark:bg-neutral-800 rounded"></div>
-                                    <div class="h-4 bg-slate-200 dark:bg-slate-800 rounded w-5/6"></div>
-                                </div>
-                            </div>
-                        </div>
+                        <article class="prose prose-slate dark:prose-invert max-w-none prose-p:text-neutral-500 dark:prose-p:text-neutral-400 text-sm">
+                            <ul>
+                                <li><strong>Multimodal Large Language Models (MLLM)</strong> — Advancing vision-language understanding and reasoning</li>
+                                <li><strong>Tool-Use Agents</strong> — Creating intelligent systems that use external tools and APIs</li>
+                            </ul>
+                            <p>My goal is to develop autonomous agents that use diverse tools to explore and understand the world.</p>
+                        </article>
                     </div>
                 </section>
 
@@ -425,10 +423,10 @@
                     </div>
                     
                     <div id="publications-container" class="space-y-3 relative min-h-[160px]">
-                        <div class="animate-pulse space-y-4">
-                            <div class="p-6 rounded-[18px] bg-white dark:bg-[#1c1c1e] border border-neutral-200 h-24"></div>
-                            <div class="p-6 rounded-[18px] bg-white dark:bg-[#1c1c1e] border border-neutral-200 h-24"></div>
-                        </div>
+                        ${renderPaperCard('Yu Liu, Youxing Li, Yuedong Tan, Zhiwei Yang, Zihan Su, Hanqi Feng, Shaojie Zhang, Libin Liao, Zihao Wan, Chenxu Wu, Cong Cao, Fangfang Yuan, Yanbing Liu, Ziheng Chen, Pei Fu, Radu Timofte, Zongwei Wu, Nicu Sebe, Barnabas Poczos, Jian Luan. A-RSI: Adaptive Task Refresh for Zero-Data Multimodal Self-Improvement.')}
+                        ${renderPaperCard('Yuedong Tan, Lei Qi, Yu Liu, Di Wen, Ruiping Liu, Xiaoye Wang, Yufan Chen, Junwei Zheng, Chengzhi Wu, Chen Zhang, Zhihang Chen, Haiwen Sun, Zongwei Wu, Radu Timofte, Danda Pani Paudel, Kunyu Peng. Does Local Video Understanding Transfer Across Encounters? The EgoGears Benchmark [Paper Link](https://arxiv.org/abs/2609.37938)')}
+                        ${renderPaperCard('Yuedong Tan, Jiancheng Pan, Yuqian Fu, Luc Van Gool, Radu Timofte, Danda Pani Paudel, Zongwei Wu. SegThinker: Recurrent Vision with Reasoning for Image Segmentation (Under Review)')}
+                        ${renderPaperCard('Ruanjun Li, Yuedong Tan, Yuanming Shi, Jiawei Shao. Videoscan: Enabling Efficient Streaming Video Understanding via Frame-level Semantic Carriers (Under Review)')}
                     </div>
                 </section>
 
@@ -838,66 +836,29 @@
             try {
                 const response = await fetch('https://raw.githubusercontent.com/supertyd/supertyd/main/README.md');
                 if (!response.ok) throw new Error('Failed to fetch Markdown file');
-                
-                let markdown = await response.text();
-                
-                // --- 1. Extract Primary Focus Areas Section ---
-                const focusHeader = '## Primary Focus Areas';
-                const newsHeader = '## 📣 NEWS';
-                const focusStartIndex = markdown.indexOf(focusHeader);
-                const newsIndex = markdown.indexOf(newsHeader);
-                
-                let focusAreasHTML = "<p class='text-slate-500'>No focus areas found.</p>";
-                if (focusStartIndex !== -1 && newsIndex !== -1 && newsIndex > focusStartIndex) {
-                    const focusMarkdown = markdown.substring(focusStartIndex + focusHeader.length, newsIndex);
-                    focusAreasHTML = marked.parse(focusMarkdown);
-                }
-                focusContainer.innerHTML = `<article class="prose prose-slate dark:prose-invert max-w-none prose-p:text-neutral-500 dark:prose-p:text-neutral-400 text-sm">${focusAreasHTML}</article>`;
+                const markdown = await response.text();
 
-                // --- 2. Extract Publications Section ---
-                const pubHeader = '## 📚 PUBLICATIONS';
-                const pubIndex = markdown.indexOf(pubHeader);
-                let publicationsMarkdown = "";
-                
-                if (pubIndex !== -1) {
-                    publicationsMarkdown = markdown.substring(pubIndex + pubHeader.length);
+                // Extract Focus Areas up to the next Markdown heading, allowing heading decoration.
+                const focusMatch = markdown.match(/^##\\s+Primary Focus Areas\\s*\\r?\\n([\\s\\S]*?)(?=^##\\s|$)/m);
+                if (focusMatch) {
+                    focusContainer.innerHTML = `<article class="prose prose-slate dark:prose-invert max-w-none prose-p:text-neutral-500 dark:prose-p:text-neutral-400 text-sm">${marked.parse(focusMatch[1])}</article>`;
                 }
 
-                // Render Publications nicely
-                if (publicationsMarkdown.trim()) {
-                    const lines = publicationsMarkdown.split('\n');
-                    let currentPapersHTML = "";
-                    let currentPaperText = "";
-
-                    for (let line of lines) {
-                        line = line.trim();
-                        if (line.includes('* for Corresponding Author') || line.includes('Equal contribution')) {
-                            continue;
-                        }
-                        if (line.startsWith('-') || line.startsWith('*')) {
-                            if (currentPaperText) {
-                                currentPapersHTML += renderPaperCard(currentPaperText);
-                            }
-                            currentPaperText = line.replace(/^[-*]\s*/, '');
-                        } else if (line) {
-                            currentPaperText += " " + line;
-                        }
+                // Extract Publications to the next heading and parse each bullet independently.
+                const pubMatch = markdown.match(/^##\\s+📚?\\s*PUBLICATIONS\\s*\\r?\\n([\\s\\S]*?)(?=^##\\s|$)/m);
+                if (pubMatch) {
+                    const paperLines = pubMatch[1].split('\\n')
+                        .map(line => line.trim())
+                        .filter(line => /^[-*]\\s+/.test(line) && !/for Corresponding Author|Equal contribution/i.test(line))
+                        .map(line => line.replace(/^[-*]\\s+/, ''));
+                    if (paperLines.length) {
+                        pubContainer.innerHTML = paperLines.map(renderPaperCard).join('');
                     }
-                    if (currentPaperText) {
-                        currentPapersHTML += renderPaperCard(currentPaperText);
-                    }
-
-                    pubContainer.innerHTML = currentPapersHTML;
-                } else {
-                    pubContainer.innerHTML = "<p class='text-neutral-500 py-6 text-center text-sm'>No publications found.</p>";
                 }
-
                 initScrollObserver();
-
             } catch (err) {
-                console.error(err);
-                focusContainer.innerHTML = "<p class='text-red-500 text-sm'>Failed to load focus areas.</p>";
-                pubContainer.innerHTML = "<p class='text-red-500 py-6 text-center text-sm'>Failed to load publications.</p>";
+                // Keep the built-in content visible when remote Markdown is unavailable.
+                console.error('Profile content sync failed; using built-in page content.', err);
             }
         }
 
