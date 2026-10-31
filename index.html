@@ -833,36 +833,8 @@
 
         // Fetch and Render Profile Markdown from supertyd/supertyd README.md
         async function loadProfile() {
-            const focusContainer = document.getElementById('focus-areas-container');
-            const pubContainer = document.getElementById('publications-container');
-
-            try {
-                const response = await fetch('https://raw.githubusercontent.com/supertyd/supertyd/main/README.md');
-                if (!response.ok) throw new Error('Failed to fetch Markdown file');
-                const markdown = await response.text();
-
-                // Extract Focus Areas up to the next Markdown heading, allowing heading decoration.
-                const focusMatch = markdown.match(/^##\s+Primary Focus Areas\s*\r?\n([\s\S]*?)(?=^##\s|$)/m);
-                if (focusMatch) {
-                    focusContainer.innerHTML = `<article class="prose prose-slate dark:prose-invert max-w-none prose-p:text-neutral-500 dark:prose-p:text-neutral-400 text-sm">${marked.parse(focusMatch[1])}</article>`;
-                }
-
-                // Extract Publications to the next heading and parse each bullet independently.
-                const pubMatch = markdown.match(/^##\s+📚?\s*PUBLICATIONS\s*\r?\n([\s\S]*?)(?=^##\s|$)/m);
-                if (pubMatch) {
-                    const paperLines = pubMatch[1].split('\n')
-                        .map(line => line.trim())
-                        .filter(line => /^[-*]\s+/.test(line) && !/for Corresponding Author|Equal contribution/i.test(line))
-                        .map(line => line.replace(/^[-*]\s+/, ''));
-                    if (paperLines.length) {
-                        pubContainer.innerHTML = paperLines.map(renderPaperCard).join('');
-                    }
-                }
-                initScrollObserver();
-            } catch (err) {
-                // Keep the built-in content visible when remote Markdown is unavailable.
-                console.error('Profile content sync failed; using built-in page content.', err);
-            }
+            // The profile sections are rendered in HTML and remain visible without remote requests.
+            initScrollObserver();
         }
 
         // Helper function to turn a parsed bullet-point paper into a beautiful card
